@@ -5,14 +5,14 @@
 <head>
 <%! String nav = "includes/start.jsp"; %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Masterpage</title>
+<title>Meine Kurse</title>
 <link href = "style.css" rel = "stylesheet">
 </head>
 <body>
 	<div id = "wrapper">
 		<jsp:include page="includes/header.jsp"/>
 		<div id= "websiteContent">
-			Startseite
+			Meine Kurse
 		</div>
 		<jsp:include page="includes/footer.jsp"/>
 	</div>

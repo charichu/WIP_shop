@@ -110,4 +110,8 @@ body {
 .standartColor{
 	background-color: rgba(51,0,204,0.5);
 }
+.bottom{
+	position: absolute;
+	bottom: 0;
+}
 
