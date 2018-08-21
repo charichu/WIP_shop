@@ -10,9 +10,8 @@
 <meta name="viewport" content="width=device-width, inital-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <!--  Script für Responsivität -->
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script type="text/javascript">
-
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+$("#nav ul li a").addclass('active');
 </script>
 
 <title>Masterpage</title>
@@ -22,7 +21,8 @@
 	<div id = "wrapper">
 		<jsp:include page="includes/header.jsp"/>
 		<div id= "websiteContent">
-			Startseite
+		Startseite
+			<!--  <article> Startseite </article> -->
 		</div>
 		<jsp:include page="includes/footer.jsp"/>
 	</div>

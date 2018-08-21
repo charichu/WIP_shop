@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 h1 {
 	text-transform: lowercase;
+	font-family:Helvetica;
 }
 html {
 	height: 100%;
@@ -11,6 +12,7 @@ body {
 	padding:0em;
 	background:#F0F8FF; 
 	font-size:100%;
+	font-family:Helvetica;
 }
 #wrapper {
 	width: 100%;
@@ -20,33 +22,66 @@ body {
 }
 
 img {
-	width:90%;
+	width:100%;
 	height:auto;
 	max-width:100%;
 }
 
+ul {
+	margin: 0px;
+	padding: opx;
+}
+
+li {
+	list-style:square;
+	font-family:Helvetica;
+	font-weight:100;
+	color:#2F2D2C;
+	line-height:1.25em;
+	margin:0em;
+	padding:0em;
+	margin:0.313em 0em 0.313em 0em;
+}
+
+a {
+	text-decoration:none;
+}
 /*Top Bar*/
 #menubar {
-	display:block;
-	background:#F0F8FF;
+	display:inline;
+	background:#F0F8FF;	
+	align:right;
+}
+
+#menubar img {
+	width:auto;
+	height:40px;
 }
 
 #menubar ul{
 	display:block;
-	width:2em;	
-	padding:0.9em;
+	width:2em;
+	padding:0.2em;
 }
 
 #menubar ul li {
 	display:inline;
 }
 
+#menubar ul li a.menubutton {
+	/*display:none;*/
+}
+
+#menubar searchlogin {
+	align:right;
+}
+
 /*HEADER PART*/
 #header {
 	position: relative;
 	width: 100%;
-	height: 200px;
-	background-color: rgba(51,0,204,0.5);
+	/* max-height: 230px; */
+	background-color: #F0F8FF;
 }
 #headerWrapper {
 	position: relative;
@@ -56,21 +91,21 @@ img {
 	margin-right: 10%;
 }
 	/*Navigation Part*/
-#mainMenu {
+/* #mainMenu {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
 	
 }
 #navigation {
-	height: 35px;
+	height: 2.5em;
 	padding: 0;
 	margin: 0;
 	width: 100%;
 }
 #navigation td {
 	height:100%;
-	line-height: 35px;
+	line-height: 2.5em;
 	padding: 0;
 	background-color: black;
 	color: white;
@@ -83,7 +118,7 @@ img {
     color: white;
     text-align: center;
     vertical-align: middle;
-    font-size: 20px;
+    font-size: 1.125em;
 }
 #navigation a:hover {
 	height: 100%;
@@ -97,30 +132,91 @@ img {
     margin:0;
     background-color: rgba(255,255,255,0.3);
 }
+
 #navigation span {
 	height: 100%;
 	width: 100%;
-	margin: 5px;
+	margin: 0.188em;
+} */
+
+/*Alternative navigation */
+nav {
+	display.block;
+	height:2.5em;
+	background:#F0F8FF;
+	text-align:center;
+}
+
+nav ul {
+	display:block;
+}
+
+nav ul li {
+	display:inline;
+	margin: 0em 0.188em 0em 0.188em;
+}
+
+nav ul li a {
+	color:#454040;
+	font-size: 1.125em;
+	line-height: 2.5em;
+	padding: 0.563em 0.938em 0.375em 0.983em;
+	transition:background 0.2s;
+	-webkit-transition:background 0.2s; 
+}
+
+nav ul li a:hover {
+	background:#DBD9D8;
+	border-bottom: 0.188em solid #E7590B;
+}
+
+/* Need to find out which page is active to highlight it on navigation via jquery for example*/
+nav ul li a.active {
+	border-bottom: 0.188em solid #E7590B;
 }
 
 /*CONTENT PART*/
 #websiteContent {
-	width: 78%;
+	width: 96%;
+	max-width: 980px;
 	height: 60%;
-	margin-left: 10%;
-	margin-right: 10%;
+	margin: 1.25em;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 1%;
 	background-color: rgba(255,255,255,1);
 	
-	border-left: 1px solid black;
-	border-right: 1px solid black;
+	
+	border: 1px solid black;
+	/* border-left: 1px solid black;
+	border-right: 1px solid black; */
 }
+
+#websitecontent article {
+	display:inline-block;
+	width:90%;
+	background:#FFFFFF;
+	vertical-align: top;
+	margin: 0em;
+	padding: 0em;
+	text-align: center;
+	font-size:4em;
+}
+
+#websitecontent article img {
+	max-width:560px;
+	box-shadow:0px 0px 10px -5px #4c4948;
+	border-radius:5px;
+}
+
 /*FOOTER PART*/
 #footer {
 	width: 100%;
 	height: 100px;
-	background-color: rgba(51,0,204,0.5);
+	background-color: #2E8B57;
+
 }
+
 #footerWrapper {
 	position: relative;
 	width: 80%;
@@ -139,5 +235,21 @@ img {
 .bottom{
 	position: absolute;
 	bottom: 0;
+}
+
+/* Mobile View */
+
+@media screen and (max-width:550px) {
+	#menubar ul li a.menubutton {
+	display:block;
+	}
+	nav {
+	display:none;
+	height:auto;
+	}
+	nav ul li {
+	display:block;
+	margin: 0.3em 0em 0.3em 0em;
+	}
 }
 
