@@ -48,14 +48,30 @@ a {
 }
 /*Top Bar*/
 #menubar {
-	display:inline;
+	display:block;
 	background:#F0F8FF;	
-	align:right;
+	height: 40px;
+	text-align: center;
+	font-family: Helvetica;
+	font-size: 1em;
+}
+
+#menubaraside {
+	background-color:#F0F8FF;
+	right: 10px;
+	position: absolute;
+	padding: 10px;
+	top: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 #menubar img {
+	display:none;
 	width:auto;
 	height:40px;
+	left: 10px;
+	position: absolute;
 }
 
 #menubar ul{
@@ -69,7 +85,7 @@ a {
 }
 
 #menubar ul li a.menubutton {
-	/*display:none;*/
+	display:none;
 }
 
 #menubar searchlogin {
@@ -141,8 +157,8 @@ a {
 
 /*Alternative navigation */
 nav {
-	display.block;
-	height:2.5em;
+	display:block;
+	height:2.25em;
 	background:#F0F8FF;
 	text-align:center;
 }
@@ -152,7 +168,7 @@ nav ul {
 }
 
 nav ul li {
-	display:inline;
+	display:inline-block;
 	margin: 0em 0.188em 0em 0.188em;
 }
 
@@ -212,7 +228,7 @@ nav ul li a.active {
 /*FOOTER PART*/
 #footer {
 	width: 100%;
-	height: 100px;
+	height: 10%;
 	background-color: #2E8B57;
 
 }
@@ -239,8 +255,26 @@ nav ul li a.active {
 
 /* Mobile View */
 
-@media screen and (max-width:550px) {
+@media screen and (max-width:800px) {
+	body {
+	font-size:90%
+	}
+}
+
+@media screen and (min-width:600px) {
+	nav.nav {
+	display:block;
+	}
+}
+
+@media screen and (max-width:600px) {
+	body {
+	font-size:86%
+	}
 	#menubar ul li a.menubutton {
+	display:block;
+	}
+	#menubar img {
 	display:block;
 	}
 	nav {
@@ -250,6 +284,13 @@ nav ul li a.active {
 	nav ul li {
 	display:block;
 	margin: 0.3em 0em 0.3em 0em;
+	}
+}
+
+/*Zeilenumbruch im Menü */
+@media screen and (max-width:1320px) {
+	nav {
+	height:4em;
 	}
 }
 

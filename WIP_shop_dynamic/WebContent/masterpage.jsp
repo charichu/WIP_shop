@@ -10,8 +10,14 @@
 <meta name="viewport" content="width=device-width, inital-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <!--  Script für Responsivität -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
 $("#nav ul li a").addclass('active');
+$(document).ready(function() {
+	$('.menubutton').click(function() {
+		$('nav').slideToggle('slow');
+	});
+});
 </script>
 
 <title>Masterpage</title>
@@ -20,9 +26,10 @@ $("#nav ul li a").addclass('active');
 <body>
 	<div id = "wrapper">
 		<jsp:include page="includes/header.jsp"/>
-		<div id= "websiteContent">
-		Startseite
-			<!--  <article> Startseite </article> -->
+		<div id= "websiteContent">		
+			<article> 
+				Startseitee 
+			</article>
 		</div>
 		<jsp:include page="includes/footer.jsp"/>
 	</div>

@@ -1,7 +1,9 @@
 <div id ="menubar"> 
-			<a class="menubutton" href="#menu"><img src="images/menuicon.png" alt="menüü"></a>
+			<a class="menubutton" href="#menu"> <img src="images/menuicon.png" alt="menu"></a>
+	<div id="menubaraside">		
 			<input type="text" id="Search" value="Suche">
 			<input type="button" id="Login" value="Login">
+	</div>
 </div>
 
 
@@ -34,11 +36,11 @@
 					<li><a href="masterpage.jsp">Startseite</a></li>
 					<li><a href="Kursangebote.jsp">Kursangebote</a></li>
 					<li><a href="Kalender.jsp">Kalender</a></li>
-					<li><a href="MeineKurse.jsp">Kurse</a></li>
+		 			<li><a href="MeineKurse.jsp">Kurse</a></li>
 					<li><a href="Statistiken.jsp">Statistiken</a></li>
 					<li><a href="Nutzeruebersicht.jsp">Nutzerübersicht</a></li>
 					<li><a href="Profil.jsp">Profil</a></li>
-					<li><a href="Warenkorb.jsp">Warenkorb</a></li>
+					<li><a href="Warenkorb.jsp">Warenkorb</a></li>  
 				</ul>
 			</nav>
 		</div>
