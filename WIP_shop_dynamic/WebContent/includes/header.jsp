@@ -1,4 +1,5 @@
 <div id = "header">
+<img src="img/headerimg.jpg" alt="headerimage">
 	<div id = "headerWrapper">
 		<div id = "mainMenu">
 			<table id = "searchLogin">
