@@ -1,4 +1,9 @@
 <div id = "header">
+<section id ="menubar"> 
+	<ul>
+		<li><a class="menubutton" href="#menu"><img src="images/menubars.png"></a></li>
+	</ul>
+</section>
 <img src="img/headerimg.jpg" alt="headerimage">
 	<div id = "headerWrapper">
 		<div id = "mainMenu">
