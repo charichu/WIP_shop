@@ -3,7 +3,7 @@
 		<div id = "mainMenu">
 			<table id = "searchLogin">
 				<tr>
-					<td><input type="text" id="Search" value="Suche"></td>
+					<td><input type="search" id="Search"></td>
 					<td><input type="button" id="Login" value="Login"></td>
 				</tr>	
 			</table>
