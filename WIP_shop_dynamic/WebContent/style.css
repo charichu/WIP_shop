@@ -195,7 +195,7 @@ nav ul li a.active {
 #websiteContent {
 	width: 96%;
 	max-width: 980px;
-	height: 60%;
+	height: auto;
 	margin: 1.25em;
 	margin-left: auto;
 	margin-right: auto;
