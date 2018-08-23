@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Warenkorb</title>
-<link href = "style.css" rel = "stylesheet">
+	<title>Warenkorb</title>
+	<!-- Imports -->
+	<div><jsp:include page="includes/imports.jsp"/></div>
 </head>
 <body>
-	<div id = "wrapper">
-		<jsp:include page="includes/header.jsp"/>
-		<div id= "websiteContent">
-			Warenkorb
-		</div>
-		<jsp:include page="includes/footer.jsp"/>
-	</div>
+
+<!-- Navigation and Login -->
+<div><jsp:include page="includes/navigation.jsp"/></div>	
+
+<!--- Footer -->
+<div><jsp:include page="includes/footer.jsp"/></div>
+
 </body>
 </html>
