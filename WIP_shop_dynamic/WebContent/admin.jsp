@@ -13,7 +13,24 @@
 </head>
 <body>
 	<div id = "wrapper">
-		<input id= "test" type="text" value = <%= result%>>
+	<%
+                    try {
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/wip", "root", "");
+                        Statement statement = myConn.createStatement();
+
+                        ResultSet rs = statement.executeQuery("select * from user");
+                        while (rs.next()){
+                        	result += rs.getString("firstName") + "    " + rs.getString("lastName")+"\n";
+                            System.out.println(rs.getString("firstName") + "    " + rs.getString("lastName"));
+                        }
+                    }
+                    catch (Exception ex) {
+                        System.out.println("error");
+                    }
+      %>
+		<form action=""></form>
+			<input id= "test" type="text" value = <%= result%>>
 		<div id = "adminMenu">
 			<div class="adminButton"><a href = ""><span>Kurse Übersicht</span></a></div>
 			<div class="adminButton"><a href = ""><span>Accounts Übersicht</span></a></div>
