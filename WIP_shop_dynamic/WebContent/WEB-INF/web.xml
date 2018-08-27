@@ -3,10 +3,25 @@
   <display-name>WIP_shop_dynamic</display-name>
   <welcome-file-list>
     <welcome-file>home.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>home.jsp</welcome-file>
+    <welcome-file>home.jsp</welcome-file>
+    <welcome-file>home.jsp</welcome-file>
+    <welcome-file>home.jsp</welcome-file>
+    <welcome-file>home.jsp</welcome-file>
   </welcome-file-list>
+
+<!-- Servlet Mapping -->
+<servlet>
+	
+  	<servlet-name>GetProducts</servlet-name>
+  	
+<!-- Servlet class found by package.servlet name -->
+  	<servlet-class>functions.GetProducts</servlet-class>
+  </servlet>
+  <servlet-mapping> 
+  	<servlet-name>GetProducts</servlet-name> 
+  	
+<!-- On which sides the servlet could be call -->
+  	<url-pattern>/WIP_shop_dynamic/*</url-pattern> 
+  </servlet-mapping>
 </web-app>

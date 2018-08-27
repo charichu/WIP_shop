@@ -198,32 +198,6 @@ hr.light-100 {
   backface-visibility: visible;
 }
 <<<<<<< HEAD
-#navigation a {
-	height: 100%;
-	width: 100%;
-	display: inline-block;
-    text-decoration:none;
-    color: white;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 20px;
-}
-#navigation a:hover {
-	height: 100%;
-	width: 100%;
-	display: inline-block;
-	text-align: center;
-    text-decoration:none;
-    vertical-align: middle;
-    color: white;
-    border:0;
-    margin:0;
-    background-color: rgba(255,255,255,0.2);
-}
-#navigation span {
-	height: 100%;
-	width: 100%;
-	margin: 5px;
 =======
 /*--- Fixed Background Image --*/
 figure {
@@ -254,6 +228,7 @@ figure {
           transform: translateZ(0);
   will-change: transform;
 }
+
 /*--- Bootstrap Padding Fix --*/
 [class*="col-"] {
     padding: 1rem;
@@ -298,22 +273,6 @@ figure {
   -moz-box-sizing: border-box;
 }
 <<<<<<< HEAD
-/*ADMIN PAGE PART*/
-#adminMenu{
-	float: left;
-	width: 20%;
-	height: 100%;
-	padding-top: 10%;
-	border-right: 1px solid black;
-}
-#adminContent{
-	float: right;
-	width: 80%;
-	height: 100%;
-}
-/*CLASSES PART*/
-.standartColor{
-	background-color: rgba(51,0,204,0.5);
 =======
 .loginmodal-container input[type=text]:hover, input[type=password]:hover {
   border: 1px solid #b9b9b9;
