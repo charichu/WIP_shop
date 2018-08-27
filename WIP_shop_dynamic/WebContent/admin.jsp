@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<!-- Admin-Navigation -->
+<!-- Admin-Navigation with servlet call-->
 <div><jsp:include page="includes/adminNavigation.jsp"/></div>
 
 <!-- Admin-home content Unfinished with content -->	
