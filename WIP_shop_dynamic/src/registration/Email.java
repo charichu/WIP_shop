@@ -12,6 +12,7 @@ public class Email {
 	private final String username = "noreply.tutor24@gmail.com";
 	private final String password = "WIP_shop";
 	private MimeMessage emailMsg = null;
+	private String recipient = null;
 	
 	public Email(String to, String subject, String text) {
 		
@@ -34,6 +35,7 @@ public class Email {
 			constrMsg.setSubject(subject);
 			constrMsg.setText(text); //could instead send html code with: constrMsg.setContent(object, type);
 			emailMsg = constrMsg;
+			recipient = to;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -44,6 +46,7 @@ public class Email {
 		
 		try {
 			Transport.send(emailMsg);
+			System.out.println("Email verschickt an:" + recipient);
 		} catch (Exception e) {
 			bRV = false;
 		}

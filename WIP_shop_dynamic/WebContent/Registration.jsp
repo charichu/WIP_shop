@@ -13,7 +13,7 @@
 	<div id = "wrapper">
 		<jsp:include page="includes/header.jsp"/>
 		<div id= "websiteContent">
-			<form action="./WebContent/WEB-INF/lib/RegistrationServlet" method="post">
+			<form action="/RegistrationServlet" method="post">
 				<table>
 					<tr>
 						<td>
