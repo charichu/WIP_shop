@@ -14,23 +14,12 @@ import java.sql.*;
 @WebServlet("/Datenbankfunktionen")
 public class Datenbankfunktionen extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String url = "";
-	private String user = "root";
-	private String password = "";
+	
     /**
      * Default constructor. 
      */
     public Datenbankfunktionen() {
-    	try{
-    		Class.forName("con.mysql.jdbc.driver").newInstance();
-    		Connection con = DriverManager.getConnection(url,user,password);
-    		
-    		Statement stt = con.createStatement();
-    		stt.execute("INSERT INTO adresse(street,plz,houseNumber,city)VALUES (test, test, test, test); ");
-    	}
-    	catch( Exception e){
-    		
-    	}
+    	super();
     }
 
 	/**
