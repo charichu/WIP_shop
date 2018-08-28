@@ -9,19 +9,21 @@
     <welcome-file>home.jsp</welcome-file>
     <welcome-file>home.jsp</welcome-file>
   </welcome-file-list>
-
-<!-- Servlet Mapping -->
-<servlet>
-	
-  	<servlet-name>GetProducts</servlet-name>
-  	
-<!-- Servlet class found by package.servlet name -->
-  	<servlet-class>functions.GetProducts</servlet-class>
+  <servlet>
+    <servlet-name>GetProducts</servlet-name>
+    <servlet-class>functions.GetProducts</servlet-class>
   </servlet>
-  <servlet-mapping> 
-  	<servlet-name>GetProducts</servlet-name> 
-  	
-<!-- On which sides the servlet could be call -->
-  	<url-pattern>/WIP_shop_dynamic/*</url-pattern> 
+  <servlet-mapping>
+    <servlet-name>GetProducts</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/GetProducts</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>GetUser</servlet-name>
+    <servlet-class>functions.GetUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetUser</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/GetUser</url-pattern>
   </servlet-mapping>
 </web-app>

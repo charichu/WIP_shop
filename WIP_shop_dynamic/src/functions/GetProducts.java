@@ -52,7 +52,6 @@ public class GetProducts extends HttpServlet {
 		String result="";
 // create array list, which go into the request
 		ArrayList<Course> courses = new ArrayList<>();
-		response.setContentType("text/html");
 		try {
 //	create database connection
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -91,12 +90,13 @@ public class GetProducts extends HttpServlet {
 // write the arraylist into the request as attribute to get this on the jsp site
             request.setAttribute("courses", courses);
             request.setAttribute("result", result);
-            request.getRequestDispatcher("/adminCourses.jsp").forward(request, response);
+            request.getRequestDispatcher("/adminKursuebersicht.jsp").forward(request, response);
             
         }
 // exception handling
         catch (Exception e) {
             System.out.println("error"+e.getMessage());
+            System.out.println(e.getStackTrace());
             
         }
 		

@@ -20,21 +20,29 @@
 			
 				<!-- Pages in the navigation -->
 				<li class="nav-item">
-					<a class="nav-link" href="home.jsp">Home</a>
+					<a class="nav-link" href="home.jsp">Zurück zur Hauptseite</a>
+				</li>	
+				<li class="nav-item">
+					<a class="nav-link" href="admin.jsp">Admin Startseite</a>
 				</li>	
 				<li class="nav-item">
 					<!-- Form for call the GetProducts Servlet -->
 					<!-- the action "GetProducts" call the servlet, to call the servlet it has to-->
 					<!-- be mapped in the web.xml-->
-					<form action="GetProducts" method="get">
-						<input type="submit" id = "getCourses" value="Kurse anzeigen">
+					<form  action="GetProducts" method="get">
+						<input type="submit" class="nav-link" id = "getCourses" value="Kurs Übersicht">
 					</form>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="">Accounts Übersicht</a>
+					<form  action="GetUser" method="get">
+						<input type="submit" class="nav-link" id = "getUser" value="Accounts Übersicht">
+					</form>
+					
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="Statistiken.jsp">Statistiken</a>
+					<li class="nav-item">
+					<a class="nav-link" href="adminStatistiken.jsp">Statistiken</a>
+				</li>
 				</li>
 			</ul>
 		</div>

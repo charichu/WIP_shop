@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Adminseite</title>
+	<title>Statistik</title>
 	<!-- Imports -->
 	<div><jsp:include page="includes/imports.jsp"/></div>
 </head>
@@ -16,9 +16,8 @@
 <div><jsp:include page="includes/adminNavigation.jsp"/></div>
 
 <!-- Admin-home content Unfinished with content -->	
-	<div id = "wrapper">
+	<div id = "wrapper" class="row">
 		<div id = "adminContent">
-		 <% session.setAttribute("Name", "Name"); %>
 		</div>
 	</div>
 <!--- Footer -->

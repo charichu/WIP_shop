@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Adminseite</title>
+	<title>Accounts Übersicht</title>
 	<!-- Imports -->
 	<div><jsp:include page="includes/imports.jsp"/></div>
 </head>
@@ -16,9 +16,34 @@
 <div><jsp:include page="includes/adminNavigation.jsp"/></div>
 
 <!-- Admin-home content Unfinished with content -->	
-	<div id = "wrapper">
-		<div id = "adminContent">
-		 <% session.setAttribute("Name", "Name"); %>
+	<div id = "wrapper" class="row">
+		<div id = "adminContent" class="col-8">
+		</div>
+		<div id="adminFunctions" class="col-4">
+			<table>
+				<tr>
+					<td>
+						<form  action="" method="get">
+							<input type="submit" class="nav-link" id = "changeCourse" value="Ändern">
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form  action="" method="get">
+							<input type="submit" class="nav-link" id = "showCourse" value="Anzeigen">
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form  action="" method="get">
+							<input type="submit" class="nav-link" id = "deleteCourse" value="Löschen">
+						</form>
+					</td>
+					
+				</tr>
+			</table>
 		</div>
 	</div>
 <!--- Footer -->
