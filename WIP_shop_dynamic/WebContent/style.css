@@ -197,6 +197,8 @@ hr.light-100 {
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
 }
+<<<<<<< HEAD
+=======
 /*--- Fixed Background Image --*/
 figure {
   position: relative;
@@ -226,9 +228,11 @@ figure {
           transform: translateZ(0);
   will-change: transform;
 }
+
 /*--- Bootstrap Padding Fix --*/
 [class*="col-"] {
     padding: 1rem;
+>>>>>>> master
 }
 
 /****** LOGIN MODAL ******/
@@ -268,12 +272,15 @@ figure {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
+<<<<<<< HEAD
+=======
 .loginmodal-container input[type=text]:hover, input[type=password]:hover {
   border: 1px solid #b9b9b9;
   border-top: 1px solid #a0a0a0;
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+>>>>>>> master
 }
 .loginmodal {
   text-align: center;
@@ -285,6 +292,8 @@ figure {
 /* -webkit-user-select: none;
   user-select: none; */
 }
+<<<<<<< HEAD
+=======
 .loginmodal-submit {
   /* border: 1px solid #3079ed; */
   border: 0px;
@@ -330,3 +339,4 @@ Large (lg) devices (desktops, 992px and up)
 Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 */
+>>>>>>> master
