@@ -1,3 +1,4 @@
+package functions;
 
 
 import java.io.IOException;
@@ -6,19 +7,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.sql.*;
 /**
  * Servlet implementation class Datenbankfunktionen
  */
 @WebServlet("/Datenbankfunktionen")
 public class Datenbankfunktionen extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
     /**
      * Default constructor. 
      */
     public Datenbankfunktionen() {
-        // TODO Auto-generated constructor stub
+    	super();
     }
 
 	/**
