@@ -1,10 +1,11 @@
-package registration;
+package functions;
 import java.io.IOException;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
@@ -42,7 +43,7 @@ public class Email {
 	}
 	
 	public Boolean Send() throws IOException {
-		Boolean bRV = false; //bRV means bool return value - only used to check if it was successful
+		Boolean bRV = false; //bRV stands for bool return value - only used to check if it was successful
 		
 		try {
 			Transport.send(emailMsg);
@@ -53,4 +54,15 @@ public class Email {
 		
 		return bRV;
     }
+	
+	public static Boolean IsValid(String EmailName){
+		Boolean bRV = true;
+		try {
+			InternetAddress EmailAddress = new InternetAddress(EmailName);
+			EmailAddress.validate();
+		} catch (AddressException e) {
+			bRV = false;
+		}
+		return bRV;
+	}
 }

@@ -10,19 +10,42 @@ public class DBFunctions {
 	//our connection to access the database
 	public static Connection dbCon = null;
 	
-	public static String[] tableUser = {"userID","username","password","email","userType","firstName","lastName","class","dateOfBirth","studentType","qualificationProfile"}; 	
+	//columns of tables - saved as string array
+	//TODO add other tables(when you use the tables)
+	public static String[] tableUser = {"userID","username","password","email","userType","firstName","lastName","class","dateOfBirth","studentType","qualificationProfile","addressID"}; 	
+	public static String[] tableUserManipulation = {"email","username","password","userType","firstName","lastName","dateOfBirth","class","studentType","qualificationProfile", "addressID"}; 	
 	
-	public static void main(String[] args) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException{
+	public static void initConnection() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException{
 		//create database connection only once
-		Class.forName("con.mysql.jdbc.driver").newInstance();
-		dbCon = DriverManager.getConnection("","root","");
+		Class.forName("com.mysql.jdbc.Driver");
+		dbCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/wip?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","");
 	}
 	
 	public static ResultSet Execute(String query) throws SQLException{
+		if(dbCon == null){
+			try {
+				initConnection();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println(e.toString());
+			}
+		}
 		Statement state = dbCon.createStatement();
-		return state.executeQuery(query);
+		return state.executeQuery(query);			
 	}
-	
+
+	public static void Update(String query) throws SQLException{
+		if(dbCon == null){
+			try {
+				initConnection();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		dbCon.createStatement().executeUpdate(query);			
+	}
+
 	public static String CreateInsertQuery(String tableName, String[] columnNames, String[] columnValues){
 		String rvString = ""; // rvString stands for return value string
 		//only allow insert to be created when the amount of values/columns is the same
@@ -41,7 +64,7 @@ public class DBFunctions {
 		String rvString = String.format("SELECT %s FROM %s", SeperateStrings(", ", columnNames), tableName);
 		if(whereCondition != "" && whereCondition != null)
 		{
-			rvString += " WHERE " + whereCondition;
+			rvString += String.format(" WHERE %s",whereCondition);
 		}
 		return rvString;
 	}
@@ -59,6 +82,6 @@ public class DBFunctions {
 	}
 	
 	public static Boolean ContainsOnlyAllowedChars(String toCheck){
-		return !toCheck.contains(";\"");
+		return !toCheck.contains(";");
 	}
 }

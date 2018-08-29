@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="nachhilfe24_id" version="3.0">
+  <servlet>
+  	<servlet-name>register</servlet-name>
+  	<servlet-class>registration.RegistrationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>register</servlet-name>
+  	<url-pattern>/registration</url-pattern>
+  </servlet-mapping>
   <display-name>Nachhilfe24</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

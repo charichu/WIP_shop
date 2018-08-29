@@ -13,14 +13,14 @@
 	<div id = "wrapper">
 		<jsp:include page="includes/header.jsp"/>
 		<div id= "websiteContent">
-			<form action="/RegistrationServlet" method="post">
+			<form action="registration" method="post">
 				<table>
 					<tr>
 						<td>
 							Email
 						</td>
 						<td>
-							<input id="txtEmail" type="text">
+							<input name="txtEmail" type="text">
 						</td>
 					</tr>
 					<tr>
@@ -28,7 +28,7 @@
 							Username
 						</td>
 						<td>
-							<input id="txtUsername" type="text">
+							<input name="txtUsername" type="text">
 						</td>
 					</tr>
 					
@@ -37,7 +37,7 @@
 							Password
 						</td>
 						<td>
-							<input id="txtPassword" type="password">
+							<input name="txtPassword" type="text">
 						</td>
 					</tr>
 					
@@ -46,7 +46,7 @@
 							Lehrer
 						</td>
 						<td>
-							<input id="chkTeacher" type="checkbox">
+							<input name="chkTeacher" type="checkbox">
 						</td>
 					</tr>
 					
@@ -55,7 +55,7 @@
 							Name
 						</td>
 						<td>
-							<input id="txtFirstName" type="text">
+							<input name="txtFirstName" type="text">
 						</td>
 					</tr>
 					
@@ -64,7 +64,7 @@
 							Nachname
 						</td>
 						<td>
-							<input id="txtLastName" type="text">
+							<input name="txtLastName" type="text">
 						</td>
 					</tr>
 					<tr>
@@ -72,7 +72,7 @@
 							Geburtsdatum
 						</td>
 						<td>
-							<input id="txtBirthday" type="text">
+							<input name="txtBirthday" type="text">
 						</td>
 					</tr>
 					<tr>
@@ -80,7 +80,7 @@
 							Klasse
 						</td>
 						<td>
-							<input id="txtClass" type="text">
+							<input name="txtClass" type="text">
 						</td>
 					</tr>
 					<tr>
@@ -88,12 +88,12 @@
 							Schüler
 						</td>
 						<td>
-							<input id="chkStudent" type="checkbox">
+							<input name="chkStudent" type="checkbox">
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							<input id="btnSubmit" type="submit">
+							<input name="btnSubmit" type="submit">
 						</td>
 					</tr>
 				</table>
