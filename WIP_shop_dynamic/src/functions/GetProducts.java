@@ -58,7 +58,7 @@ public class GetProducts extends HttpServlet {
             Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/wip", "root", "");
             Statement statement = myConn.createStatement();
 // make sql statement
-            ResultSet rs = statement.executeQuery("select * from kurs;");
+            ResultSet rs = statement.executeQuery("select * from courses;");
             
 // fill the arraylist with rownames
             	courseNumber = "KursID";
