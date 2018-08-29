@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Nutzeruebersicht</title>
+	<title>Nutzerübersicht</title>
 	<!-- Imports -->
 	<div><jsp:include page="includes/imports.jsp"/></div>
 </head>

@@ -56,7 +56,7 @@
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
 		<div class="loginmodal-container modal-content">
-			<h1>Login to Your Account</h1><br>
+			<h1>Login</h1><br>
 			<form>
 				<input type="text" name="user" placeholder="Username">
 				<input type="password" name="pass" placeholder="Password">
@@ -65,7 +65,7 @@
 					
 				 <div class="login-help">
 				 <!--Links to register and Password reset -->
-					<a href="#">Register</a> - <a href="#">Forgot Password</a>
+					<a href="register.jsp">Hier registrieren</a> - <a href="recovery.jsp">Passwort wiederherstellen</a>
 				 </div>
 		</div>
 	</div>
