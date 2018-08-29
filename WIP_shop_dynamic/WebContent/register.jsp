@@ -12,12 +12,11 @@
 <!-- Navigation and Login -->
 <div><jsp:include page="includes/navigation.jsp"/></div>
 
-<!-- Register Form -->
+<!-- Register Form  -->
 
 <div class="registermodal-container modal-content">
 	<h1>Registrierung</h1><br>
 		<form>
-			<input type="text" name="userType" placeholder="Kunde oder Anbieter">
 			<!-- Future Login Data -->
 			<p2 class="help-block">Login-Daten: </p2>
 				<input type="text" name="user" placeholder="Username">
@@ -38,7 +37,12 @@
 				<input type="number" name="plz" placeholder="Postleitzahl">
 				<input type="text" name="city" placeholder="Stadt">
 				<input type="text" name="street" placeholder="Straße">
-				<input type="number" name="housenumber" placeholder="Hausnummer">
+				<input type="number" name="housenumber" placeholder="Hausnummer">			
+			<!-- UserType selection -->
+			<br>	
+			<input type="checkbox" id="userTypeTeacher" name="userType" value="teacher">
+			<label for="userTypeTeacher">Bitte ankreuzen, wenn Sie sich als Lehrer anmelden wollen.</label>
+			<!-- Register button -->
 				<input type="submit" name="register" class="login registermodal-submit" value="Registrieren">
 		</form>
 </div>
