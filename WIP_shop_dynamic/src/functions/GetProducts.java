@@ -68,7 +68,6 @@ public class GetProducts extends HttpServlet {
             	studentType = "Student/ Schüler";
             	price = "Preis";
             	frequency = "Frequenz";	
-            	result += courseNumber+subject+topic+description+studentType+price+frequency+"\n";
             	course = new Course(courseNumber, subject, topic, description, studentType, price, frequency);
             	courses.add(course);
             	
@@ -82,14 +81,12 @@ public class GetProducts extends HttpServlet {
             	studentType = rs.getString("studentType");
             	price = rs.getString("pricePerHour");
             	frequency = rs.getString("frequency");
-            	result += courseNumber+subject+topic+description+studentType+price+frequency+"\n";
             	course = new Course(courseNumber, subject, topic, description, studentType, price, frequency);
             	
             	courses.add(course);
             }
 // write the arraylist into the request as attribute to get this on the jsp site
             request.setAttribute("courses", courses);
-            request.setAttribute("result", result);
             request.getRequestDispatcher("/adminKursuebersicht.jsp").forward(request, response);
             
         }

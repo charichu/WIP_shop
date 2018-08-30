@@ -15,13 +15,11 @@
 <!-- Admin-Navigation with servlet call-->
 <div><jsp:include page="includes/adminNavigation.jsp"/></div>
 
-<!-- Admin-home content Unfinished with content -->	
+<!-- Admin content -->	
 	<div id = "wrapper" class="row">
 		<div id = "adminContent">
 		</div>
 	</div>
-<!--- Footer -->
-<div><jsp:include page="includes/footer.jsp"/></div>
 
 	
 </body>
