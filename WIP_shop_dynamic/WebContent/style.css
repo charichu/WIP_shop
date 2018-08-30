@@ -1,4 +1,4 @@
-@CHARSET "UTF-8"; /*
+@CHARSET "UTF-8"; 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
 hmtl, body {
@@ -188,7 +188,6 @@ hr.light-100 {
 	}
 }
 
-
 /*---Firefox Bug Fix --*/
 .carousel-item {
   transition: -webkit-transform 0.5s ease;
@@ -197,8 +196,6 @@ hr.light-100 {
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
 }
-<<<<<<< HEAD
-=======
 /*--- Fixed Background Image --*/
 figure {
   position: relative;
@@ -232,10 +229,9 @@ figure {
 /*--- Bootstrap Padding Fix --*/
 [class*="col-"] {
     padding: 1rem;
->>>>>>> master
 }
 
-/****** LOGIN MODAL ******/
+/****** LOGIN AND REGISTER MODAL ******/
 .loginmodal-container {
   padding: 30px;
   max-width: 350px;
@@ -258,7 +254,7 @@ figure {
   margin-bottom: 10px;
   position: relative;
 }
-.loginmodal-container input[type=text], input[type=password] {
+.loginmodal-container input[type=text], input[type=password], input[type=date], input[type=number] {
   height: 44px;
   font-size: 16px;
   width: 100%;
@@ -272,15 +268,13 @@ figure {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-<<<<<<< HEAD
-=======
 .loginmodal-container input[type=text]:hover, input[type=password]:hover {
   border: 1px solid #b9b9b9;
   border-top: 1px solid #a0a0a0;
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
->>>>>>> master
+
 }
 .loginmodal {
   text-align: center;
@@ -292,8 +286,6 @@ figure {
 /* -webkit-user-select: none;
   user-select: none; */
 }
-<<<<<<< HEAD
-=======
 .loginmodal-submit {
   /* border: 1px solid #3079ed; */
   border: 0px;
@@ -323,7 +315,102 @@ figure {
   font-size: 12px;
 }
 
-/*
+/* Register Modal */
+.registermodal-container {
+  padding: 30px;
+  max-width: 1050px;
+  width: 100% !important;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+.registermodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: 'Poppins', sans-serif;
+}
+.registermodal-container input[type=submit] {
+  width: 35%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+}
+.registermodal-container input[type=text], input[type=password], input[type=date], input[type=number] {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  border-radius: 2px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.registermodal-container input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+
+}
+.registermodal {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+/* -webkit-user-select: none;
+  user-select: none; */
+}
+.registermodal-submit {
+  border: 1px solid #3079ed;
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #0072BC;
+  padding: 17px 0px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+.registermodal-submit:hover {
+  /* border: 1px solid #2f5bb7; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #357ae8;
+}
+.registermodal-container a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+} 
+.register-help{
+  font-size: 1em;
+}
+.registermodal-container p {
+  padding-left: 10px;
+  text-align: left;
+  font-size: 0.8em;
+  font-family: 'Poppins', sans-serif;
+}
+.registermodal-container p2 {
+  padding-left: 10px;
+  text-align: left;
+  font-size: 1em;
+  font-family: 'Poppins', sans-serif;
+}
+/* Screenbreaks
 Extra small (xs) devices (portrait phones, less than 576px)
 No media query since this is the default in Bootstrap
 
@@ -339,4 +426,3 @@ Large (lg) devices (desktops, 992px and up)
 Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 */
->>>>>>> master
