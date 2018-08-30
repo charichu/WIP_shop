@@ -16,31 +16,31 @@
 
 <div class="registermodal-container modal-content">
 	<h1>Registrierung</h1><br>
-		<form>
+		<form action="registration" method="post">
 			<!-- Future Login Data -->
 			<p2 class="help-block">Login-Daten: </p2>
-				<input type="text" name="user" placeholder="Username">
-				<input type="password" name="pass" placeholder="Password, keine &bdquo;&ldquo; oder ;">
+				<input type="text" name="txtUsername" placeholder="Username">
+				<input type="password" name="txtPassword" placeholder="Password, keine &bdquo;&ldquo; oder ;">
 				<!-- checked out due to placeholder text <p class="help-block">Alle Zeichen außer " und ;.</p> -->
 			<!-- User Info -->
 			<p2 class="help-block">User-Daten: </p2>
-				<input type="text" name="email" placeholder="E-Mailadresse">
-				<input type="text" name="lastName" placeholder="Nachname">
-				<input type="text" name="firstName" placeholder="Vorname">
-				<input type="text" name="studentType" placeholder="Schüler oder Student">
-				<input type="text" name="class" placeholder="Schulklasse,bitte leer lassen wenn Student">
+				<input type="text" name="txtEmail" placeholder="E-Mailadresse">
+				<input type="text" name="txtLastName" placeholder="Nachname">
+				<input type="text" name="txtFirstName" placeholder="Vorname">
+				<input type="text" name="chkStudentType" placeholder="Schüler oder Student">
+				<input type="text" name="txtClass" placeholder="Schulklasse,bitte leer lassen wenn Student">
 				<!-- Type Date does not allow placeholder text -->
-				<input type="number" name="dateOfBirth" placeholder="Geburtstag, Format tt.mm.jjjj">
+				<input type="number" name="numDateOfBirth" placeholder="Geburtstag, Format tt.mm.jjjj">
 					<!-- checked out due to the type number work around <p class="help-block">Geben Sie hier ihr Geburtsdatum ein.</p>  -->
 			<!-- Address Block -->
 			<p2 class="help-block">Adresse: </p2>
-				<input type="number" name="plz" placeholder="Postleitzahl">
-				<input type="text" name="city" placeholder="Stadt">
-				<input type="text" name="street" placeholder="Straße">
-				<input type="number" name="housenumber" placeholder="Hausnummer">			
+				<input type="number" name="txtPlz" placeholder="Postleitzahl">
+				<input type="text" name="txtCity" placeholder="Stadt">
+				<input type="text" name="txtStreet" placeholder="Straße">
+				<input type="number" name="txtHousenumber" placeholder="Hausnummer">			
 			<!-- UserType selection -->
 			<br>	
-			<input type="checkbox" id="userTypeTeacher" name="userType" value="teacher">
+			<input type="checkbox" id="chkUserTypeTeacher" name="userType" value="teacher">
 			<label for="userTypeTeacher">Bitte ankreuzen, wenn Sie sich als Lehrer anmelden wollen.</label>
 			<!-- Register button -->
 				<input type="submit" name="register" class="login registermodal-submit" value="Registrieren">
