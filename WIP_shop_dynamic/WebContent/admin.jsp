@@ -15,14 +15,12 @@
 <!-- Admin-Navigation with servlet call-->
 <div><jsp:include page="includes/adminNavigation.jsp"/></div>
 
-<!-- Admin-home content Unfinished with content -->	
+<!-- Admin-home content-->	
 	<div id = "wrapper">
 		<div id = "adminContent">
 		 <% session.setAttribute("Name", "Name"); %>
 		</div>
 	</div>
-<!--- Footer -->
-<div><jsp:include page="includes/footer.jsp"/></div>
 
 	
 </body>

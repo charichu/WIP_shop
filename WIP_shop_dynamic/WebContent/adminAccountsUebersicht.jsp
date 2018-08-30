@@ -19,6 +19,8 @@
 	<div id = "wrapper" class="row">
 		<div id = "adminContent" class="col-8">
 		</div>
+		
+		<!-- admin functions -->
 		<div id="adminFunctions" class="col-4">
 			<table>
 				<tr>
@@ -46,8 +48,6 @@
 			</table>
 		</div>
 	</div>
-<!--- Footer -->
-<div><jsp:include page="includes/footer.jsp"/></div>
 
 	
 </body>

@@ -16,12 +16,16 @@
 <!-- Admin-Navigation with servlet call-->
 <div><jsp:include page="includes/adminNavigation.jsp"/></div>	
 	<div id = "wrapper" class="row">
+		
+		<!-- admin content -->
 		<div id = "adminContent" class="col-8">
+		
 		<%--get attribute from request, which is set in the servlet --%>
 		<%
 			ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("courses");
 			if(!(list == null)){
 		 %>
+		 <%-- display the products in the table --%>
 			<table>
 			<tr>
 				<th></th>
@@ -50,6 +54,8 @@
 			</table>
 			
 		</div>
+		
+		<!-- admin functions -->
 		<div id="adminFunctions" class="col-4">
 			<table>
 				<tr>
@@ -84,9 +90,6 @@
 			</table>
 		</div>
 	</div>
-<!--- Footer -->
-<div><jsp:include page="includes/footer.jsp"/></div>
-
 	
 </body>
 
