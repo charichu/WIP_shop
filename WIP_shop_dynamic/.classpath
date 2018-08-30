@@ -9,8 +9,8 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Users/Arbeit/git/WIP_shop/WIP_shop_dynamic/libs/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Arbeit/git/WIP_shop/WIP_shop_dynamic/libs/mysql-connector-java-8.0.12.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Arbeit/git/WIP_shop/WIP_shop_dynamic/libs/javax.mail.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Arbeit/git/WIP_shop/WIP_shop_dynamic/libs/google-api-services-gmail-v1-rev93-1.24.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Arbeit/git/WIP_shop/WIP_shop_dynamic/libs/mysql-connector-java-8.0.12.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Arbeit/git/WIP_shop/WIP_shop_dynamic/libs/javax.mail.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Arbeit/git/WIP_shop/WIP_shop_dynamic/libs/google-api-services-gmail-v1-rev93-1.24.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

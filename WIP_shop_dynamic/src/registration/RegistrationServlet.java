@@ -16,27 +16,38 @@ import functions.Email;
 
 /**
  * Servlet implementation class RegistrationServlet
+ * <servlet>
+  	<servlet-name>register</servlet-name>
+  	<servlet-class>registration.RegistrationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>register</servlet-name>
+  	<url-pattern>/registration</url-pattern>
+  </servlet-mapping>
  */
-//@WebServlet("/registration")
+@WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
-     */
+     
     public RegistrationServlet() {
         super();
         // TODO Auto-generated constructor stub
-    }
-    
-    public void service(HttpServletRequest request, HttpServletResponse response){
-    	//used to check if all preconditions are ok
+    }*/    
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//used to check if all preconditions are ok
     	Boolean isOk = true;
     	
     	//get parameters
     	String email = request.getParameter("txtEmail");
     	String username = request.getParameter("txtUsername");
-    	String password = request.getParameter("txtPassowrd");
+    	String password = request.getParameter("txtPassword");
     	Boolean teacher = Boolean.parseBoolean(request.getParameter("chkTeacher"));
     	String firstName = request.getParameter("txtFirstName");
     	String lastName = request.getParameter("txtLastName");
@@ -52,7 +63,7 @@ public class RegistrationServlet extends HttpServlet {
     	
     	String schoolClass = request.getParameter("txtClass");
     	Boolean student = Boolean.parseBoolean(request.getParameter("chkStudent"));
-    	String address = "todo";//request.getParameter("txtEmail");
+    	String address = "1";//request.getParameter("txtEmail");
     	String qualificationProfile = "";
     
     	String[] input = new String[]{email,username,password,teacher.toString(),firstName,lastName,birthdayString,schoolClass,student.toString(), qualificationProfile, address};
@@ -62,7 +73,8 @@ public class RegistrationServlet extends HttpServlet {
     	for(int i = 0; i < input.length; i++) {
     		if (input[i] != null) {
     			isOk &= DBFunctions.ContainsOnlyAllowedChars(input[i]);
-    			input[i] = String.format("\"%s\"", input[i]);
+    			if(input[i] != "false" && input[i] != "true")
+    				input[i] = String.format("\"%s\"", input[i]);
     			if(i == 6){
     				input[i] = "STR_TO_DATE(" + input[i] + ", '%Y-%m-%d')";
     			}
@@ -73,7 +85,7 @@ public class RegistrationServlet extends HttpServlet {
     	// use parameters
     	if(isOk){
     		//test
-    		String insertQuery = DBFunctions.CreateInsertQuery("user", DBFunctions.tableUserManipulation, input);
+    		String insertQuery = DBFunctions.CreateInsertQuery("user", DBFunctions.tableUserManipulation, input) + "";
         	try {
     			DBFunctions.Update(insertQuery);
     			String activationCode = "Accounts sind bisher standardmäßig aktiviert.";
@@ -90,8 +102,17 @@ public class RegistrationServlet extends HttpServlet {
     			System.out.println(e.getMessage());
     		}	
     	}
-    }
-    
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
     private Boolean isEmailInUse(String emailName){
     	Boolean bRV = false;
     	
@@ -121,20 +142,4 @@ public class RegistrationServlet extends HttpServlet {
     		return item2.toString();
     	}
     }
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

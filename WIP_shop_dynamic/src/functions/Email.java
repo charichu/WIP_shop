@@ -47,7 +47,7 @@ public class Email {
 		
 		try {
 			Transport.send(emailMsg);
-			System.out.println("Email verschickt an:" + recipient);
+			System.out.println("Email verschickt an: " + recipient);
 		} catch (Exception e) {
 			bRV = false;
 		}

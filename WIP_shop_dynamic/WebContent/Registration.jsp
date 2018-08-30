@@ -37,7 +37,7 @@
 							Password
 						</td>
 						<td>
-							<input name="txtPassword" type="text">
+							<input name="txtPassword" type="password">
 						</td>
 					</tr>
 					
