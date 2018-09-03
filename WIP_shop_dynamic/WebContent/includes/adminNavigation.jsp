@@ -29,7 +29,7 @@
 					<!-- Form for call the GetProducts Servlet -->
 					<!-- the action "GetProducts" call the servlet, to call the servlet it has to-->
 					<!-- be mapped in the web.xml-->
-					<form  action="GetProducts" method="get">
+					<form  action="GetCourses" method="get">
 						<input type="submit" class="nav-link" id = "getCourses" value="Kurs Übersicht">
 					</form>
 				</li>

@@ -20,18 +20,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
 /**
  * Servlet implementation class GetProducts
  */
-@WebServlet("/GetProducts")
-public class GetProducts extends HttpServlet {
+@WebServlet("/GetCourses")
+public class GetCourses extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetProducts() {
+    public GetCourses() {
         super();
         // TODO Auto-generated constructor stub
     }
