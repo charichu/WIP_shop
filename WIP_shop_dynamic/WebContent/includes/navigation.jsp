@@ -53,7 +53,7 @@
 					<a class="nav-link" href="Kalender.jsp">Kalender</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="MeineKurse.jsp">Kurse</a>
+					<a class="nav-link" href="MeineKurse.jsp">Meine Kurse</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="Profil.jsp">Profil</a>
