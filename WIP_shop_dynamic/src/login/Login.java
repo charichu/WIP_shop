@@ -1,4 +1,4 @@
-package functions;
+package login;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import functions.HashedString;
 
 /**
  * Servlet implementation class Login
@@ -42,7 +44,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("user");
-		String pass  = request.getParameter("pass");
+		String password  = request.getParameter("pass"); 
 		String name  = "";
 		String tempPass = "";
 		int userType;
@@ -81,7 +83,11 @@ public class Login extends HttpServlet {
 	 					}
 			            while (rs.next());
 //			password control
-			            if(pass.equals(tempPass) ){
+//	            encrypt password
+			            byte[] saltByte = HashedString.getSaltByteFromHashedString(tempPass);
+			            HashedString hPassword = new HashedString(password,saltByte);
+			            String encryptedPassword = hPassword.toString();
+			            if(encryptedPassword.equals(tempPass) ){
 //				password right, set the session variables to be logged in
 			            	userLoggedIn = true;
 			            	request.getSession().setAttribute("userLoggedIn", userLoggedIn);

@@ -2,33 +2,30 @@ package functions;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.nio.charset.StandardCharsets;
 
 public class HashedString{
 	private String hashed = null;
 	private byte[] salt = null;
+	private String saltString = null;
+	private final String pepper = "WIP_SHOP_TUTOR";
 	
 	public HashedString(String stringToHash){
-		hashed = HashString(stringToHash);
+		salt = createSalt();
+		hashed = hashString(stringToHash);
 	}
 	
-	public String ToString(){
-		return hashed + salt;
+	public HashedString(String stringToHash, byte[] salt){
+		this.salt = salt;
+		setSaltString(salt);
+		hashed = hashString(stringToHash);
 	}
 	
-	public String GetHashedString(){
-		return hashed;
-	}
-	
-	public byte[] GetSalt(){
-		return salt;
-	}
-	
-	public String HashString(String stringToHash){
+	public String hashString(String stringToHash){
 		String rvString = null;
 		try{
-			if(salt == null){
-				salt = CreateSalt();
-			}
+			stringToHash = pepper + " " + stringToHash;
+			
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			md.update(salt);
 			byte[] stringBytes = md.digest(stringToHash.getBytes());
@@ -44,11 +41,55 @@ public class HashedString{
 		return rvString;
 	}
 	
-	private static byte[] CreateSalt() throws NoSuchAlgorithmException{
-		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-		byte[] salt =  new byte[16];
-		sr.nextBytes(salt);
-		System.out.println(salt.toString());
+	private byte[] createSalt(){
+		byte[] curSalt =  new byte[16];		
+		try {
+			SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+			sr.nextBytes(curSalt);
+			
+			setSaltString(curSalt);
+			salt = saltString.getBytes(StandardCharsets.UTF_8);
+		} catch (NoSuchAlgorithmException e) {
+			// SHA1PRNG exists no handling necessary
+			e.printStackTrace();
+		}
+		
 		return salt;		
+	}
+	
+	public String toString(){
+		return hashed + " " + getSalt();
+	}
+	
+	public String getHashedStringOnly(){
+		return hashed;
+	}
+	
+	public String getSalt(){
+		return saltString;
+	}
+	
+	private void setSaltString(byte[] curSalt){ 
+		if(salt != null){
+			curSalt = salt;
+		}
+		saltString = new String(curSalt, StandardCharsets.UTF_8);
+	}
+	
+	public byte[] getSaltByte(){
+		return salt;
+	}
+	
+	public static String getSaltFromHashedString(String hashedString){
+		String extractedSalt = "";
+		int whiteSpaceIndex = hashedString.indexOf(" ");
+		if(whiteSpaceIndex >= 0 && whiteSpaceIndex < hashedString.length()){
+			extractedSalt = hashedString.substring(whiteSpaceIndex) + 1;	
+		}
+		return extractedSalt;
+	}
+	
+	public static byte[] getSaltByteFromHashedString(String hashedString){
+		return getSaltFromHashedString(hashedString).getBytes(StandardCharsets.UTF_8);
 	}
 }

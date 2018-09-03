@@ -102,7 +102,7 @@
 					
 				 <div class="login-help">
 				 <!--Links to register and Password reset -->
-					<a href="#">Register</a> - <a href="#">Forgot Password</a>
+					<a href="register.jsp">Registrieren</a> - <a href="recovery.jsp">Passwort wiederherstellen</a>
 				 </div>
 			<% 	if(request.getAttribute("loginResultMessage") != null){
 					out.println(request.getAttribute("loginResultMessage"));

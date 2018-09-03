@@ -1,4 +1,4 @@
-package registration;
+package login;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -13,29 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import functions.DBFunctions;
 import functions.Email;
+import functions.HashedString;
 
-/**
- * Servlet implementation class RegistrationServlet
- * <servlet>
-  	<servlet-name>register</servlet-name>
-  	<servlet-class>registration.RegistrationServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>register</servlet-name>
-  	<url-pattern>/registration</url-pattern>
-  </servlet-mapping>
- */
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     
-    public RegistrationServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }*/    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -66,7 +49,9 @@ public class RegistrationServlet extends HttpServlet {
     	String address = "1";//request.getParameter("txtEmail");
     	String qualificationProfile = "";
     
-    	String[] input = new String[]{email,username,password,teacher.toString(),firstName,lastName,birthdayString,schoolClass,student.toString(), qualificationProfile, address};
+    	String encryptedPassword = new HashedString(password).toString();
+    	
+    	String[] input = new String[]{email,username,encryptedPassword,teacher.toString(),firstName,lastName,birthdayString,schoolClass,student.toString(), qualificationProfile, address};
     	
     	// check preconditions
     	isOk &= !isEmailInUse(email);
@@ -117,9 +102,10 @@ public class RegistrationServlet extends HttpServlet {
     	Boolean bRV = false;
     	
     	try {
-			String emailQuery = DBFunctions.CreateSelectQuery("user", new String[]{"COUNT(email) as emailExists"}, "email = \"" + emailName + "\"");
+			String emailQuery = DBFunctions.CreateSelectQuery("user", new String[]{"COUNT(email) emailExists"}, "email = '" + emailName + "'");
 			ResultSet EmailsWithName = DBFunctions.Execute(emailQuery);
 			try {
+				EmailsWithName.next();
 				if(EmailsWithName.getInt("emailExists") > 0){
 					bRV = true;
 				} 	
