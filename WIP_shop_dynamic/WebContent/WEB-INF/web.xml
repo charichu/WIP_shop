@@ -25,7 +25,6 @@
     <servlet-name>GetUser</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/GetUser</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>Login</servlet-name>
     <servlet-class>functions.Login</servlet-class>
@@ -34,7 +33,6 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/Login</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>Logout</servlet-name>
     <servlet-class>functions.Logout</servlet-class>
