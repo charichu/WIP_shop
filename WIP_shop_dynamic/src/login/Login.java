@@ -84,7 +84,7 @@ public class Login extends HttpServlet {
 			            while (rs.next());
 //			password control
 //	            encrypt password
-			            byte[] saltByte = HashedString.getSaltByteFromHashedString(tempPass);
+			            byte[] saltByte = HashedString.toByteArray(HashedString.getSaltFromHashedString(tempPass));
 			            HashedString hPassword = new HashedString(password,saltByte);
 			            String encryptedPassword = hPassword.toString();
 			            if(encryptedPassword.equals(tempPass) ){
