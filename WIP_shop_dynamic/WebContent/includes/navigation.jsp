@@ -44,7 +44,10 @@
 					<a class="nav-link" href="home.jsp">Home</a>
 				</li>	
 				<li class="nav-item">
-					<a class="nav-link" href="Kursangebote.jsp">Kursangebote</a>
+					<form  action="GetCourses" method="get">
+						<input type="submit" class="nav-link" id = "getCourses" value="Kurs Übersicht">
+						<input type="hidden" name="targetSite" value="/Kursangebote.jsp">
+					</form>
 				</li>
 				
 				<%-- show this fields if the user is logged in and the user is not an admin --%>

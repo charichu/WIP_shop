@@ -60,7 +60,7 @@
 				</tr>
 				<tr>
 					<td>Kapazität eines Kurses:</td>
-					<td><input type="text" name="txtCapacity" placeholder="Kapazität"></td>
+					<td><input type="text" name="txtCapacity" placeholder="Kapazität" required="required"></td>
 				</tr>
 				<tr>
 					<td>Frequenz:</td>

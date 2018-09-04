@@ -41,6 +41,7 @@ public class CreateCourse extends HttpServlet {
 		Double  pricePerHour=null, durationPerMeeting=null;
 		Integer plz=null, capacity=null, grade=null, userId=null, addressID=null;
 		Integer userType = (Integer)request.getSession().getAttribute("userType");
+		request.setCharacterEncoding("UTF-8");
 		Boolean isAdmin=false;
 		subject 			= request.getParameter("txtSubject");
 		topic				= request.getParameter("txtTopic");
