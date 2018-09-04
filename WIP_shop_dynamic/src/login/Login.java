@@ -1,4 +1,4 @@
-package functions;
+package login;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -55,6 +55,7 @@ public class Login extends HttpServlet {
 		            Statement statement = myConn.createStatement();
 //		    make sql statement
 		            ResultSet rs = statement.executeQuery("select * from user where email='"+email+"';");
+		            
 		            if( !rs.last()){
 //		    if the result of the SQL-statement is empty, so there exists no account:
 //		    go to homepage with error message        
