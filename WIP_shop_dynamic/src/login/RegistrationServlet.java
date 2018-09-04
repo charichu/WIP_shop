@@ -59,7 +59,7 @@ public class RegistrationServlet extends HttpServlet {
     		if (input[i] != null) {
     			isOk &= DBFunctions.ContainsOnlyAllowedChars(input[i]);
     			if(input[i] != "false" && input[i] != "true")
-    				input[i] = String.format("\"%s\"", input[i]);
+    				input[i] = String.format("'%s'", input[i]);
     			if(i == 6){
     				input[i] = "STR_TO_DATE(" + input[i] + ", '%Y-%m-%d')";
     			}
