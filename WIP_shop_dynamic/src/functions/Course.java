@@ -9,9 +9,10 @@ public class Course {
 	private String studentType;
 	private String price;
 	private String frequency;
+	private String grade;
 	
 	public Course(String couseNumber, String subject, String topic, String description, String studentType,
-			String price, String frequency) {
+			String price, String frequency, String grade) {
 		super();
 		this.couseNumber = couseNumber;
 		this.subject = subject;
@@ -20,6 +21,7 @@ public class Course {
 		this.studentType = studentType;
 		this.price = price;
 		this.frequency = frequency;
+		this.grade = grade;
 	}
 	
 	public String getCouseNumber() {
@@ -63,5 +65,11 @@ public class Course {
 	}
 	public void setFrequency(String frequency) {
 		this.frequency = frequency;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 }

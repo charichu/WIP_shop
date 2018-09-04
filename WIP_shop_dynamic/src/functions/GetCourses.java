@@ -20,18 +20,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
 /**
  * Servlet implementation class GetProducts
  */
-@WebServlet("/GetProducts")
-public class GetProducts extends HttpServlet {
+@WebServlet("/GetCourses")
+public class GetCourses extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetProducts() {
+    public GetCourses() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -48,8 +47,10 @@ public class GetProducts extends HttpServlet {
 		String studentType = "";
 		String price = "";
 		String frequency = "";
+		String grade = "";
 		Course course;
 		String result="";
+		String targetSite = request.getParameter("targetSite");
 // create array list, which go into the request
 		ArrayList<Course> courses = new ArrayList<>();
 		try {
@@ -68,7 +69,8 @@ public class GetProducts extends HttpServlet {
             	studentType = "Student/ Schüler";
             	price = "Preis";
             	frequency = "Frequenz";	
-            	course = new Course(courseNumber, subject, topic, description, studentType, price, frequency);
+            	grade = "Jahrgangsstufe";	
+            	course = new Course(courseNumber, subject, topic, description, studentType, price, frequency,grade);
             	courses.add(course);
             	
 // fill the arraylist with the return of the sql-statement
@@ -81,13 +83,14 @@ public class GetProducts extends HttpServlet {
             	studentType = rs.getString("studentType");
             	price = rs.getString("pricePerHour");
             	frequency = rs.getString("frequency");
-            	course = new Course(courseNumber, subject, topic, description, studentType, price, frequency);
+            	grade = rs.getString("grade");
+            	course = new Course(courseNumber, subject, topic, description, studentType, price, frequency, grade);
             	
             	courses.add(course);
             }
 // write the arraylist into the request as attribute to get this on the jsp site
             request.setAttribute("courses", courses);
-            request.getRequestDispatcher("/adminKursuebersicht.jsp").forward(request, response);
+            request.getRequestDispatcher(targetSite).forward(request, response);
             
         }
 // exception handling

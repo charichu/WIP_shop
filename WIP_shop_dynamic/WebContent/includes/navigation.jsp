@@ -44,7 +44,10 @@
 					<a class="nav-link" href="home.jsp">Home</a>
 				</li>	
 				<li class="nav-item">
-					<a class="nav-link" href="Kursangebote.jsp">Kursangebote</a>
+					<form  action="GetCourses" method="get">
+						<input type="submit" class="nav-link" id = "getCourses" value="Kurs Übersicht">
+						<input type="hidden" name="targetSite" value="/Kursangebote.jsp">
+					</form>
 				</li>
 				
 				<%-- show this fields if the user is logged in and the user is not an admin --%>
@@ -53,7 +56,7 @@
 					<a class="nav-link" href="Kalender.jsp">Kalender</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="MeineKurse.jsp">Kurse</a>
+					<a class="nav-link" href="MeineKurse.jsp">Meine Kurse</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="Profil.jsp">Profil</a>
@@ -95,7 +98,7 @@
 		<div class="loginmodal-container modal-content">
 			<h1>Login to Your Account</h1><br>
 			<form action="Login" method="post">
-				<input type="text" name="user" placeholder="Username">
+				<input type="text" name="user" placeholder="E-Mail">
 				<input type="password" name="pass" placeholder="Password">
 				<input type="submit" name="login" class="login loginmodal-submit" value="Login">
 			</form>
