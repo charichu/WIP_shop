@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import functions.HashedString;
 /**
  * Servlet implementation class Login
  */
@@ -42,10 +43,11 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("user");
-		String pass  = request.getParameter("pass");
+
+		Integer userId;
+		String password  = request.getParameter("pass"); 
 		String name  = "";
 		String tempPass = "";
-		Integer userId;
 		int userType;
 		Boolean userLoggedIn;
 		try {
@@ -54,8 +56,10 @@ public class Login extends HttpServlet {
 		            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/wip", "root", "");
 		            Statement statement = myConn.createStatement();
 //		    make sql statement
+
 		            ResultSet rs = statement.executeQuery("select * from user where email='"+email+"';");
 		            
+
 		            if( !rs.last()){
 //		    if the result of the SQL-statement is empty, so there exists no account:
 //		    go to homepage with error message        
@@ -80,16 +84,21 @@ public class Login extends HttpServlet {
 							userType = rs.getInt("userType");
 							name     = rs.getString("username");
 							userId   = rs.getInt("userID");
-	 					}
+	 					  }
 			            while (rs.next());
 //			password control
-			            if(pass.equals(tempPass) ){
+//	            encrypt password
+			            byte[] saltByte = HashedString.getSaltByteFromHashedString(tempPass);
+			            HashedString hPassword = new HashedString(password,saltByte);
+			            String encryptedPassword = hPassword.toString();
+			            if(encryptedPassword.equals(tempPass) ){
 //				password right, set the session variables to be logged in
 			            	userLoggedIn = true;
 			            	request.getSession().setAttribute("userLoggedIn", userLoggedIn);
 			            	request.getSession().setAttribute("userType", userType);
 			            	request.getSession().setAttribute("userName", name);
 			            	request.getSession().setAttribute("userId", userId);
+
 			            	if(userType == 0){
 //					if user is admin go to adminpage
 				            	request.getRequestDispatcher("admin.jsp").forward(request, response);
