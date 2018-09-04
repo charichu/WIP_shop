@@ -98,7 +98,7 @@
 		<div class="loginmodal-container modal-content">
 			<h1>Login to Your Account</h1><br>
 			<form action="Login" method="post">
-				<input type="text" name="user" placeholder="Username">
+				<input type="text" name="user" placeholder="E-Mail" pattern="">
 				<input type="password" name="pass" placeholder="Password">
 				<input type="submit" name="login" class="login loginmodal-submit" value="Login">
 			</form>
