@@ -1,4 +1,4 @@
-package functions;
+package login;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -42,6 +42,7 @@ public class Logout extends HttpServlet {
 		request.getSession().removeAttribute("userType");
 		request.getSession().removeAttribute("userName");
 		request.getSession().removeAttribute("userId");
+
 		
 //      go to homepage when logged out
 		

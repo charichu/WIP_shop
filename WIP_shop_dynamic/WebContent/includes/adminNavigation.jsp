@@ -31,6 +31,7 @@
 					<!-- be mapped in the web.xml-->
 					<form  action="GetCourses" method="get">
 						<input type="submit" class="nav-link" id = "getCourses" value="Kurs Übersicht">
+						<input type="hidden" name="targetSite" value="/adminKursuebersicht.jsp">
 					</form>
 				</li>
 				<li class="nav-item">

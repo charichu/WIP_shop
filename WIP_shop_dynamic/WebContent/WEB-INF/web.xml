@@ -27,7 +27,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Login</servlet-name>
-    <servlet-class>functions.Login</servlet-class>
+    <servlet-class>Login.Login</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
@@ -35,13 +35,12 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Logout</servlet-name>
-    <servlet-class>functions.Logout</servlet-class>
+    <servlet-class>Login.Logout</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Logout</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/Logout</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>CreateCourse</servlet-name>
     <servlet-class>functions.CreateCourse</servlet-class>
@@ -49,5 +48,13 @@
   <servlet-mapping>
     <servlet-name>CreateCourse</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/CeateCourse</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DisplayDetails</servlet-name>
+    <servlet-class>functions.DisplayDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayDetails</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/DisplayDetails</url-pattern>
   </servlet-mapping>
 </web-app>
