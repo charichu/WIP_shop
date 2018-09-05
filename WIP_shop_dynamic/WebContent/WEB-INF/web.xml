@@ -57,4 +57,28 @@
     <servlet-name>DisplayDetails</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/DisplayDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>PutInCart</servlet-name>
+    <servlet-class>cartFunctions.PutInCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PutInCart</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/PutInCart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GetCart</servlet-name>
+    <servlet-class>cartFunctions.GetCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCart</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/GetCart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteCourseFromCart</servlet-name>
+    <servlet-class>cartFunctions.DeleteCourseFromCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCourseFromCart</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/DeleteCourseFromCart</url-pattern>
+  </servlet-mapping>
 </web-app>

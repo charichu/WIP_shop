@@ -9,6 +9,7 @@
 	<title>Kursangebote</title>
 	<!-- Imports -->
 	<div><jsp:include page="includes/imports.jsp"/></div>
+	<div><jsp:include page="includes/scripts.jsp"/></div>
 </head>
 <body>
 
@@ -50,6 +51,11 @@
 <div class="container-fluid padding">
 	<div class="row welcome text-center padding">
 		<div class="col-12">
+			<% if(request.getAttribute("successMessage")!=null){%>
+				<div id="alert_message" class="alert alert-success" role="alert">
+				  <% out.println(request.getAttribute("successMessage")); %>
+				</div>
+			<%	}%>
 			<h1 class="display-4">Kursangebote</h1>
 			<%
 			ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("courses");
@@ -59,7 +65,7 @@
 			<table>
 				<tr>
 					<th></th>
-					<th><%out.println(list.get(0).getCouseNumber()); %></th>
+					<th><%out.println(list.get(0).getCourseNumber()); %></th>
 					<th><%out.println(list.get(0).getSubject()); %></th>
 					<th><%out.println(list.get(0).getTopic()); %></th>
 					<th><%out.println(list.get(0).getGrade()); %></th>
@@ -74,8 +80,8 @@
 				
 				<tr>
 					
-						<td><input type="checkbox" name="chbSelectCourse" value="chb<%=course.getCouseNumber()%>"></td>
-						<td><%out.println(course.getCouseNumber()); %></td>
+						<td><input type="checkbox" name="chbSelectCourse" value="chb<%=course.getCourseNumber()%>"></td>
+						<td><%out.println(course.getCourseNumber()); %></td>
 						<td><%out.println(course.getSubject()); %></td>
 						<td><%out.println(course.getTopic()); %></td>
 						<td><%out.println(course.getGrade()); %></td>
@@ -83,7 +89,7 @@
 						<td><%out.println(course.getFrequency()); %></td>
 						<td><%out.println(course.getStudentType()); %></td>
 						<td><%out.println(course.getPrice()); %></td>
-						<td><a class="nav-link" href="DisplayDetails?courseID=<%=course.getCouseNumber()%>">Details</a></td>
+						<td><a class="nav-link" href="DisplayDetails?courseID=<%=course.getCourseNumber()%>">Details</a></td>
 				</tr>
 				<%  	}
 					}%>

@@ -1,12 +1,19 @@
 <!-- Navigation -->
 <!-- md is breakpiont for change from mobile, light means the color theme -->
+<%@page import="com.sun.org.apache.bcel.internal.generic.NEW"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="javax.websocket.Session"%>
 <%@page pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
 <%-- variable declaration and initialization --%>
 <%!		Boolean userLoggedIn;
-		Integer     userType;%>
+		Integer     userType;
+		HashMap<Integer, Integer> cart = new HashMap<Integer, Integer>();%>
 	<% 	
+		if(session.getAttribute("cart") == null){
+			session.setAttribute("cart", cart);
+		}
 		if(session.getAttribute("userLoggedIn") == null){
 			userLoggedIn = false;
 		}
@@ -63,7 +70,9 @@
 				</li>
 				<%} %>
 				<li class="nav-item">
-					<a class="nav-link" href="Warenkorb.jsp">Warenkorb</a>
+					<form  action="GetCart" method="get">
+						<input type="submit" class="nav-link" id = "getCart" value="Warenkorb">
+					</form>
 				</li>
 				
 				<%-- if the user is logged in it show the logout button --%>

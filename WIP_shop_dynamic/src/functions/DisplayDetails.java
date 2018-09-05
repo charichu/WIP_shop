@@ -66,11 +66,11 @@ public class DisplayDetails extends HttpServlet {
 				 course.put("qualificationProfile", rs.getString("qualificationProfile"));
 				 request.setAttribute("courseDetails", course);
 			}
-			request.getRequestDispatcher("/CourseDetails.jsp").forward(request, response);
+			request.getRequestDispatcher("/KursDetails.jsp").forward(request, response);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			request.getRequestDispatcher("/CourseDetails.jsp").forward(request, response);
+			request.getRequestDispatcher("/KursDetails.jsp").forward(request, response);
 		}
 	}
 

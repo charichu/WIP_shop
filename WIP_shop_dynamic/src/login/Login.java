@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.mysql.fabric.xmlrpc.base.Array;
 
 import functions.HashedString;
 /**
@@ -88,10 +92,10 @@ public class Login extends HttpServlet {
 			            while (rs.next());
 //			password control
 //	            encrypt password
-			            byte[] saltByte = HashedString.getSaltByteFromHashedString(tempPass);
-			            HashedString hPassword = new HashedString(password,saltByte);
-			            String encryptedPassword = hPassword.toString();
-			            if(encryptedPassword.equals(tempPass) ){
+//			            byte[] saltByte = HashedString.getSaltByteFromHashedString(tempPass);
+//			            HashedString hPassword = new HashedString(password,saltByte);
+//			            String encryptedPassword = hPassword.toString();
+			            if(password.equals(tempPass) ){
 //				password right, set the session variables to be logged in
 			            	userLoggedIn = true;
 			            	request.getSession().setAttribute("userLoggedIn", userLoggedIn);

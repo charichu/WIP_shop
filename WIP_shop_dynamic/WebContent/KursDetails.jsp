@@ -9,10 +9,13 @@
 	<title>Kurs Details</title>
 	<!-- Imports -->
 	<div><jsp:include page="includes/imports.jsp"/></div>
+	<div><jsp:include page="includes/scripts.jsp"/></div>
 </head>
 <body>
 <!-- Navigation and Login -->
 <div><jsp:include page="includes/navigation.jsp"/></div>
+
+
 <%-- Get variable from Servlet; with controll if null --%>
 <%		@SuppressWarnings("unchecked")
 		Hashtable<String, String> courseDetails=(request.getAttribute("courseDetails") != null)?
@@ -23,6 +26,11 @@
 <div class="container-fluid padding">
 	<div class="row">
 		<div class="col-lg-8 col-md-8 col-s-8">
+			<% if(request.getAttribute("errorMessage")!=null){%>
+				<div id="alert_message" class="alert alert-danger" role="alert">
+				  <% out.println(request.getAttribute("errorMessage")); %>
+				</div>
+			<%	}%>
 			<%if(courseDetails!=null){ %>
 				
 					<table>
@@ -51,8 +59,10 @@
 		</div>
 		<div class="col-lg-4 col-md-4 col-s-4">
 			<%if(courseDetails!=null){ %>
-				<form action="">
-					<input type="submit" id="subBuyCourse" value="Kurs buchen">
+				<form action="PutInCart" method="get">
+					<input type="submit" id="subBuyCourse" value="In den Warenkorb legen">
+					<input type="hidden" id="courseID" name="courseID" value="<%=courseDetails.get("courseID")%>">
+					<input type="hidden" id="targetSite" name="targetSite" value="/Kursangebote.jsp">
 				</form>
 				<img class="img-fluid" alt="vorschauBild" src="img/nachhilfesv.jpg">
 			<%} %>

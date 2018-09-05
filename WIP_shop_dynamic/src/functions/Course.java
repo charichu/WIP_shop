@@ -2,7 +2,7 @@ package functions;
 
 public class Course {
 	
-	private String couseNumber;
+	private String courseNumber;
 	private String subject;
 	private String topic;
 	private String description;
@@ -14,7 +14,7 @@ public class Course {
 	public Course(String couseNumber, String subject, String topic, String description, String studentType,
 			String price, String frequency, String grade) {
 		super();
-		this.couseNumber = couseNumber;
+		this.courseNumber = couseNumber;
 		this.subject = subject;
 		this.topic = topic;
 		this.description = description;
@@ -24,11 +24,11 @@ public class Course {
 		this.grade = grade;
 	}
 	
-	public String getCouseNumber() {
-		return couseNumber;
+	public String getCourseNumber() {
+		return courseNumber;
 	}
-	public void setCouseNumber(String couseNumber) {
-		this.couseNumber = couseNumber;
+	public void setCouseNumber(String courseNumber) {
+		this.courseNumber = courseNumber;
 	}
 	public String getSubject() {
 		return subject;

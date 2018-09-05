@@ -29,7 +29,7 @@
 			<table>
 			<tr>
 				<th></th>
-				<th><%out.println(list.get(0).getCouseNumber()); %></th>
+				<th><%out.println(list.get(0).getCourseNumber()); %></th>
 				<th><%out.println(list.get(0).getSubject()); %></th>
 				<th><%out.println(list.get(0).getTopic()); %></th>
 				<th><%out.println(list.get(0).getGrade()); %></th>
@@ -42,8 +42,8 @@
 			<% 		list.remove(0);
 					for(Course course:list){%>
 			<tr>
-				<td><input type="checkbox" name="chbSelectCourse" value="chb<%=course.getCouseNumber()%>"></td>
-				<td><%out.println(course.getCouseNumber()); %></td>
+				<td><input type="checkbox" name="chbSelectCourse" value="chb<%=course.getCourseNumber()%>"></td>
+				<td><%out.println(course.getCourseNumber()); %></td>
 				<td><%out.println(course.getSubject()); %></td>
 				<td><%out.println(course.getTopic()); %></td>
 				<td><%out.println(list.get(0).getGrade()); %></td>

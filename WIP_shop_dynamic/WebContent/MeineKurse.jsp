@@ -19,6 +19,7 @@
 	<div class="row">
 		<div class="col-8">
 			<%
+			@SuppressWarnings("unchecked")
 			ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("courses");
 			if(!(list == null)){
 			 %>
@@ -26,7 +27,7 @@
 				<table>
 				<tr>
 					<th></th>
-					<th><%out.println(list.get(0).getCouseNumber()); %></th>
+					<th><%out.println(list.get(0).getCourseNumber()); %></th>
 					<th><%out.println(list.get(0).getDescription()); %></th>
 					<th><%out.println(list.get(0).getFrequency()); %></th>
 					<th><%out.println(list.get(0).getPrice()); %></th>
@@ -37,8 +38,8 @@
 				<% 		list.remove(0);
 						for(Course course:list){%>
 				<tr>
-					<td><input type="checkbox" id="chb<%=course.getCouseNumber()%>"></td>
-					<td><%out.println(course.getCouseNumber()); %></td>
+					<td><input type="checkbox" id="chb<%=course.getCourseNumber()%>"></td>
+					<td><%out.println(course.getCourseNumber()); %></td>
 					<td><%out.println(course.getDescription()); %></td>
 					<td><%out.println(course.getFrequency()); %></td>
 					<td><%out.println(course.getPrice()); %></td>
