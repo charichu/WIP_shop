@@ -14,157 +14,72 @@
 
 <!-- Navigation and Login -->
 <div><jsp:include page="includes/navigation.jsp"/></div>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-	<div class="container-fluid">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		
-		<!-- id and class for the navbar -->
-		<div class="collapse navbar-collapse" id="navbarResponsive">
+
+<!-- Product View  -->
+<!-- Product View  -->
+<!-- Product View  -->
+
+<div class="container">
+	<div class="well well-sm">
+		<strong>Gefundene Kurse</strong>
+			<div class="btn-group">
+				<a href="#" id="list" class="btn btn-default btn-sm">
+					<span class="glyphicon glyphicon-th-list">
+					</span>Listenansicht</a> 
+				<a href="#" id="grid" class="btn btn-default btn-sm">
+					<span class="glyphicon glyphicon-th">
+					</span>Rasteransicht</a>
+			</div>		
+	</div>
+	<script> 
+	// <!-- Choose Grid or List View -->
+	$(document).ready(function() {
+	    $('#list').click(function(event){event.preventDefault();$('#divProducts .item').addClass('list-group-item');});
+	    $('#grid').click(function(event){event.preventDefault();$('#divProducts .item').removeClass('list-group-item');$('#divProducts .item').addClass('grid-group-item');});
+	});
+	</script>
+	<!-- Container where all the products end up -->
+	<div  id="divProducts" class="row list-group">
+<% 
+	ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("courses");
+		if(!(list == null)){
+%>
+	<%-- display the products --%>			
+		<% 	list.remove(0);
+			for(Course course:list){%>	
 			
-			<!-- ml pushes the navigation to the right side when it is in full width -->
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<form action="">
-						<input type="submit" name="dummy" value="Dummy">
-					</form>
-				</li>	
-				<li class="nav-item">
-					<form action="">
-						<input type="submit" name="dummy" value="Dummy">
-					</form>
-				</li>	
-				<li class="nav-item">
-					<form action="">
-						<input type="submit" name="dummy" value="Dummy">
-					</form>
-				</li>	
-			</ul>
+				<div class="item col-xs-4 col-lg-4">
+				<!-- Product picture -->
+					<div class="thumbnail">
+						<img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
+						<div class="caption">
+							<!-- Product title -->
+							<h4 class="group inner list-group-item-heading">
+								<%out.println(course.getTopic()); %>
+							</h4>
+								<!-- Product Tooltip -->
+								<p class="group-inner list-group-item-text">
+									<%out.println(course.getDescription()); %>
+								</p>
+							<div class="row">
+								<div class="col-xs-12 col-md-6">
+								<!-- Product Price -->
+								<p class="lead">
+									<%out.println(course.getPrice()); %>
+								</p>
+							</div>
+						<!-- Jump to Detailed View -->
+						<div class="col-xs-12 col-md-6">
+							<a class="btn btn-success" href="DisplayDetails?courseID=<%=course.getCouseNumber()%>">Details</a>	
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		<%  	}
+			}%>
 	</div>
-</nav>
-
-<!--- Show Courses -->
-
-<div class="container-fluid padding">
-	<div class="row welcome text-center padding">
-		<div class="col-12">
-			<h1 class="display-4">Kursangebote</h1>
-			<%
-			ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("courses");
-			if(!(list == null)){
-			%>
-			<%-- display the products in the table --%>
-			<table>
-				<tr>
-					<th></th>
-					<th><%out.println(list.get(0).getCouseNumber()); %></th>
-					<th><%out.println(list.get(0).getSubject()); %></th>
-					<th><%out.println(list.get(0).getTopic()); %></th>
-					<th><%out.println(list.get(0).getGrade()); %></th>
-					<th><%out.println(list.get(0).getDescription()); %></th>
-					<th><%out.println(list.get(0).getFrequency()); %></th>
-					<th><%out.println(list.get(0).getStudentType()); %></th>
-					<th><%out.println(list.get(0).getPrice()); %></th>
-	
-				</tr>
-				<% 		list.remove(0);
-						for(Course course:list){%>
-				
-				<tr>
-					
-						<td><input type="checkbox" name="chbSelectCourse" value="chb<%=course.getCouseNumber()%>"></td>
-						<td><%out.println(course.getCouseNumber()); %></td>
-						<td><%out.println(course.getSubject()); %></td>
-						<td><%out.println(course.getTopic()); %></td>
-						<td><%out.println(course.getGrade()); %></td>
-						<td><%out.println(course.getDescription()); %></td>
-						<td><%out.println(course.getFrequency()); %></td>
-						<td><%out.println(course.getStudentType()); %></td>
-						<td><%out.println(course.getPrice()); %></td>
-						<td><a class="nav-link" href="DisplayDetails?courseID=<%=course.getCouseNumber()%>">Details</a></td>
-				</tr>
-				<%  	}
-					}%>
-			</table>
-		</div>
-	</div>
-</div>	
-<!--- Meet the team -->
-
-<div class="container-fluid padding">
-	<div class="row welcome text-center padding">
-		<div class="col-12">
-			<h1 class="display-4">Meet the Team</h1>
-		</div>
-	</div>
-</div>	
-
-<!--- Cards (for the single teammembers for example) -->
-
-<div class="container-fluid padding">
-	<div class="row padding">
-		<div class="col-md-3">
-			<div class="card">
-				<img class="card-img-top" src="img/team1.png">
-				<div class="card-body">
-					<h4 class="card-title">Thomas</h4>
-					<p class="card-text">Product Owner</p>
-					<a href="#" class="btn btn-outline-secondary">Check Profile</a>
-				</div>
-			</div>			
-		</div>
-		<div class="col-md-3">
-			<div class="card">
-				<img class="card-img-top" src="img/team2.png">
-				<div class="card-body">
-					<h4 class="card-title">David</h4>
-					<p class="card-text">SCRUM-Master</p>
-					<a href="#" class="btn btn-outline-secondary">Check Profile</a>
-				</div>
-			</div>			
-		</div>
-		<div class="col-md-3">
-			<div class="card">
-				<img class="card-img-top" src="img/team3.png">
-				<div class="card-body">
-					<h4 class="card-title">Marcel</h4>
-					<p class="card-text">Developer</p>
-					<a href="#" class="btn btn-outline-secondary">Check Profile</a>
-				</div>
-			</div>			
-		</div>
-		<div class="col-md-3">
-			<div class="card">
-				<img class="card-img-top" src="img/team1.png">
-				<div class="card-body">
-					<h4 class="card-title">Jan</h4>
-					<p class="card-text">Developer</p>
-					<a href="#" class="btn btn-outline-secondary">Check Profile</a>
-				</div>
-			</div>			
-		</div>
 </div>
-
-<!---  Contact Second Two Column Section  -->
-
-<div class="container-fluid padding">
-	<div class="row padding">
-		<!-- first column -->
-		<div class="col-lg-6">
-			<h2>Contact us here</h2>
-			<p>Paragraph 3, apparently. The image can be the placeholder for a contact formular.</p>
-			
-		</div>
-		<!-- second column -->
-		<div class="col-lg-6">
-			<img src="img/bootstrap2.png" class="img-fluid">
-		</div>
-	</div>
-	<!-- Horizontal rule again -->
-	<hr class="my-4">
-</div>	
 
 <!--- Footer -->
 <div><jsp:include page="includes/footer.jsp"/></div>
