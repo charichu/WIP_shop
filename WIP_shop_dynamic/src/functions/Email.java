@@ -1,13 +1,19 @@
 package functions;
 import java.io.IOException;
 import java.util.Properties;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 public class Email {
 	private final String username = "noreply.tutor24@gmail.com";
@@ -15,7 +21,7 @@ public class Email {
 	private MimeMessage emailMsg = null;
 	private String recipient = null;
 	
-	public Email(String to, String subject, String text) {
+	public Email(String to, String subject, String text, String attachmentLocation) {
 		
 		Properties prop = new Properties();
 		prop.put("mail.smtp.auth", "true");
@@ -30,12 +36,24 @@ public class Email {
 		});
 		
 		try{
-			MimeMessage constrMsg = new MimeMessage(sess);
-			constrMsg.setFrom(new InternetAddress(username));
-			constrMsg.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(to));
-			constrMsg.setSubject(subject);
-			constrMsg.setText(text); //could instead send html code with: constrMsg.setContent(object, type);
-			emailMsg = constrMsg;
+			MimeMessage mailMsg = new MimeMessage(sess);
+			MimeBodyPart mailBody = new MimeBodyPart();
+			MimeMultipart mailMulti = new MimeMultipart();
+			mailMsg.setFrom(new InternetAddress(username));
+			mailMsg.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(to));
+			mailMsg.setSubject(subject);
+			mailBody.setText(text); //could instead send html code with: constrMsg.setContent(object, type);
+			mailMulti.addBodyPart(mailBody);
+
+			if(!Functions_Std.isStringNullOrEmpty(attachmentLocation)){
+				DataSource dSource = new FileDataSource(attachmentLocation);
+				mailBody = new MimeBodyPart();
+				DataSource source = new FileDataSource(attachmentLocation);
+				mailBody.setDataHandler(new DataHandler(source));
+				mailBody.setFileName(attachmentLocation);
+				mailMulti.addBodyPart(mailBody);
+			}
+			emailMsg = mailMsg;
 			recipient = to;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
