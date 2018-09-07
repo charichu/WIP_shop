@@ -89,6 +89,7 @@ public class GetCourses extends HttpServlet {
             	courses.add(course);
             }
 // write the arraylist into the request as attribute to get this on the jsp site
+            request.removeAttribute("courses");
             request.setAttribute("courses", courses);
             request.getRequestDispatcher(targetSite).forward(request, response);
             

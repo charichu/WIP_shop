@@ -26,7 +26,7 @@ public class DeleteCourseFromCart extends HttpServlet {
 
 	/**
 	 * This method delete the course with the given courseID from the cart.
-	 * @return request attribute "successMessage" is set if the delete was successful; 
+	 * @return request attribute "successMessage" is set if the delete was successful<br/> 
 	 * request attribute "errorMessage" is set if the delete was not successful
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

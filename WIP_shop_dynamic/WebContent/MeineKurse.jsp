@@ -30,7 +30,7 @@
 					<th><%out.println(list.get(0).getCourseNumber()); %></th>
 					<th><%out.println(list.get(0).getDescription()); %></th>
 					<th><%out.println(list.get(0).getFrequency()); %></th>
-					<th><%out.println(list.get(0).getPrice()); %></th>
+					<th><%out.println(list.get(0).getPricePerHour()); %></th>
 					<th><%out.println(list.get(0).getStudentType()); %></th>
 					<th><%out.println(list.get(0).getSubject()); %></th>
 					<th><%out.println(list.get(0).getTopic()); %></th>
@@ -42,7 +42,7 @@
 					<td><%out.println(course.getCourseNumber()); %></td>
 					<td><%out.println(course.getDescription()); %></td>
 					<td><%out.println(course.getFrequency()); %></td>
-					<td><%out.println(course.getPrice()); %></td>
+					<td><%out.println(course.getPricePerHour()); %></td>
 					<td><%out.println(course.getStudentType()); %></td>
 					<td><%out.println(course.getSubject()); %></td>
 					<td><%out.println(course.getTopic()); %></td>

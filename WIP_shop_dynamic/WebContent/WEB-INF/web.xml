@@ -81,4 +81,12 @@
     <servlet-name>DeleteCourseFromCart</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/DeleteCourseFromCart</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>BookCourses</servlet-name>
+    <servlet-class>cartFunctions.BookCourses</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookCourses</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/BookCourses</url-pattern>
+  </servlet-mapping>
 </web-app>

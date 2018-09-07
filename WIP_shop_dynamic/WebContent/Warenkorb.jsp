@@ -51,7 +51,7 @@
 					<th><%out.println(cartList.get(0).getDescription()); %></th>
 					<th><%out.println(cartList.get(0).getFrequency()); %></th>
 					<th><%out.println(cartList.get(0).getStudentType()); %></th>
-					<th><%out.println(cartList.get(0).getPrice()); %></th>
+					<th><%out.println(cartList.get(0).getPricePerHour()); %></th>
 					<th><%out.println("Anzahl"); %></th>
 	
 				</tr>
@@ -68,8 +68,8 @@
 						<td><%out.println(course.getDescription()); %></td>
 						<td><%out.println(course.getFrequency()); %></td>
 						<td><%out.println(course.getStudentType()); %></td>
-						<td><%out.println(course.getPrice()); %></td>
-						<td><input type="text" name="txt<%=course.getCourseNumber()%>" value="<%=number%>" pattern="[0-9]{1,}" required="required" form="number" size="1"></td>
+						<td><%out.println(course.getPricePerHour()); %></td>
+						<td><input type="text" name="txt<%=course.getCourseNumber()%>" value="<%=number%>" pattern="[0-9]{1,}" required="required" form="BookCourses" size="1"></td>
 						<td><a class="nav-link" href="DisplayDetails?courseID=<%=course.getCourseNumber()%>">Details</a></td>
 						<td><form action="DeleteCourseFromCart">
 								<input type="submit" value="löschen">
@@ -85,8 +85,8 @@
 			</table>
 		</div>
 		<div class="col-4">
-			<form id="bookCourses" action="">
-				<input type="submit" value="Kurse Buchen" class="nav-link">
+			<form id="BookCourses" action="BookCourses" method="post">
+				<input type="submit" value="Bestellen" class="nav-link">
 			</form>
 		</div>
 	</div>
