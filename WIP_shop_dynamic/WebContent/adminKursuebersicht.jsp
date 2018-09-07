@@ -30,24 +30,27 @@
 			<tr>
 				<th></th>
 				<th><%out.println(list.get(0).getCouseNumber()); %></th>
-				<th><%out.println(list.get(0).getDescription()); %></th>
-				<th><%out.println(list.get(0).getFrequency()); %></th>
-				<th><%out.println(list.get(0).getPrice()); %></th>
-				<th><%out.println(list.get(0).getStudentType()); %></th>
 				<th><%out.println(list.get(0).getSubject()); %></th>
 				<th><%out.println(list.get(0).getTopic()); %></th>
+				<th><%out.println(list.get(0).getGrade()); %></th>
+				<th><%out.println(list.get(0).getDescription()); %></th>
+				<th><%out.println(list.get(0).getFrequency()); %></th>
+				<th><%out.println(list.get(0).getStudentType()); %></th>
+				<th><%out.println(list.get(0).getPrice()); %></th>
+
 			</tr>
 			<% 		list.remove(0);
 					for(Course course:list){%>
 			<tr>
-				<td><input type="checkbox" id="chb<%=course.getCouseNumber()%>"></td>
+				<td><input type="checkbox" name="chbSelectCourse" value="chb<%=course.getCouseNumber()%>"></td>
 				<td><%out.println(course.getCouseNumber()); %></td>
-				<td><%out.println(course.getDescription()); %></td>
-				<td><%out.println(course.getFrequency()); %></td>
-				<td><%out.println(course.getPrice()); %></td>
-				<td><%out.println(course.getStudentType()); %></td>
 				<td><%out.println(course.getSubject()); %></td>
 				<td><%out.println(course.getTopic()); %></td>
+				<td><%out.println(list.get(0).getGrade()); %></td>
+				<td><%out.println(course.getDescription()); %></td>
+				<td><%out.println(course.getFrequency()); %></td>
+				<td><%out.println(course.getStudentType()); %></td>
+				<td><%out.println(course.getPrice()); %></td>
 			</tr>
 			<%  	}
 				}%>
