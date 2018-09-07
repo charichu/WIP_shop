@@ -8,10 +8,12 @@ public class test {
 
 	public static void main(String[] args) {
 		try {
-			String password = "testPassword";
-			HashedString hString = new HashedString(password);
-			String salt = hString.getSalt().toString();
+			String password = "test";
+			String salt = "";
 			byte[] saltByte = salt.getBytes(StandardCharsets.UTF_8);
+			
+			HashedString hString = new HashedString(password);
+			
 			String extractedSalt = HashedString.getSaltFromHashedString(hString.toString());
 			System.out.println("Hashed: " + hString.toString() + "\r\nExtracted Salt:" + extractedSalt);
 //			
