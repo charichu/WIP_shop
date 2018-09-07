@@ -25,28 +25,39 @@ public class DeleteCourseFromCart extends HttpServlet {
     }
 
 	/**
+	 * This method delete the course with the given courseID from the cart.
+	 * @return request attribute "successMessage" is set if the delete was successful; 
+	 * request attribute "errorMessage" is set if the delete was not successful
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//Get the cart Hashmap from the session
 		HashMap<Integer, Integer> cart = (request.getSession().getAttribute("cart")!=null)?
 										 (HashMap<Integer, Integer>)request.getSession().getAttribute("cart"):
 										 new HashMap<Integer,Integer>();
+//Get the courseID from the course which will be deleted from the cart
 		Integer courseID = (request.getParameter("courseID")!=null)?Integer.parseInt(request.getParameter("courseID")):null;
+
 		if (!cart.isEmpty()) {
 			if (courseID!=null && cart.containsKey(courseID)) {
+//If all parameters are filled and the courseID is in the cart,
+//delete the course from the cart with the given courseID
 				cart.remove(courseID);
 				request.getSession().removeAttribute("cart");
 				request.setAttribute("successMessage", "Der Kurs mit der Nummer "+courseID+" wurde erfolgreich aus Ihrem Warenkorb gelöscht");
 				request.getSession().setAttribute("cart",cart);
 			}
 			else if(courseID==null){
-				request.setAttribute("errorMessage", "Die KursID ist nicht gefüllt");
+			//That the courseID is null shouldn't happen, but if it happen an error message is sent
+				request.setAttribute("errorMessage", "Die KursID ist nicht gefüllt, deswegen konnte kein Kurs gelöscht werden");
 			}
 			else{
-				request.setAttribute("errorMessage", "Dieser Kurs wurde schon gelösch bitte aktualisieren sie die Seite.");
+			//If the course is already deleted, send an errorMessage 
+				request.setAttribute("errorMessage", "Dieser Kurs wurde schon gelöscht bitte aktualisieren sie die Seite.");
 			}
 		}
 		else {
+		//If the cart is null, what shouldn't happen, return an errorMessage			
 			request.setAttribute("errorMessage", "Der Warenkorb ist leer, deswegen können sie keinen Kurs löschen");
 		}
 		request.getRequestDispatcher("GetCart").forward(request, response);

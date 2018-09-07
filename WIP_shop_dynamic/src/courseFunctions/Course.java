@@ -1,5 +1,9 @@
-package functions;
-
+package courseFunctions;
+/**
+ * This is the class for the course.
+ * @author werner
+ * 
+ */
 public class Course {
 	
 	private String courseNumber;

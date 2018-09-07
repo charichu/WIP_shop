@@ -58,14 +58,15 @@
 			<%} %>
 		</div>
 		<div class="col-lg-4 col-md-4 col-s-4">
-			<%if(courseDetails!=null){ %>
+			<%if(courseDetails!=null&&(request.getAttribute("courseID")!=null)?(Integer)request.getAttribute("courseID")!=1:true){ %>
 				<form action="PutInCart" method="get">
+					<input type="text" name="numberOfCourse" placeholder="Anzahl der Treffen" pattern="[0-9]{1,}" required="required" title="Bitte geben Sie eine Anzahl ein">
 					<input type="submit" id="subBuyCourse" value="In den Warenkorb legen">
 					<input type="hidden" id="courseID" name="courseID" value="<%=courseDetails.get("courseID")%>">
 					<input type="hidden" id="targetSite" name="targetSite" value="/Kursangebote.jsp">
 				</form>
-				<img class="img-fluid" alt="vorschauBild" src="img/nachhilfesv.jpg">
 			<%} %>
+			<img class="img-fluid" alt="vorschauBild" src="img/nachhilfesv.jpg">
 		</div>
 	</div>
 </div>

@@ -1,4 +1,4 @@
-package functions;
+package courseFunctions;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -35,7 +35,6 @@ public class CreateCourse extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String  subject=null, topic=null, description=null,
 				studentType=null, frequency=null, streetHouseNumber=null, city=null, sqlStatement=null;
 		Double  pricePerHour=null, durationPerMeeting=null;
@@ -44,7 +43,7 @@ public class CreateCourse extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		Boolean isAdmin=false;
 		subject 			= request.getParameter("txtSubject");
-		topic				= request.getParameter("txtTopic");
+		topic				= "";
 		description 		= request.getParameter("txtDescription");
 		studentType 		= request.getParameter("txtStudentType");
 		frequency 			= request.getParameter("txtFrequency");
@@ -58,11 +57,6 @@ public class CreateCourse extends HttpServlet {
 		
 		isAdmin= (request.getParameter("txtUserId")!=""&&userType==0)? true : false;
 		userId = isAdmin? Integer.parseInt(request.getParameter("txtUserId")): (Integer)request.getSession().getAttribute("userId");
-		
-		System.out.println(subject+ " "+ topic+ " "+ grade+ " "+
-						   description+ " "+ studentType+ " "+pricePerHour+ "€ "+
-						   capacity+ " Personen "+ frequency+ " "+ durationPerMeeting+ "h "+ plz+ " "+ 
-						   streetHouseNumber+ " "+ city);
 		try {
 			ResultSet rs;
 			Class.forName("com.mysql.jdbc.Driver").newInstance();

@@ -1,4 +1,4 @@
-package functions;
+package courseFunctions;
 
 
 import java.awt.List;

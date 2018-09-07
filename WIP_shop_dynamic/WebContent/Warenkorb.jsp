@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.io.*,java.util.*,java.sql.*"%>
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
-<%@ page import = "functions.Course" %>
+<%@ page import = "courseFunctions.Course" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +16,10 @@
 <!-- Navigation and Login -->
 <div><jsp:include page="includes/navigation.jsp"/></div>	
 
+<%-- Variable Declaration --%>
+
 <div class="container-fluid padding">
-	<div class="row welcome text-center padding">
+	<div class="row">
 		<div class="col-8">
 			<% if(request.getAttribute("successMessage")!=null){%>
 				<div id="alert_message" class="alert alert-success" role="alert">
@@ -31,29 +33,34 @@
 			<%	}%>
 			<h1 class="display-4">Warenkorb</h1>
 			<%
-			ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("cart");
-			if(!(list == null)){
+			ArrayList<Course> cartList = (ArrayList<Course>) request.getAttribute("cart");
+			if(!(cartList == null)){
+				@SuppressWarnings("unchecked") 
+				HashMap<Integer,Integer> cart=(session.getAttribute("cart")!=null)?
+						   					  (HashMap<Integer,Integer>)session.getAttribute("cart"):
+						   					  new HashMap<Integer,Integer>();
+				Integer number;
 			%>
 			<%-- display the products in the table --%>
 			<table>
 				<tr>
-					<th></th>
-					<th><%out.println(list.get(0).getCourseNumber()); %></th>
-					<th><%out.println(list.get(0).getSubject()); %></th>
-					<th><%out.println(list.get(0).getTopic()); %></th>
-					<th><%out.println(list.get(0).getGrade()); %></th>
-					<th><%out.println(list.get(0).getDescription()); %></th>
-					<th><%out.println(list.get(0).getFrequency()); %></th>
-					<th><%out.println(list.get(0).getStudentType()); %></th>
-					<th><%out.println(list.get(0).getPrice()); %></th>
+					<th><%out.println(cartList.get(0).getCourseNumber()); %></th>
+					<th><%out.println(cartList.get(0).getSubject()); %></th>
+					<th><%out.println(cartList.get(0).getTopic()); %></th>
+					<th><%out.println(cartList.get(0).getGrade()); %></th>
+					<th><%out.println(cartList.get(0).getDescription()); %></th>
+					<th><%out.println(cartList.get(0).getFrequency()); %></th>
+					<th><%out.println(cartList.get(0).getStudentType()); %></th>
+					<th><%out.println(cartList.get(0).getPrice()); %></th>
+					<th><%out.println("Anzahl"); %></th>
 	
 				</tr>
-				<% 		list.remove(0);
-						for(Course course:list){%>
+				<% 		cartList.remove(0);
+						for(Course course:cartList){
+						number=cart.get(Integer.parseInt(course.getCourseNumber()));%>
 				
 				<tr>
 					
-						<td><input type="checkbox" name="chbSelectCourse" value="chb<%=course.getCourseNumber()%>"></td>
 						<td><%out.println(course.getCourseNumber()); %></td>
 						<td><%out.println(course.getSubject()); %></td>
 						<td><%out.println(course.getTopic()); %></td>
@@ -62,6 +69,7 @@
 						<td><%out.println(course.getFrequency()); %></td>
 						<td><%out.println(course.getStudentType()); %></td>
 						<td><%out.println(course.getPrice()); %></td>
+						<td><input type="text" name="txt<%=course.getCourseNumber()%>" value="<%=number%>" pattern="[0-9]{1,}" required="required" form="number" size="1"></td>
 						<td><a class="nav-link" href="DisplayDetails?courseID=<%=course.getCourseNumber()%>">Details</a></td>
 						<td><form action="DeleteCourseFromCart">
 								<input type="submit" value="löschen">
@@ -75,9 +83,11 @@
 			<%
 			}%>
 			</table>
-		</div class="col-4">
-			
-		<div>
+		</div>
+		<div class="col-4">
+			<form id="bookCourses" action="">
+				<input type="submit" value="Kurse Buchen" class="nav-link">
+			</form>
 		</div>
 	</div>
 </div>	

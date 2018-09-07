@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.io.*,java.util.*,java.sql.*"%>
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
-<%@ page import = "functions.Course" %>
+<%@ page import = "courseFunctions.Course" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -63,7 +63,7 @@
 			<table>
 				<tr>
 					<td>
-						<form  action="" method="get">
+						<form  action="CreateCourse" method="get">
 							<input type="submit" class="nav-link" id = "createCourse" value="Neuen Kurs erstellen">
 						</form>
 					</td>

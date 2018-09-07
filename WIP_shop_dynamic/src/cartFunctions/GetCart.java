@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.websocket.Session;
 
-import functions.Course;
+import courseFunctions.Course;
 /**
  * Servlet implementation class GetProducts
  */
@@ -42,6 +42,8 @@ public class GetCart extends HttpServlet {
     }
 
 	/**
+	 * This method will give the cart of the user.
+	 * @return {@link ArrayList} filled with {@link Course}, which are in the cart
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,6 +60,7 @@ public class GetCart extends HttpServlet {
 		String result="";
 		String targetSite = request.getParameter("targetSite");
 		String sqlStatement="";
+// Get the Cart from the session, if the cart is null set create a new Hashmap as cart
 		@SuppressWarnings("unchecked")
 		HashMap<Integer, Integer> cart = (request.getSession().getAttribute("cart")!=null)
 										 ?(HashMap<Integer, Integer>)request.getSession().getAttribute("cart")
@@ -74,7 +77,7 @@ public class GetCart extends HttpServlet {
 	            Class.forName("com.mysql.jdbc.Driver").newInstance();
 	            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/wip", "root", "");
 	            Statement statement = myConn.createStatement();
-// make sql statement
+// create sql statement
 	            
 	            sqlStatement="Select * from courses Where courseId IN (";
 	            

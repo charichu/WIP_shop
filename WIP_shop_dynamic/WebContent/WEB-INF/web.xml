@@ -11,7 +11,7 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>GetCourses</servlet-name>
-    <servlet-class>functions.GetCourses</servlet-class>
+    <servlet-class>courseFunctions.GetCourses</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GetCourses</servlet-name>
@@ -43,19 +43,19 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>CreateCourse</servlet-name>
-    <servlet-class>functions.CreateCourse</servlet-class>
+    <servlet-class>courseFunctions.CreateCourse</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CreateCourse</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/CeateCourse</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>DisplayDetails</servlet-name>
-    <servlet-class>functions.DisplayDetails</servlet-class>
+    <servlet-name>DisplayCourseDetails</servlet-name>
+    <servlet-class>courseFunctions.DisplayCourseDetails</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DisplayDetails</servlet-name>
-    <url-pattern>/WIP_shop_dynamic/*/DisplayDetails</url-pattern>
+    <servlet-name>DisplayCourseDetails</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/DisplayCourseDetails</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>PutInCart</servlet-name>

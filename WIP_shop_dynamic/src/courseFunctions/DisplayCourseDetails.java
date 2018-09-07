@@ -1,4 +1,4 @@
-package functions;
+package courseFunctions;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,16 +11,16 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 /**
- * Servlet implementation class DisplayDetails
+ * Servlet implementation class DisplayCourseDetails
  */
 @WebServlet("/DisplayDetails")
-public class DisplayDetails extends HttpServlet {
+public class DisplayCourseDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DisplayDetails() {
+    public DisplayCourseDetails() {
         super();
         // TODO Auto-generated constructor stub
     }
