@@ -50,7 +50,7 @@ public class FilterProducts {
 			if (hasAtLeastOneConditionBefore) {
 				sBuilder.append(" AND ");						
 			}
-			sBuilder.append("capacity = '" + capacity + "'");	
+			sBuilder.append("capacity = " + capacity);	
 			hasAtLeastOneConditionBefore = true;
 		}
 		
@@ -66,7 +66,7 @@ public class FilterProducts {
 			if (hasAtLeastOneConditionBefore) {
 				sBuilder.append(" AND ");						
 			}
-			sBuilder.append("durationPerMeeting = '" + durationPerMeeting + "'");	
+			sBuilder.append("durationPerMeeting = " + durationPerMeeting);	
 			hasAtLeastOneConditionBefore = true;
 		}
 		
@@ -74,7 +74,7 @@ public class FilterProducts {
 			if (hasAtLeastOneConditionBefore) {
 				sBuilder.append(" AND ");						
 			}
-			sBuilder.append("addressID = '" + addressID + "'");	
+			sBuilder.append("addressID = " + addressID);	
 			hasAtLeastOneConditionBefore = true;
 		}
 		
