@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.io.*,java.util.*,java.sql.*"%>
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
 <%@ page import = "functions.Course" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,9 +51,58 @@
 	<div class="row welcome text-center padding">
 		<div class="col-12">
 			<h1 class="display-4">Kursangebote</h1>
+			<form action="GetCourses" method="post">			
+				<table>
+					<tr>
+						<td colspan="6">
+							Filteroptionen
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<select name="ddlSubject">
+								<option></option>
+								<option value="englisch"		>Englisch</option>
+								<option value="deutsch"			>Deutsch</option>
+								<option value="mathe"			>Mathematik</option>
+								<option value="französisch"		>Französisch</option>
+								<option value="physik"			>Physik</option>
+								<option value="chemie"			>Chemie</option>
+								<option value="biologie"		>Biologie</option>
+							</select>
+						</td>
+						<td>
+							<input type="number" name="txtPrice" placeholder="Preis:">
+						</td>
+						<td>
+							<input type="number" name="txtCapacity" placeholder="Kursgröße:">
+						</td>
+						<td>
+							<select name="ddlFrequency">
+								<option></option>
+							<option value="wöchentlich"			>wöchentlich</option>
+							<option value="monatlich"			>monatlich</option>
+							</select>
+						</td>
+						
+						<td>
+							<input type="number" name="txtDuration" placeholder="Dauer:">
+						</td>
+						<td>
+							<input type="submit" name="btnFilter" placeholder="Anwenden">
+							<input type="hidden" name="filteredSite" value="Kursangebote.jsp">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							<input type="search" name="srhCourses" placeholder="Suchen">
+						</td>
+					</tr>
+				</table>
+			</form>
 			<%
 			ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("courses");
-			if(!(list == null)){
+			if(list != null){
 			%>
 			<%-- display the products in the table --%>
 			<table>
@@ -110,7 +159,7 @@
 				<img class="card-img-top" src="img/team1.png">
 				<div class="card-body">
 					<h4 class="card-title">Thomas</h4>
-					<p class="card-text">Product Owner</p>
+					<p class="card-text">Developer</p>
 					<a href="#" class="btn btn-outline-secondary">Check Profile</a>
 				</div>
 			</div>			
@@ -130,7 +179,7 @@
 				<img class="card-img-top" src="img/team3.png">
 				<div class="card-body">
 					<h4 class="card-title">Marcel</h4>
-					<p class="card-text">Developer</p>
+					<p class="card-text">Product Owner</p>
 					<a href="#" class="btn btn-outline-secondary">Check Profile</a>
 				</div>
 			</div>			

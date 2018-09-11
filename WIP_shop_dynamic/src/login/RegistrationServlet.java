@@ -69,13 +69,12 @@ public class RegistrationServlet extends HttpServlet {
     	
     	// use parameters
     	if(isOk){
-    		//test
     		String insertQuery = DBFunctions.CreateInsertQuery("user", DBFunctions.tableUserManipulation, input) + "";
         	try {
     			DBFunctions.Update(insertQuery);
-    			String activationCode = "Accounts sind bisher standardm‰ﬂig aktiviert.";
+    			String activationCode = "Accounts sind bisher standardm√§√üig aktiviert.";
     			String emailText = String.format("Hallo %s %s,\r\ndein Account kann mit dem folgenden Link aktiviert werden: %s\r\nUsername:%s\r\nPassword:%s", firstName, lastName, activationCode, username, password);
-    			Email confirmationEmail = new Email(email, "Registrierung von Tutor24 Account", emailText);
+    			Email confirmationEmail = new Email(email, "Registrierung von Tutor24 Account", emailText, null);
     			confirmationEmail.Send();
     		} catch (SQLException e) {
     			// TODO Auto-generated catch block
@@ -94,7 +93,6 @@ public class RegistrationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
@@ -113,19 +111,10 @@ public class RegistrationServlet extends HttpServlet {
 				// email does not exist
 			}
     	} catch (Exception e) {
-			// TODO: handle exception
-    		e.printStackTrace();
+			e.printStackTrace();
     		System.out.println(e.getMessage());
 		}
     	
     	return bRV;
-    }
-    
-    public String NVL(Object item1, Object item2){
-    	if(item1 != null){
-    		return item1.toString();
-    	} else {
-    		return item2.toString();
-    	}
     }
 }
