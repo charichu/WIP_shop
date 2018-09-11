@@ -53,7 +53,7 @@ public class DisplayCourseDetails extends HttpServlet {
 					 course.put("houseNumber", rs.getString("houseNumber"));
 					 course.put("courseID", rs.getString("courseID"));
 					 course.put("subject", rs.getString("subject"));
-					 course.put("topic", rs.getString("topic"));
+					 course.put("topic", rs.getString("topic")==null?"":rs.getString("topic"));
 					 course.put("description", (rs.getString("description")==null)?"":rs.getString("description"));
 					 course.put("studentType", (rs.getString("studentType")==null)?"":rs.getString("studentType"));
 					 course.put("pricePerHour", (rs.getString("pricePerHour")==null)?"":rs.getString("pricePerHour"));
@@ -61,20 +61,22 @@ public class DisplayCourseDetails extends HttpServlet {
 					 course.put("frequency", (rs.getString("frequency")==null)?"":rs.getString("frequency"));
 					 course.put("durationPerMeeting", (rs.getString("durationPerMeeting")==null)?"":rs.getString("durationPerMeeting"));
 					 course.put("grade", rs.getString("grade"));
-					 course.put("firstName", rs.getString("firstName"));
-					 course.put("lastName", rs.getString("lastName"));
-					 course.put("qualificationProfile", rs.getString("qualificationProfile"));
+					 course.put("firstName", rs.getString("firstName")==null?"":rs.getString("firstName"));
+					 course.put("lastName", rs.getString("lastName")==null?"":rs.getString("lastName"));
+					 course.put("qualificationProfile", rs.getString("qualificationProfile")==null?"":rs.getString("qualificationProfile"));
 					 request.setAttribute("courseDetails", course);
 				}
 				request.getRequestDispatcher("/KursDetails.jsp").forward(request, response);
             }
             else {
-				request.getRequestDispatcher("").forward(request, response);
+            	request.setAttribute("errorMessage", "Fehler, melden Sie sich bitte beim Support.");
+    			request.getRequestDispatcher("GetCourses").forward(request, response);
 			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			request.getRequestDispatcher("/KursDetails.jsp").forward(request, response);
+			request.setAttribute("errorMessage", e.getMessage());
+			request.getRequestDispatcher("GetCourses").forward(request, response);
 		}
 	}
 

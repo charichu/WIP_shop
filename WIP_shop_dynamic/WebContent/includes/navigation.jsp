@@ -66,7 +66,9 @@
 					<a class="nav-link" href="MeineKurse.jsp">Meine Kurse</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="Profil.jsp">Profil</a>
+					<form  action="GetProfile" method="get">
+						<input type="submit" class="nav-link" id = "getCart" value="Profil">
+					</form>
 				</li>
 				<%} %>
 				<li class="nav-item">
