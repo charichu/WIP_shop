@@ -68,7 +68,7 @@ public class ConfirmOrderCourses extends HttpServlet {
 								 (Double)request.getAttribute("sum"):0;
 					Integer userID = (Integer)request.getSession().getAttribute("userId");
 					String[] columnNames = new String[]{"orderDate", "time", "totalPrice", "userID"};
-					String[] columnValues = new String[]{currentDate.toString(), currentTime.toString(), sum.toString(), userID.toString()};
+					String[] columnValues = new String[]{"'"+currentDate.toString()+"'", "'"+currentTime.toString()+"'", "'"+sum.toString()+"'", "'"+userID.toString()+"'"};
 					Double subTotal;
 					
 					Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -89,7 +89,7 @@ public class ConfirmOrderCourses extends HttpServlet {
 			        
 			        for(Course course:bookingList){
 			        	subTotal=cart.get(Integer.parseInt(course.getCourseNumber()))*course.getPricePerMeeting();
-			        	columnValues = new String[]{subTotal.toString(),course.getCourseNumber(), orderID.toString(),cart.get(Integer.parseInt(course.getCourseNumber())).toString(),course.getPricePerMeeting().toString()};
+			        	columnValues = new String[]{"'"+subTotal.toString()+"'","'"+course.getCourseNumber()+"'", "'"+orderID.toString()+"'","'"+cart.get(Integer.parseInt(course.getCourseNumber())).toString()+"'","'"+course.getPricePerMeeting().toString()+"'"};
 			        	sqlStatement=DBFunctions.CreateInsertQuery("order_items", columnNames, columnValues);
 			        	ps = myConn.prepareStatement(sqlStatement);
 			        	ps.executeUpdate();
@@ -101,7 +101,7 @@ public class ConfirmOrderCourses extends HttpServlet {
 			        				  "alles weitere zu unseren Zahlungsbedingungen finden Sie in unseren AGB's"+
 			        				  "Ihr Team von Tutor24";
 			        if(Email.IsValid(currentUser.getEmail())){
-			        	Email orderMail = new Email(currentUser.getEmail(), "Tutor24: Rechnung für Bestellung "+orderID.toString(), mailText);
+			        	Email orderMail = new Email(currentUser.getEmail(), "Tutor24: Rechnung für Bestellung "+orderID.toString(), mailText,"");
 			        	if(orderMail.Send()){
 			        		request.setAttribute("successMessage", "Die Bestellung wurde erfolgreich abgeschlossen.");
 							request.getSession().removeAttribute("cart");

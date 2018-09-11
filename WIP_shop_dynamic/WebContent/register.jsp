@@ -30,7 +30,7 @@
 				<input type="text" name="chkStudentType" placeholder="Schüler oder Student">
 				<input type="text" name="txtClass" placeholder="Schulklasse,bitte leer lassen wenn Student">
 				<!-- Type Date does not allow placeholder text -->
-				<input type="number" name="numDateOfBirth" placeholder="Geburtstag, Format tt.mm.jjjj">
+				<input type="text" name="numDateOfBirth" placeholder="Geburtstag, Format tt.mm.jjjj">
 					<!-- checked out due to the type number work around <p class="help-block">Geben Sie hier ihr Geburtsdatum ein.</p>  -->
 			<!-- Address Block -->
 			<p2 class="help-block">Adresse: </p2>

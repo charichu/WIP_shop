@@ -3,6 +3,7 @@ package functions;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import functions.DBFunctions;
 
@@ -18,6 +19,7 @@ public class User {
 	private String  studentType;
 	private String  qualificationProfile;
 	private Integer addressID;
+	private Double  grade;
 	private boolean active;
 	
 	public User(Integer userID) {
@@ -38,10 +40,11 @@ public class User {
 					studentType = rs.getString("studentType");
 					qualificationProfile = rs.getString("qualificationProfile");
 					addressID = rs.getInt("addressID");
+					grade    = rs.getDouble("class");
 					active = rs.getBoolean("active");
 				}
 			} catch (SQLException e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 	}
@@ -111,12 +114,41 @@ public class User {
 	public void setAddressID(Integer addressID) {
 		this.addressID = addressID;
 	}
+	public Double getGrade() {
+		return grade;
+	}
+	public void setGrade(Double grade) {
+		this.grade = grade;
+	}
 	public boolean isActive() {
 		return active;
 	}
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	
+	public HashMap<String, String> getAddress() {
+		String sqlStatement = DBFunctions.CreateSelectQuery("addresses", new String[]{"*"}, "addressID = "+addressID.toString());
+		HashMap<String, String> address = new HashMap<String,String>();
+		Integer addressID,plz,houseNumber;
+		try {
+			ResultSet rs = DBFunctions.Execute(sqlStatement);
+			if (rs.next()) {
+				addressID = rs.getInt("addressID");
+				address.put("addressID", addressID.toString());
+				address.put("city", rs.getString("city"));
+				address.put("street", rs.getString("street"));
+				houseNumber = rs.getInt("housenumber");
+				address.put("houseNumber", houseNumber.toString());
+				plz = rs.getInt("plz");
+				address.put("plz", plz.toString());
+			}
+			return address;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new HashMap<String,String>();
+		}
+		
+		
+	}
 	
 }

@@ -11,6 +11,7 @@
 
 <!-- Navigation and Login -->
 <div><jsp:include page="includes/navigation.jsp"/></div>
+<div><jsp:include page="includes/scripts.jsp"/></div>
 
 <!--- Image Slider -->
 <% if(request.getAttribute("successMessage")!=null){%>

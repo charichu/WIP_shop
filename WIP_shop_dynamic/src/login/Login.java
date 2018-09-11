@@ -49,8 +49,13 @@ public class Login extends HttpServlet {
 		
 
 		String url = request.getHeader("referer");
-		
+		if(url.substring(url.lastIndexOf('/')+1).equalsIgnoreCase("Logout")){
+			url=url.substring(0,url.lastIndexOf('/')+1)+"home.jsp";
+		}
 		String urlShort = url.substring(url.lastIndexOf('/')+1);
+		if (urlShort.equals("Logout")) {
+			urlShort="home.jsp";
+		}
 		Integer userId;
 		String password  = request.getParameter("pass"); 
 		String name  = "";
@@ -93,10 +98,10 @@ public class Login extends HttpServlet {
 			            while (rs.next());
 //			password control
 //	            encrypt password
-			            byte[] saltByte = HashedString.toByteArray(HashedString.getSaltFromHashedString(tempPass));
-			            HashedString hPassword = new HashedString(password,saltByte);
-			            String encryptedPassword = hPassword.toString();
-			            if(encryptedPassword.equals(tempPass) ){
+//			            byte[] saltByte = HashedString.toByteArray(HashedString.getSaltFromHashedString(tempPass));
+//			            HashedString hPassword = new HashedString(password,saltByte);
+//			            String encryptedPassword = hPassword.toString();
+			            if(password.equals(tempPass) ){
 //				password right, set the session variables to be logged in
 			            	userLoggedIn = true;
 			            	request.getSession().setAttribute("userLoggedIn", userLoggedIn);
@@ -126,7 +131,9 @@ public class Login extends HttpServlet {
 		// exception handling
         catch (Exception e) {
             System.out.println("error"+e.getMessage());
-            System.out.println(e.getStackTrace());
+            e.printStackTrace();
+            request.setAttribute("errorMessage", e.getMessage());
+            request.getRequestDispatcher(urlShort).forward(request, response);
             
         }
  		doGet(request, response);

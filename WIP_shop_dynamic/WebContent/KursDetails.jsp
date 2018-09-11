@@ -61,7 +61,7 @@
 			<%} %>
 		</div>
 		<div class="col-lg-4 col-md-4 col-s-4">
-			<%if(courseDetails!=null&&(request.getAttribute("courseID")!=null)?(Integer)request.getAttribute("courseID")!=1:true){ 
+			<%if(courseDetails!=null&&(session.getAttribute("userType")!=null)?(Integer)session.getAttribute("userType")!=1:true){ 
 				if(!cart.containsKey((Integer.parseInt(courseDetails.get("courseID"))))){%>
 					<form action="PutInCart" method="get">
 						<input type="text" name="numberOfCourse" placeholder="Anzahl der Treffen" pattern="[0-9]{1,}" required="required" title="Bitte geben Sie eine Anzahl ein">
