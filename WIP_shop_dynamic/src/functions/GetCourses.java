@@ -30,6 +30,7 @@ public class GetCourses extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		// all shown rows as strings
 		
 		String courseNumber = "";
@@ -48,6 +49,7 @@ public class GetCourses extends HttpServlet {
 		int durationNum = Functions_Std.isStringNullOrEmpty(duration)? -1 : Integer.parseInt(duration);
 		String addressID = null;
 		String searchText = request.getParameter("srhCourses");
+		searchText = searchText == ""? null : searchText;
 		String grade = "";
 		Course course;
 		String site = "";
@@ -72,7 +74,7 @@ public class GetCourses extends HttpServlet {
         	subject = "Fach";
         	topic = "Thema";
         	description = "Beschreibung";
-        	studentType = "Student/ Schüler";
+        	studentType = "Student/ Schï¿½ler";
         	price = "Preis";
         	frequency = "Frequenz";	
         	grade = "Jahrgangsstufe";	

@@ -72,7 +72,7 @@ public class RegistrationServlet extends HttpServlet {
     		String insertQuery = DBFunctions.CreateInsertQuery("user", DBFunctions.tableUserManipulation, input) + "";
         	try {
     			DBFunctions.Update(insertQuery);
-    			String activationCode = "Accounts sind bisher standardm‰ﬂig aktiviert.";
+    			String activationCode = "Accounts sind bisher standardm√§√üig aktiviert.";
     			String emailText = String.format("Hallo %s %s,\r\ndein Account kann mit dem folgenden Link aktiviert werden: %s\r\nUsername:%s\r\nPassword:%s", firstName, lastName, activationCode, username, password);
     			Email confirmationEmail = new Email(email, "Registrierung von Tutor24 Account", emailText, null);
     			confirmationEmail.Send();

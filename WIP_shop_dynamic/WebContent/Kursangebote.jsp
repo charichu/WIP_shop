@@ -80,8 +80,8 @@
 						<td>
 							<select name="ddlFrequency">
 								<option></option>
-								<option value="weekly"			>wöchentlich</option>
-								<option value="monthly"			>monatlich</option>
+							<option value="wöchentlich"			>wöchentlich</option>
+							<option value="monatlich"			>monatlich</option>
 							</select>
 						</td>
 						
