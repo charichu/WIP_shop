@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.io.*,java.util.*,java.sql.*"%>
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
-<%@ page import = "functions.Course" %>
-
+<%@ page import = "courseFunctions.Course" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Kursangebote</title>
 	<!-- Imports -->
 	<div><jsp:include page="includes/imports.jsp"/></div>
+	<div><jsp:include page="includes/scripts.jsp"/></div>
 </head>
 <body>
 
@@ -50,6 +50,11 @@
 <div class="container-fluid padding">
 	<div class="row welcome text-center padding">
 		<div class="col-12">
+			<% if(request.getAttribute("successMessage")!=null){%>
+				<div id="alert_message" class="alert alert-success" role="alert">
+				  <% out.println(request.getAttribute("successMessage")); %>
+				</div>
+			<%	}%>
 			<h1 class="display-4">Kursangebote</h1>
 			<form action="GetCourses" method="post">			
 				<table>
@@ -108,14 +113,14 @@
 			<table>
 				<tr>
 					<th></th>
-					<th><%out.println(list.get(0).getCouseNumber()); %></th>
+					<th><%out.println(list.get(0).getCourseNumber()); %></th>
 					<th><%out.println(list.get(0).getSubject()); %></th>
 					<th><%out.println(list.get(0).getTopic()); %></th>
 					<th><%out.println(list.get(0).getGrade()); %></th>
 					<th><%out.println(list.get(0).getDescription()); %></th>
 					<th><%out.println(list.get(0).getFrequency()); %></th>
 					<th><%out.println(list.get(0).getStudentType()); %></th>
-					<th><%out.println(list.get(0).getPrice()); %></th>
+					<th><%out.println(list.get(0).getPricePerHour()); %></th>
 	
 				</tr>
 				<% 		list.remove(0);
@@ -123,16 +128,16 @@
 				
 				<tr>
 					
-						<td><input type="checkbox" name="chbSelectCourse" value="chb<%=course.getCouseNumber()%>"></td>
-						<td><%out.println(course.getCouseNumber()); %></td>
+						<td><input type="checkbox" name="chbSelectCourse" value="chb<%=course.getCourseNumber()%>"></td>
+						<td><%out.println(course.getCourseNumber()); %></td>
 						<td><%out.println(course.getSubject()); %></td>
 						<td><%out.println(course.getTopic()); %></td>
 						<td><%out.println(course.getGrade()); %></td>
 						<td><%out.println(course.getDescription()); %></td>
 						<td><%out.println(course.getFrequency()); %></td>
 						<td><%out.println(course.getStudentType()); %></td>
-						<td><%out.println(course.getPrice()); %></td>
-						<td><a class="nav-link" href="DisplayDetails?courseID=<%=course.getCouseNumber()%>">Details</a></td>
+						<td><%out.println(course.getPricePerHour()); %></td>
+						<td><a class="nav-link" href="DisplayCourseDetails?courseID=<%=course.getCourseNumber()%>">Details</a></td>
 				</tr>
 				<%  	}
 					}%>

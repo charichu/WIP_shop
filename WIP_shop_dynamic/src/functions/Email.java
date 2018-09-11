@@ -61,13 +61,15 @@ public class Email {
 	}
 	
 	public Boolean Send() throws IOException {
-		Boolean bRV = false; //bRV stands for bool return value - only used to check if it was successful
+		Boolean bRV = true; //bRV stands for bool return value - only used to check if it was successful
 		
 		try {
 			Transport.send(emailMsg);
 			System.out.println("Email verschickt an: " + recipient);
 		} catch (Exception e) {
 			bRV = false;
+			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 		
 		return bRV;

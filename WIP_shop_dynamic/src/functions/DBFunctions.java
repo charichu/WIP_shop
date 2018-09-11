@@ -1,10 +1,14 @@
 package functions;
 
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import courseFunctions.Course;
 
 public class DBFunctions {
 	//our connection to access the database
@@ -51,10 +55,10 @@ public class DBFunctions {
 		//only allow insert to be created when the amount of values/columns is the same
 		if (columnNames.length == columnValues.length) {
 			String colNamesString = SeperateStrings(", ", columnNames);
-			String colValuesString = SeperateStrings(", ", columnValues);
+			String colValuesString = SeperateStrings("', '", columnValues);
 			
 			//build the actual string
-			rvString = String.format("INSERT INTO %s (%s) VALUES (%s)", tableName, colNamesString, colValuesString); 
+			rvString = String.format("INSERT INTO %s (%s) VALUES ('%s')", tableName, colNamesString, colValuesString); 
 		}
 		
 		return rvString;
@@ -83,5 +87,27 @@ public class DBFunctions {
 	
 	public static Boolean ContainsOnlyAllowedChars(String toCheck){
 		return !toCheck.contains(";");
+	}
+	public static ResultSet getCoursesbyCouseID(int[] courseIDs){
+		String sqlStatement = "Select * From courses Where courseID in (";
+		ResultSet rs;
+		if(courseIDs != null){
+			for (Integer integer : courseIDs) {
+				sqlStatement += integer+", ";
+			}
+			sqlStatement=sqlStatement.substring(0, sqlStatement.length()-1)+");";
+			try {
+				rs=dbCon.createStatement().executeQuery(sqlStatement);
+				return rs;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		else {
+			return null;
+		}
+		
+
 	}
 }
