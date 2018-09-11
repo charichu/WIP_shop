@@ -89,4 +89,12 @@
     <servlet-name>BookCourses</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/BookCourses</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ConfirmOrderCourses</servlet-name>
+    <servlet-class>cartFunctions.ConfirmOrderCourses</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmOrderCourses</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/ConfirmOrderCourses</url-pattern>
+  </servlet-mapping>
 </web-app>

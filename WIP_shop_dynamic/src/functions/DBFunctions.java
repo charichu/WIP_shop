@@ -55,10 +55,10 @@ public class DBFunctions {
 		//only allow insert to be created when the amount of values/columns is the same
 		if (columnNames.length == columnValues.length) {
 			String colNamesString = SeperateStrings(", ", columnNames);
-			String colValuesString = SeperateStrings(", ", columnValues);
+			String colValuesString = SeperateStrings("', '", columnValues);
 			
 			//build the actual string
-			rvString = String.format("INSERT INTO %s (%s) VALUES (%s)", tableName, colNamesString, colValuesString); 
+			rvString = String.format("INSERT INTO %s (%s) VALUES ('%s')", tableName, colNamesString, colValuesString); 
 		}
 		
 		return rvString;

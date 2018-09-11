@@ -47,7 +47,9 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("user");
-
+		String url = request.getHeader("referer");
+		
+		String urlShort = url.substring(url.lastIndexOf('/')+1);
 		Integer userId;
 		String password  = request.getParameter("pass"); 
 		String name  = "";
@@ -70,7 +72,7 @@ public class Login extends HttpServlet {
 		            	request.setAttribute("loginResultMessage", "Login ist fehlgeschlagen, es existiert kein User Accout zu dieser Adresse.");
 		            	userLoggedIn = false;
 		            	request.getSession().setAttribute("userLoggedIn", userLoggedIn);
-		            	request.getRequestDispatcher("home.jsp").forward(request, response);
+		            	request.getRequestDispatcher(urlShort).forward(request, response);
 		            	return;
 		            }
 		            else if (rs.getRow()>1) {
@@ -78,7 +80,7 @@ public class Login extends HttpServlet {
 		            	request.setAttribute("loginResultMessage", "Login ist fehlgeschlagen, es sind mehrere Accounts mit dieser E-Mail vorhanden.");
 		            	userLoggedIn = false;
 		            	request.getSession().setAttribute("userLoggedIn", userLoggedIn);
-		            	request.getRequestDispatcher("home.jsp").forward(request, response);
+		            	request.getRequestDispatcher(urlShort).forward(request, response);
 		            	return;
 		            }
 		            else{
@@ -102,14 +104,14 @@ public class Login extends HttpServlet {
 			            	request.getSession().setAttribute("userType", userType);
 			            	request.getSession().setAttribute("userName", name);
 			            	request.getSession().setAttribute("userId", userId);
-
+			            	request.getSession().setAttribute("email", email);
 			            	if(userType == 0){
 //					if user is admin go to adminpage
 				            	request.getRequestDispatcher("admin.jsp").forward(request, response);
 				            }
 				            else {
-//		    		if user is teacher or a normal user go to homepage
-				            	request.getRequestDispatcher("home.jsp").forward(request, response);
+//		    		if user is teacher or a normal user go to previous page
+				            	response.sendRedirect(url);
 							}
 			            }
 //			    password wrong, go to homepage with an error message
@@ -118,7 +120,9 @@ public class Login extends HttpServlet {
 			            	request.setAttribute("loginResultMessage", "Login ist fehlgeschlagen, falsches Passwort");
 			            	userLoggedIn = false;
 			            	request.getSession().setAttribute("userLoggedIn", userLoggedIn);
-			            	request.getRequestDispatcher("home.jsp").forward(request, response);
+			            	
+			            	
+			            	request.getRequestDispatcher(urlShort).forward(request, response);
 						}
 		            }
 		}

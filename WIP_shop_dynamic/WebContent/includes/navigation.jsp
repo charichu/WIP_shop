@@ -8,10 +8,10 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
 <%-- variable declaration and initialization --%>
 <%!		Boolean userLoggedIn;
-		Integer     userType;
-		HashMap<Integer, Integer> cart = new HashMap<Integer, Integer>();%>
+		Integer     userType;%>
 	<% 	
 		if(session.getAttribute("cart") == null){
+			HashMap<Integer, Integer> cart = new HashMap<Integer, Integer>();
 			session.setAttribute("cart", cart);
 		}
 		if(session.getAttribute("userLoggedIn") == null){
@@ -110,6 +110,7 @@
 				<input type="text" name="user" placeholder="E-Mail">
 				<input type="password" name="pass" placeholder="Password">
 				<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+				<input type="hidden" name="returnTo" value="<%=request.getRequestURI()%>">
 			</form>
 					
 				 <div class="login-help">

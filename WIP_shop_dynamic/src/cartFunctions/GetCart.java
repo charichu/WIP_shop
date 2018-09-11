@@ -48,18 +48,9 @@ public class GetCart extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// all shown rows as strings
-		String courseNumber = "";
-		String subject = "";
-		String topic = "";
-		String description = "";
-		String studentType = "";
-		String price = "";
-		String frequency = "";
-		String grade = "";
 		Course course;
-		String result="";
-		String targetSite = request.getParameter("targetSite");
 		String sqlStatement="";
+		Integer courseID;
 // Get the Cart from the session, if the cart is null set create a new Hashmap as cart
 		@SuppressWarnings("unchecked")
 		HashMap<Integer, Integer> cart = (request.getSession().getAttribute("cart")!=null)
@@ -89,29 +80,13 @@ public class GetCart extends HttpServlet {
 	            ResultSet rs = statement.executeQuery(sqlStatement);
 	            
 // fill the arraylist with rownames
-	            	courseNumber = "KursID";
-	            	subject = "Fach";
-	            	topic = "Thema";
-	            	description = "Beschreibung";
-	            	studentType = "Student/ Schüler";
-	            	price = "Preis";
-	            	frequency = "Frequenz";	
-	            	grade = "Jahrgangsstufe";	
-	            	course = new Course(courseNumber, subject, topic, description, studentType, price, frequency,grade);
+	            	course = new Course();
 	            	cartList.add(course);
 	            	
 // fill the arraylist with the return of the sql-statement
 	            while (rs.next()){
-	            	
-	            	courseNumber = rs.getString("courseid");
-	            	subject = rs.getString("subject");
-	            	topic = rs.getString("topic");
-	            	description = rs.getString("description");
-	            	studentType = rs.getString("studentType");
-	            	price = rs.getString("pricePerHour");
-	            	frequency = rs.getString("frequency");
-	            	grade = rs.getString("grade");
-	            	course = new Course(courseNumber, subject, topic, description, studentType, price, frequency, grade);
+	            	courseID=rs.getInt("courseID");
+	            	course = new Course(courseID);
 	            	
 	            	cartList.add(course);
 	            }

@@ -56,6 +56,7 @@
 	
 				</tr>
 				<% 		bookingList.remove(0);
+						session.setAttribute("bookingList", bookingList);
 						for(Course course:bookingList){
 						number=cart.get(Integer.parseInt(course.getCourseNumber()));%>
 				
@@ -81,7 +82,8 @@
 				<tr>
 					<td colspan="9"></td>
 					<th colspan="1">Summe:</td>
-					<td><%out.println(request.getAttribute("sum")); %></td>
+					<td><%out.println(request.getAttribute("sum"));
+						  session.setAttribute("sum", request.getAttribute("sum"));%></td>
 				</tr>
 			</table>
 			<%}
@@ -91,7 +93,12 @@
 			}%>
 		</div>
 		<div class="col-4">
-			<form id="" action="">
+			<br>
+			<div id="orderDescription">
+				Nachdem Sie die Bestellung bestätigt haben, erhalten Sie eine E-Mail mit einer Rechnung als Anhang.
+			</div>
+			<br>
+			<form id="ConfirmOrderCourses" action="ConfirmOrderCourses" method="post">
 				<input type="submit" value="Bestellung bestätigen" class="nav-link">
 			</form>
 		</div>

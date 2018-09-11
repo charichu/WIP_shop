@@ -60,7 +60,7 @@ public class PutInCart extends HttpServlet {
 		else {
 			request.setAttribute("errorMessage", "Dieser Kurs wurde schon in den Warenkorb gelegt");
 			request.setAttribute("courseID", courseID);
-			request.getRequestDispatcher("DisplayDetails").forward(request, response);
+			request.getRequestDispatcher("DisplayCourseDetails").forward(request, response);
 		}
 		
 	}

@@ -108,6 +108,7 @@ public class CreateCourse extends HttpServlet {
 	        	ps.setNull(11, java.sql.Types.INTEGER);
 			}
 	        ps.executeUpdate();
+	        myConn.close();
 	        request.getRequestDispatcher("/MeineKurse.jsp").forward(request, response);
 		} catch (Exception e) {
 			System.out.println("error "+e.getMessage());

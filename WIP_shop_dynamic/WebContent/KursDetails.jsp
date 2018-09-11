@@ -21,6 +21,9 @@
 		Hashtable<String, String> courseDetails=(request.getAttribute("courseDetails") != null)?
 												(Hashtable<String, String>)request.getAttribute("courseDetails")
 												:null;	
+		@SuppressWarnings("unchecked")
+		HashMap<Integer, Integer> cart = (session.getAttribute("cart")!=null)?
+										 (HashMap<Integer, Integer>)session.getAttribute("cart"):new HashMap<Integer, Integer>();
  %>
 <!-- Course Details -->
 <div class="container-fluid padding">
@@ -58,14 +61,21 @@
 			<%} %>
 		</div>
 		<div class="col-lg-4 col-md-4 col-s-4">
-			<%if(courseDetails!=null&&(request.getAttribute("courseID")!=null)?(Integer)request.getAttribute("courseID")!=1:true){ %>
-				<form action="PutInCart" method="get">
-					<input type="text" name="numberOfCourse" placeholder="Anzahl der Treffen" pattern="[0-9]{1,}" required="required" title="Bitte geben Sie eine Anzahl ein">
-					<input type="submit" id="subBuyCourse" value="In den Warenkorb legen">
-					<input type="hidden" id="courseID" name="courseID" value="<%=courseDetails.get("courseID")%>">
-					<input type="hidden" id="targetSite" name="targetSite" value="/Kursangebote.jsp">
-				</form>
-			<%} %>
+			<%if(courseDetails!=null&&(request.getAttribute("courseID")!=null)?(Integer)request.getAttribute("courseID")!=1:true){ 
+				if(!cart.containsKey((Integer.parseInt(courseDetails.get("courseID"))))){%>
+					<form action="PutInCart" method="get">
+						<input type="text" name="numberOfCourse" placeholder="Anzahl der Treffen" pattern="[0-9]{1,}" required="required" title="Bitte geben Sie eine Anzahl ein">
+						<input type="submit" id="subBuyCourse" value="In den Warenkorb legen">
+						<input type="hidden" id="courseID" name="courseID" value="<%=courseDetails.get("courseID")%>">
+						<input type="hidden" id="targetSite" name="targetSite" value="/Kursangebote.jsp">
+					</form>
+			<%  }
+				else{%>
+				<dir>Dieser Kurs liegt schon im Warenkorb</dir>
+				<input type="text" name="numberOfCourse" placeholder="Anzahl der Treffen" pattern="[0-9]{1,}" disabled="disabled" title="Bitte geben Sie eine Anzahl ein">
+				<input type="submit" id="subBuyCourse" disabled="disabled" value="In den Warenkorb legen">
+			<%  }
+			  }%>
 			<img class="img-fluid" alt="vorschauBild" src="img/nachhilfesv.jpg">
 		</div>
 	</div>
