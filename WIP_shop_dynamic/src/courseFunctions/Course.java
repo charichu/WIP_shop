@@ -27,6 +27,7 @@ public class Course {
 	private int userID;
 	private String grade;
 	private Double pricePerMeeting;
+	private boolean active;
 	
 	public Course(Integer courseID){
 		try {
@@ -44,6 +45,7 @@ public class Course {
         		this.addressID = rs.getInt("addressID");
         		this.userID = rs.getInt("userID");
         		this.grade = rs.getString("grade");
+        		this.active = rs.getBoolean("active");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -202,6 +204,12 @@ public class Course {
 	}
 	public void setDurationPerMeetingDescription(String durationPerMeetingDescription) {
 		this.durationPerMeetingDescription = durationPerMeetingDescription;
+	}
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	public Double getPricePerMeeting(){
 		pricePerMeeting=Integer.parseInt(pricePerHour)*(durationPerMeeting/60);

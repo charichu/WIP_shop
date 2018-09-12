@@ -23,7 +23,7 @@ $(document).ready(function () {
 		
 		$("#txtEmail").prop("disabled", false);
 		$("#txtLastName").prop("disabled", false);
-		$("#qualificationProfile").prop("disabled", false);
+		$("#txtQualificationProfile").prop("disabled", false);
 		$("#txtStreetHousenumber").prop("disabled", false);
 		$("#txtPlz").prop("disabled", false);
 		$("#txtCity").prop("disabled", false);
@@ -72,7 +72,7 @@ $(document).ready(function () {
 					<tr>	
 						<%if((Integer)session.getAttribute("userType")==1){ 
 							HashMap<String,String> address = currentUser.getAddress(); %>
-							<td>Qualifikations Profil</td><td><textarea rows="5" cols="40" id="qualificationProfile" name="qualificationProfile" form="" disabled="disabled"><%=currentUser.getQualificationProfile()!=null?currentUser.getQualificationProfile():""%></textarea></td>
+							<td>Qualifikations Profil</td><td><textarea rows="5" cols="40" id="txtQualificationProfile" name="txtQualificationProfile" disabled="disabled"><%=currentUser.getQualificationProfile()!=null?currentUser.getQualificationProfile():""%></textarea></td>
 							</tr>
 							<tr>
 							<td>Straße/ Nr:</td><td><input id="txtStreetHousenumber" name="txtStreetHousenumber" type="text" value="<%=address.get("street")+" "+address.get("houseNumber")%>" disabled="disabled"></td>

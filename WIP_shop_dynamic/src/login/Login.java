@@ -98,10 +98,10 @@ public class Login extends HttpServlet {
 			            while (rs.next());
 //			password control
 //	            encrypt password
-//			            byte[] saltByte = HashedString.toByteArray(HashedString.getSaltFromHashedString(tempPass));
-//			            HashedString hPassword = new HashedString(password,saltByte);
-//			            String encryptedPassword = hPassword.toString();
-			            if(password.equals(tempPass) ){
+			            byte[] saltByte = HashedString.toByteArray(HashedString.getSaltFromHashedString(tempPass));
+			            HashedString hPassword = new HashedString(password,saltByte);
+			            String encryptedPassword = hPassword.toString();
+			            if(password.equals(encryptedPassword) ){
 //				password right, set the session variables to be logged in
 			            	userLoggedIn = true;
 			            	request.getSession().setAttribute("userLoggedIn", userLoggedIn);

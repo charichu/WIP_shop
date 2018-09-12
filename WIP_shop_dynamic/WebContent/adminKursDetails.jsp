@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<div><jsp:include page="includes/navigation.jsp"/></div>
+<div><jsp:include page="includes/adminNavigation.jsp"/></div>
 
 <%-- Get variable from Servlet; with controll if null --%>
 <%		@SuppressWarnings("unchecked")
@@ -60,22 +60,6 @@
 			<%} %>
 		</div>
 		<div class="col-lg-4 col-md-4 col-s-4">
-			<%if(courseDetails!=null&&(session.getAttribute("userType")!=null)?(Integer)session.getAttribute("userType")!=1:true){ 
-				if(!cart.containsKey((Integer.parseInt(courseDetails.get("courseID"))))){%>
-					<form action="PutInCart" method="get">
-						<input type="text" name="numberOfCourse" placeholder="Anzahl der Treffen" pattern="[0-9]{1,}" required="required" title="Bitte geben Sie eine Anzahl ein">
-						<input type="submit" id="subBuyCourse" value="In den Warenkorb legen">
-						<input type="hidden" id="courseID" name="courseID" value="<%=courseDetails.get("courseID")%>">
-						<input type="hidden" id="targetSite" name="targetSite" value="/Kursangebote.jsp">
-					</form>
-			<%  }
-				else{%>
-				<dir>Dieser Kurs liegt schon im Warenkorb</dir>
-				<input type="text" name="numberOfCourse" placeholder="Anzahl der Treffen" pattern="[0-9]{1,}" disabled="disabled" title="Bitte geben Sie eine Anzahl ein">
-				<input type="submit" id="subBuyCourse" disabled="disabled" value="In den Warenkorb legen">
-			<%  }
-			  }%>
-			<img class="img-fluid" alt="vorschauBild" src="img/nachhilfesv.jpg">
 		</div>
 	</div>
 </div>
