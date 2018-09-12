@@ -1,92 +1,150 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
+<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
+<%@ page import = "courseFunctions.Course" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Kursangebote</title>
 	<!-- Imports -->
 	<div><jsp:include page="includes/imports.jsp"/></div>
+	<div><jsp:include page="includes/scripts.jsp"/></div>
 </head>
 <body>
 
 <!-- Navigation and Login -->
 <div><jsp:include page="includes/navigation.jsp"/></div>
-
-<!--- Image Slider -->
-
-<div id="slides" class="carousel slide" data-ride="carousel">
-	<!-- links on the bottom of the slider; can´t be seen without images-->
-	<ul class="carousel-indicators">
-		<li data-target="#slides" data-slide-to="0" class="active"></li>
-		<li data-target="#slides" data-slide-to="1"></li>
-		<li data-target="#slides" data-slide-to="2"></li>
-	</ul>
-	<!-- Images in the slider; needs one active -->
-	<div class="carousel-inner">
-		<div class="carousel-item active">
-			<img src="img/background.png" class="active">
-			<!--Content on the slider -->
-			<div class="carousel-caption">
-				<h1 class="display-2">Tutor24</h1>
-				<h3>Dummy Website</h3>
-				<button type="button" class="btn-outline-light btn-lg">Demo</button>
-				<button type="button" class="btn-primary btn-lg">Demo2</button>
-			</div>
-		</div>
-		<div class="carousel-item">
-			<img src="img/background2.png">
-		</div>
-		<div class="carousel-item">
-			<img src="img/background3.png">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+	<div class="container-fluid">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		
+		<!-- id and class for the navbar -->
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			
+			<!-- ml pushes the navigation to the right side when it is in full width -->
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<form action="">
+						<input type="submit" name="dummy" value="Dummy">
+					</form>
+				</li>	
+				<li class="nav-item">
+					<form action="">
+						<input type="submit" name="dummy" value="Dummy">
+					</form>
+				</li>	
+				<li class="nav-item">
+					<form action="">
+						<input type="submit" name="dummy" value="Dummy">
+					</form>
+				</li>	
+			</ul>
 		</div>
 	</div>
-</div>
+</nav>
 
-<!--- Two Column Section -->
+<!--- Show Courses -->
 
 <div class="container-fluid padding">
-	<div class="row padding">
-		<!-- first column -->
-		<div class="col-lg-6">
-			<h2>Just LolZ</h2>
-			<p>Paragraph 1</p>
-			<p>Paragraph 2</p>
-			<br>
-			<a href="#" class="btn btn-primary">Testbutton3</a>
-		</div>
-		<!-- second column -->
-		<div class="col-lg-6">
-			<img src="img/desk.png" class="img-fluid">
+	<div class="row welcome text-center padding">
+		<div class="col-12">
+			<% if(request.getAttribute("successMessage")!=null){%>
+				<div id="alert_message" class="alert alert-success" role="alert">
+				  <% out.println(request.getAttribute("successMessage")); %>
+				</div>
+			<%	}%>
+			<h1 class="display-4">Kursangebote</h1>
+			<form action="GetCourses" method="post">			
+				<table>
+					<tr>
+						<td colspan="6">
+							Filteroptionen
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<select name="ddlSubject">
+								<option></option>
+								<option value="englisch"		>Englisch</option>
+								<option value="deutsch"			>Deutsch</option>
+								<option value="mathe"			>Mathematik</option>
+								<option value="französisch"		>Französisch</option>
+								<option value="physik"			>Physik</option>
+								<option value="chemie"			>Chemie</option>
+								<option value="biologie"		>Biologie</option>
+							</select>
+						</td>
+						<td>
+							<input type="number" name="txtPrice" placeholder="Preis:">
+						</td>
+						<td>
+							<input type="number" name="txtCapacity" placeholder="Kursgröße:">
+						</td>
+						<td>
+							<select name="ddlFrequency">
+								<option></option>
+							<option value="wöchentlich"			>wöchentlich</option>
+							<option value="monatlich"			>monatlich</option>
+							</select>
+						</td>
+						
+						<td>
+							<input type="number" name="txtDuration" placeholder="Dauer:">
+						</td>
+						<td>
+							<input type="submit" name="btnFilter" placeholder="Anwenden">
+							<input type="hidden" name="filteredSite" value="Kursangebote.jsp">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							<input type="search" name="srhCourses" placeholder="Suchen">
+						</td>
+					</tr>
+				</table>
+			</form>
+			<%
+			ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("courses");
+			if(list != null){
+			%>
+			<%-- display the products in the table --%>
+			<table>
+				<tr>
+					<th></th>
+					<th><%out.println(list.get(0).getCourseNumber()); %></th>
+					<th><%out.println(list.get(0).getSubject()); %></th>
+					<th><%out.println(list.get(0).getTopic()); %></th>
+					<th><%out.println(list.get(0).getGrade()); %></th>
+					<th><%out.println(list.get(0).getDescription()); %></th>
+					<th><%out.println(list.get(0).getFrequency()); %></th>
+					<th><%out.println(list.get(0).getStudentType()); %></th>
+					<th><%out.println(list.get(0).getPricePerHour()); %></th>
+	
+				</tr>
+				<% 		list.remove(0);
+						for(Course course:list){%>
+				
+				<tr>
+					
+						<td><input type="checkbox" name="chbSelectCourse" value="chb<%=course.getCourseNumber()%>"></td>
+						<td><%out.println(course.getCourseNumber()); %></td>
+						<td><%out.println(course.getSubject()); %></td>
+						<td><%out.println(course.getTopic()); %></td>
+						<td><%out.println(course.getGrade()); %></td>
+						<td><%out.println(course.getDescription()); %></td>
+						<td><%out.println(course.getFrequency()); %></td>
+						<td><%out.println(course.getStudentType()); %></td>
+						<td><%out.println(course.getPricePerHour()); %></td>
+						<td><a class="nav-link" href="DisplayCourseDetails?courseID=<%=course.getCourseNumber()%>">Details</a></td>
+				</tr>
+				<%  	}
+					}%>
+			</table>
 		</div>
 	</div>
-	<!-- horizontal rule -->
-	<hr class="my-4">
 </div>	
-
-<!--- Hidden (Gif) Section -->
-
-<button class="hiddensection" data-toggle="collapse" data-target="#secrets">Don´t Dead open inside</button>
-
-<div id="secrets" class="collapse">
-	<div class="container-fluid padding">
-		<div class="row text-center">
-			<!-- four columns to a single column -->
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/panda.gif">
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/poo.gif">
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/unicorn.gif">
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/chicken.gif">
-			</div>
-		</div>
-	</div>		
-</div>
-
 <!--- Meet the team -->
 
 <div class="container-fluid padding">
@@ -106,7 +164,7 @@
 				<img class="card-img-top" src="img/team1.png">
 				<div class="card-body">
 					<h4 class="card-title">Thomas</h4>
-					<p class="card-text">Product Owner</p>
+					<p class="card-text">Developer</p>
 					<a href="#" class="btn btn-outline-secondary">Check Profile</a>
 				</div>
 			</div>			
@@ -126,7 +184,7 @@
 				<img class="card-img-top" src="img/team3.png">
 				<div class="card-body">
 					<h4 class="card-title">Marcel</h4>
-					<p class="card-text">Developer</p>
+					<p class="card-text">Product Owner</p>
 					<a href="#" class="btn btn-outline-secondary">Check Profile</a>
 				</div>
 			</div>			

@@ -11,7 +11,7 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>GetCourses</servlet-name>
-    <servlet-class>functions.GetCourses</servlet-class>
+    <servlet-class>courseFunctions.GetCourses</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GetCourses</servlet-name>
@@ -27,7 +27,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Login</servlet-name>
-    <servlet-class>functions.Login</servlet-class>
+    <servlet-class>Login.Login</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
@@ -35,19 +35,82 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Logout</servlet-name>
-    <servlet-class>functions.Logout</servlet-class>
+    <servlet-class>Login.Logout</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Logout</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/Logout</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>CreateCourse</servlet-name>
-    <servlet-class>functions.CreateCourse</servlet-class>
+    <servlet-class>courseFunctions.CreateCourse</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CreateCourse</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/CeateCourse</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DisplayCourseDetails</servlet-name>
+    <servlet-class>courseFunctions.DisplayCourseDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayCourseDetails</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/DisplayCourseDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PutInCart</servlet-name>
+    <servlet-class>cartFunctions.PutInCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PutInCart</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/PutInCart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GetCart</servlet-name>
+    <servlet-class>cartFunctions.GetCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCart</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/GetCart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteCourseFromCart</servlet-name>
+    <servlet-class>cartFunctions.DeleteCourseFromCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCourseFromCart</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/DeleteCourseFromCart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BookCourses</servlet-name>
+    <servlet-class>cartFunctions.BookCourses</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookCourses</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/BookCourses</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ConfirmOrderCourses</servlet-name>
+    <servlet-class>cartFunctions.ConfirmOrderCourses</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmOrderCourses</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/ConfirmOrderCourses</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GetProfile</servlet-name>
+    <servlet-class>profile.GetProfile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetProfile</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/GetProfile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateProfile</servlet-name>
+    <servlet-class>profile.UpdateProfile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateProfile</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/UpdateProfile</url-pattern>
   </servlet-mapping>
 </web-app>

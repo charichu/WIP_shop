@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.io.*,java.util.*,java.sql.*"%>
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
-<%@ page import = "functions.Course" %>
+<%@ page import = "courseFunctions.Course" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,25 +29,28 @@
 			<table>
 			<tr>
 				<th></th>
-				<th><%out.println(list.get(0).getCouseNumber()); %></th>
-				<th><%out.println(list.get(0).getDescription()); %></th>
-				<th><%out.println(list.get(0).getFrequency()); %></th>
-				<th><%out.println(list.get(0).getPrice()); %></th>
-				<th><%out.println(list.get(0).getStudentType()); %></th>
+				<th><%out.println(list.get(0).getCourseNumber()); %></th>
 				<th><%out.println(list.get(0).getSubject()); %></th>
 				<th><%out.println(list.get(0).getTopic()); %></th>
+				<th><%out.println(list.get(0).getGrade()); %></th>
+				<th><%out.println(list.get(0).getDescription()); %></th>
+				<th><%out.println(list.get(0).getFrequency()); %></th>
+				<th><%out.println(list.get(0).getStudentType()); %></th>
+				<th><%out.println(list.get(0).getPricePerHour()); %></th>
+
 			</tr>
 			<% 		list.remove(0);
 					for(Course course:list){%>
 			<tr>
-				<td><input type="checkbox" id="chb<%=course.getCouseNumber()%>"></td>
-				<td><%out.println(course.getCouseNumber()); %></td>
-				<td><%out.println(course.getDescription()); %></td>
-				<td><%out.println(course.getFrequency()); %></td>
-				<td><%out.println(course.getPrice()); %></td>
-				<td><%out.println(course.getStudentType()); %></td>
+				<td><input type="checkbox" name="chbSelectCourse" value="chb<%=course.getCourseNumber()%>"></td>
+				<td><%out.println(course.getCourseNumber()); %></td>
 				<td><%out.println(course.getSubject()); %></td>
 				<td><%out.println(course.getTopic()); %></td>
+				<td><%out.println(list.get(0).getGrade()); %></td>
+				<td><%out.println(course.getDescription()); %></td>
+				<td><%out.println(course.getFrequency()); %></td>
+				<td><%out.println(course.getStudentType()); %></td>
+				<td><%out.println(course.getPricePerHour()); %></td>
 			</tr>
 			<%  	}
 				}%>
@@ -60,7 +63,7 @@
 			<table>
 				<tr>
 					<td>
-						<form  action="" method="get">
+						<form  action="CreateCourse" method="get">
 							<input type="submit" class="nav-link" id = "createCourse" value="Neuen Kurs erstellen">
 						</form>
 					</td>

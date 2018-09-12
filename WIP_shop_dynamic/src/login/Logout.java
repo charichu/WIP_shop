@@ -41,7 +41,10 @@ public class Logout extends HttpServlet {
 		request.getSession().removeAttribute("userLoggedIn");
 		request.getSession().removeAttribute("userType");
 		request.getSession().removeAttribute("userName");
+		request.getSession().removeAttribute("email");
 		request.getSession().removeAttribute("userId");
+		request.getSession().removeAttribute("cart");
+
 		
 //      go to homepage when logged out
 		

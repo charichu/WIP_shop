@@ -39,10 +39,6 @@
 					<td><input type="text" name="txtSubject" placeholder="Fach" required="required"></td>
 				</tr>
 				<tr>
-					<td>Thema:*</td>
-					<td><input type="text" name="txtTopic" placeholder="Thema" required="required"></td>
-				</tr>
-				<tr>
 					<td>Jahrgangsstufe:*</td>
 					<td><input type="number" name="txtGrade" placeholder="Jahrgang" required="required" pattern="[0-9]{1-2}"></td>
 				</tr>
@@ -59,16 +55,16 @@
 					<td><input type="text" name="txtPricePerHour" placeholder="Preis" required="required" pattern="[0-9]{1,}" title="Bitte einen richtigen Preis angeben"></td>
 				</tr>
 				<tr>
-					<td>Kapazität eines Kurses:</td>
-					<td><input type="text" name="txtCapacity" placeholder="Kapazität"></td>
+					<td>Kapazität eines Kurses:*</td>
+					<td><input type="text" name="txtCapacity" placeholder="Kapazität" required="required"></td>
 				</tr>
 				<tr>
 					<td>Frequenz:</td>
 					<td><input type="text" name="txtFrequency" placeholder="Frequenz"></td>
 				</tr>
 				<tr>
-					<td>Dauer eine Nachhilfe(in Stunden):</td>
-					<td><input type="text" name="txtDurationPerMeeting" placeholder="Dauer" pattern="[0-9]"></td>
+					<td>Dauer eine Nachhilfe(in Minuten):*</td>
+					<td><input type="text" name="txtDurationPerMeeting" placeholder="Dauer" pattern="[0-9]{1,}" required="required" title="Bitte geben Sie eine Minutenzahl ein."></td>
 				</tr>
 				<tr>
 					<td>Adresse:*</td>
