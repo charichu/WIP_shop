@@ -18,7 +18,7 @@
 	<div id = "wrapper" class="row">
 		
 		<!-- admin content -->
-		<div id = "adminContent" class="col-8">
+		<div id = "adminContent" class="col-10">
 		
 		<%--get attribute from request, which is set in the servlet --%>
 		<%
@@ -28,7 +28,6 @@
 		 <%-- display the products in the table --%>
 			<table>
 			<tr>
-				<th></th>
 				<th><%out.println(list.get(0).getCourseNumber()); %></th>
 				<th><%out.println(list.get(0).getSubject()); %></th>
 				<th><%out.println(list.get(0).getTopic()); %></th>
@@ -42,7 +41,6 @@
 			<% 		list.remove(0);
 					for(Course course:list){%>
 			<tr>
-				<td><input type="checkbox" name="chbSelectCourse" value="chb<%=course.getCourseNumber()%>"></td>
 				<td><%out.println(course.getCourseNumber()); %></td>
 				<td><%out.println(course.getSubject()); %></td>
 				<td><%out.println(course.getTopic()); %></td>
@@ -51,6 +49,9 @@
 				<td><%out.println(course.getFrequency()); %></td>
 				<td><%out.println(course.getStudentType()); %></td>
 				<td><%out.println(course.getPricePerHour()); %></td>
+				<td><a class="nav-link" href="DisplayCourseDetailsAdmin?courseID=<%=course.getCourseNumber()%>">Details</a></td>
+				<td><a class="nav-link" href="">Bearbeiten</a></td>
+				<td><a class="nav-link" href="">Löschen</a></td>
 			</tr>
 			<%  	}
 				}%>
@@ -59,36 +60,12 @@
 		</div>
 		
 		<!-- admin functions -->
-		<div id="adminFunctions" class="col-4">
+		<div id="adminFunctions" class="col-2">
 			<table>
 				<tr>
 					<td>
-						<form  action="CreateCourse" method="get">
-							<input type="submit" class="nav-link" id = "createCourse" value="Neuen Kurs erstellen">
-						</form>
+						<a href="KursHinzufuegen.jsp">Neuen Kurs erstellen</a>
 					</td>
-				</tr>
-				<tr>
-					<td>
-						<form  action="" method="get">
-							<input type="submit" class="nav-link" id = "changeCourse" value="Ändern">
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<form  action="" method="get">
-							<input type="submit" class="nav-link" id = "showCourse" value="Anzeigen">
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<form  action="" method="get">
-							<input type="submit" class="nav-link" id = "deleteCourse" value="Löschen">
-						</form>
-					</td>
-					
 				</tr>
 			</table>
 		</div>

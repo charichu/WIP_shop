@@ -121,4 +121,12 @@
     <servlet-name>GetMyCourses</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/GetMyCourses</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <servlet-name>DisplayCourseDetailsAdmin</servlet-name>
+    <servlet-class>adminFunctions.DisplayCourseDetailsAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayCourseDetailsAdmin</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/DisplayCourseDetailsAdmin</url-pattern>
+  </servlet-mapping>
 </web-app>
