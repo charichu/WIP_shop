@@ -48,11 +48,11 @@ public class Email {
 			if(!Functions_Std.isStringNullOrEmpty(attachmentLocation)){
 				DataSource dSource = new FileDataSource(attachmentLocation);
 				mailBody = new MimeBodyPart();
-				DataSource source = new FileDataSource(attachmentLocation);
-				mailBody.setDataHandler(new DataHandler(source));
+				mailBody.setDataHandler(new DataHandler(dSource));
 				mailBody.setFileName(attachmentLocation);
 				mailMulti.addBodyPart(mailBody);
 			}
+			mailMsg.setContent(mailMulti);
 			emailMsg = mailMsg;
 			recipient = to;
 		} catch (Exception e) {
@@ -60,7 +60,7 @@ public class Email {
 		}
 	}
 	
-	public Boolean Send() throws IOException {
+	public Boolean send() throws IOException {
 		Boolean bRV = false; //bRV stands for bool return value - only used to check if it was successful
 		
 		try {
