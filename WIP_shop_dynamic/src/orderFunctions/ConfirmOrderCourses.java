@@ -101,6 +101,7 @@ public class ConfirmOrderCourses extends HttpServlet {
 			        				  "alles weitere zu unseren Zahlungsbedingungen finden Sie in unseren AGB's"+
 			        				  "Ihr Team von Tutor24";
 			        if(Email.IsValid(currentUser.getEmail())){
+			        	//Add path to mail attachment C//xampp//invoice_orderID
 			        	Email orderMail = new Email(currentUser.getEmail(), "Tutor24: Rechnung für Bestellung "+orderID.toString(), mailText,"");
 			        	if(orderMail.Send()){
 			        		request.setAttribute("successMessage", "Die Bestellung wurde erfolgreich abgeschlossen.");

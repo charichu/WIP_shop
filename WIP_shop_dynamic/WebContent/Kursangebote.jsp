@@ -76,52 +76,54 @@
 				</table>
 			</form>
 			
-		<div class="container">
-			<div class="well well-sm">
-				<strong>Gefundene Kurse</strong>				
-			</div>
-			<!-- Container where all the products end up -->
-			<div  id="divProducts" class="row grid-group">
-			<%
-			ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("courses");
-			if(list != null){
-			%>
-			<%-- display the products in the table --%>
-				<% 		list.remove(0);
-						for(Course course:list){%>
-								
-				<div class="item col-xs-6 col-lg-6 col-xl-4">
-				<!-- Product picture -->
-					<div class="thumbnail">
-						<img class="group grid-group-image" src="img/thumbnail.png" alt="" />
-						<div class="caption">
-							<!-- Product title -->
-							<h4 class="group inner grid-group-item-heading">
-								<%out.println(course.getTopic()); %>
-							</h4>
-								<!-- Product Tooltip -->
-								<p class="group-inner grid-group-item-text">
-									<%out.println(course.getDescription().substring(0, course.getDescription().length()<50?course.getDescription().length():50) + "..."); %>
-								</p>
-							<div class="row">
-								<div class="col-xs-12 col-md-6">
-								<!-- Product Price -->
-								<p class="lead">
-									<%out.println(course.getPricePerHour() + ",00 €"); %>
-								</p>
+				<div class="container">
+					<div class="well well-sm">
+						<strong>Gefundene Kurse</strong>				
+					</div>
+					<!-- Container where all the products end up -->
+					<div  id="divProducts" class="row grid-group">
+						<%
+						ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("courses");
+						if(list != null){
+						%>
+						<%-- display the products in the table --%>
+							<% 		list.remove(0);
+									for(Course course:list){%>
+											
+							<div class="item col-xs-6 col-lg-6 col-xl-4">
+							<!-- Product picture -->
+								<div class="thumbnail">
+									<img class="group grid-group-image" src="img/thumbnail.png" alt="" />
+									<div class="caption">
+										<!-- Product title -->
+										<h4 class="group inner grid-group-item-heading">
+											<%out.println(course.getTopic()); %>
+										</h4>
+											<!-- Product Tooltip -->
+											<p class="group-inner grid-group-item-text">
+												<%out.println(course.getDescription().substring(0, course.getDescription().length()<50?course.getDescription().length():50) + "..."); %>
+											</p>
+										<div class="row">
+											<div class="col-xs-12 col-md-6">
+											<!-- Product Price -->
+											<p class="lead">
+												<%out.println(course.getPricePerHour() + ",00 €"); %>
+											</p>
+										</div>
+									<!-- Jump to Detailed View -->
+									<div class="col-xs-12 col-md-6">
+										<a class="btn btn-success" href="DisplayCourseDetails?=<%=course.getCourseNumber()%>">Details</a>	
+									</div>
+								</div>
 							</div>
-						<!-- Jump to Detailed View -->
-						<div class="col-xs-12 col-md-6">
-							<a class="btn btn-success" href="DisplayDetails?courseID=<%=course.getCourseNumber()%>">Details</a>	
 						</div>
 					</div>
+					<%  	}
+						}%>
 				</div>
 			</div>
 		</div>
-		<%  	}
-			}%>
 	</div>
-</div>
 </div>
 
 <!--- Footer -->
