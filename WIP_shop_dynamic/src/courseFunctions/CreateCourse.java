@@ -35,6 +35,7 @@ public class CreateCourse extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String  subject=null, topic=null, description=null,
 				studentType=null, frequency=null, streetHouseNumber=null, city=null, sqlStatement=null;
 		Double  pricePerHour=null, durationPerMeeting=null;
@@ -109,7 +110,7 @@ public class CreateCourse extends HttpServlet {
 			}
 	        ps.executeUpdate();
 	        myConn.close();
-	        request.getRequestDispatcher("/MeineKurse.jsp").forward(request, response);
+	        request.getRequestDispatcher("GetMyCourses").forward(request, response);
 		} catch (Exception e) {
 			System.out.println("error "+e.getMessage());
 			for(StackTraceElement elem : e.getStackTrace()){

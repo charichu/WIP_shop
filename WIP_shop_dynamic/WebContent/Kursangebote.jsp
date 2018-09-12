@@ -100,7 +100,7 @@
 					</tr>
 					<tr>
 						<td colspan="6">
-							<input type="search" name="srhCourses" placeholder="Suchen">
+							<input type8="search" name="srhCourses" placeholder="Suchen">
 						</td>
 					</tr>
 				</table>

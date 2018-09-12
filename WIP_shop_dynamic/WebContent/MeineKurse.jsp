@@ -19,39 +19,41 @@
 	<div class="row">
 		<div class="col-8">
 			<%
-			@SuppressWarnings("unchecked")
-			ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("courses");
-			if(!(list == null)){
-			 %>
-			 <%-- display the products in the table --%>
-				<table>
+			ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("myCourses");
+			if(list != null){
+			%>
+			<%-- display the products in the table --%>
+			<table>
 				<tr>
-					<th></th>
 					<th><%out.println(list.get(0).getCourseNumber()); %></th>
+					<th><%out.println(list.get(0).getSubject()); %></th>
+					<th><%out.println(list.get(0).getGrade()); %></th>
 					<th><%out.println(list.get(0).getDescription()); %></th>
 					<th><%out.println(list.get(0).getFrequency()); %></th>
-					<th><%out.println(list.get(0).getPricePerHour()); %></th>
 					<th><%out.println(list.get(0).getStudentType()); %></th>
-					<th><%out.println(list.get(0).getSubject()); %></th>
-					<th><%out.println(list.get(0).getTopic()); %></th>
+					<th><%out.println(list.get(0).getPricePerHour()); %></th>
+	
 				</tr>
 				<% 		list.remove(0);
 						for(Course course:list){%>
+				
 				<tr>
-					<td><input type="checkbox" id="chb<%=course.getCourseNumber()%>"></td>
-					<td><%out.println(course.getCourseNumber()); %></td>
-					<td><%out.println(course.getDescription()); %></td>
-					<td><%out.println(course.getFrequency()); %></td>
-					<td><%out.println(course.getPricePerHour()); %></td>
-					<td><%out.println(course.getStudentType()); %></td>
-					<td><%out.println(course.getSubject()); %></td>
-					<td><%out.println(course.getTopic()); %></td>
+					
+						<td><%out.println(course.getCourseNumber()); %></td>
+						<td><%out.println(course.getSubject()); %></td>
+						<td><%out.println(course.getGrade()); %></td>
+						<td><%out.println(course.getDescription()); %></td>
+						<td><%out.println(course.getFrequency()); %></td>
+						<td><%out.println(course.getStudentType()); %></td>
+						<td><%out.println(course.getPricePerHour()); %></td>
+						<td><a class="nav-link" href="DisplayCourseDetails?courseID=<%=course.getCourseNumber()%>">Details</a></td>
 				</tr>
 				<%  	}
 					}%>
+			</table>
 		</div>
 		<div class="col-4">
-			<a href="KursHinzufuegen.jsp" class="col-2 nav-link">Einen Kurs hinzufügen</a>
+			<a href="KursHinzufuegen.jsp" class="btn btn-secondary">Einen Kurs hinzufügen</a>
 		</div>
 	</div>
 </div>	
