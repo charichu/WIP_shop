@@ -19,25 +19,25 @@
 		<form action="registration" method="post">
 			<!-- Future Login Data -->
 			<p2 class="help-block">Login-Daten: </p2>
-				<input type="text" name="txtUsername" placeholder="Username">
-				<input type="password" name="txtPassword" placeholder="Password, keine &bdquo;&ldquo; oder ;">
+				<input type="text" name="txtUsername" placeholder="Username" required="required">
+				<input type="password" name="txtPassword" placeholder="Password, keine &bdquo;&ldquo; oder ;" required="required">
 				<!-- checked out due to placeholder text <p class="help-block">Alle Zeichen außer " und ;.</p> -->
 			<!-- User Info -->
 			<p2 class="help-block">User-Daten: </p2>
-				<input type="text" name="txtEmail" placeholder="E-Mailadresse">
-				<input type="text" name="txtLastName" placeholder="Nachname">
-				<input type="text" name="txtFirstName" placeholder="Vorname">
-				<input type="text" name="chkStudentType" placeholder="Schüler oder Student">
+				<input type="text" name="txtEmail" placeholder="E-Mailadresse" required="required">
+				<input type="text" name="txtLastName" placeholder="Nachname" required="required">
+				<input type="text" name="txtFirstName" placeholder="Vorname" required="required">
+				<input type="text" name="chkStudentType" placeholder="Schüler oder Student" required="required">
 				<input type="text" name="txtClass" placeholder="Schulklasse,bitte leer lassen wenn Student">
 				<!-- Type Date does not allow placeholder text -->
-				<input type="text" name="numDateOfBirth" placeholder="Geburtstag, Format tt.mm.jjjj">
+				<input type="text" name="numDateOfBirth" pattern="[0-9]{1-2}.[0-9]{1-2}.[0-9]{4}" placeholder="Geburtstag, Format tt.mm.jjjj" required="required">
 					<!-- checked out due to the type number work around <p class="help-block">Geben Sie hier ihr Geburtsdatum ein.</p>  -->
 			<!-- Address Block -->
 			<p2 class="help-block">Adresse: </p2>
-				<input type="number" name="txtPlz" placeholder="Postleitzahl">
-				<input type="text" name="txtCity" placeholder="Stadt">
-				<input type="text" name="txtStreet" placeholder="Straße">
-				<input type="number" name="txtHousenumber" placeholder="Hausnummer">			
+				<input type="number" name="txtPlz" placeholder="Postleitzahl" required="required">
+				<input type="text" name="txtCity" placeholder="Stadt" required="required">
+				<input type="text" name="txtStreet" placeholder="Straße" required="required">
+				<input type="number" name="txtHousenumber" placeholder="Hausnummer" required="required">			
 			<!-- UserType selection -->
 			<br>	
 			<input type="checkbox" id="chkUserTypeTeacher" name="userType" value="teacher">
@@ -52,10 +52,7 @@
 <div class="container-fluid">
 	<div class=" row jumbotron">
 		<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-			<p class="lead"> Bla bla bla bla </p>
-		</div>
-		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-		<a href="#"><button type="button" class="btn btn-outline-secondary btn-lg">Demo3</a>
+			<p class="lead">Mit ihrerer Registierung werden Sie eine Mail erhalten und dort einen Link zur Aktivierung erhalten.</p>
 		</div>
 	</div>
 </div>

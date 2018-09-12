@@ -52,7 +52,7 @@
 				</li>	
 				<li class="nav-item">
 					<form  action="GetCourses" method="get">
-						<input type="submit" class="nav-link" id = "getCourses" value="Kurs Übersicht">
+						<input type="submit" class="nav-link nav-link-input" id = "getCourses" value="Kurs Übersicht">
 						<input type="hidden" name="targetSite" value="/Kursangebote.jsp">
 					</form>
 				</li>
@@ -69,13 +69,13 @@
 				</li>
 				<li class="nav-item">
 					<form  action="GetProfile" method="get">
-						<input type="submit" class="nav-link" id = "getCart" value="Profil">
+						<input type="submit" class="nav-link nav-link-input" id = "getCart" value="Profil">
 					</form>
 				</li>
 				<%} %>
 				<li class="nav-item">
 					<form  action="GetCart" method="get">
-						<input type="submit" class="nav-link" id = "getCart" value="Warenkorb">
+						<input type="submit" class="nav-link nav-link-input" id = "getCart" value="Warenkorb">
 					</form>
 				</li>
 				
@@ -88,7 +88,7 @@
 					else{%>
 				<li class="nav-item">
 					<form action="Logout" method="post">
-						<input type="submit" class="nav-link" id="subLogout" value="Abmelden">
+						<input type="submit" class="nav-link nav-link-input" id="subLogout" value="Abmelden">
 					</form>
 				</li>
 				<%	}%>
