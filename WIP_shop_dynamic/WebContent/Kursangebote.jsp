@@ -112,7 +112,7 @@
 							</div>
 						<!-- Jump to Detailed View -->
 						<div class="col-xs-12 col-md-6">
-							<a class="btn btn-success" href="DisplayDetails?courseID=<%=course.getCourseNumber()%>">Details</a>	
+							<a class="btn btn-success" href="DisplayCourseDetails?courseID=<%=course.getCourseNumber()%>">Details</a>	
 						</div>
 					</div>
 				</div>
@@ -123,7 +123,8 @@
 	</div>
 </div>
 </div>
-
+</div>
+</div>
 <!--- Footer -->
 <div><jsp:include page="includes/footer.jsp"/></div>
 
