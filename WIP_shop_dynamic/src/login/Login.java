@@ -101,7 +101,7 @@ public class Login extends HttpServlet {
 			            byte[] saltByte = HashedString.toByteArray(HashedString.getSaltFromHashedString(tempPass));
 			            HashedString hPassword = new HashedString(password,saltByte);
 			            String encryptedPassword = hPassword.toString();
-			            if(password.equals(encryptedPassword) ){
+			            if(tempPass.equals(encryptedPassword) ){
 //				password right, set the session variables to be logged in
 			            	userLoggedIn = true;
 			            	request.getSession().setAttribute("userLoggedIn", userLoggedIn);
