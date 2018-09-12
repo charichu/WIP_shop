@@ -113,4 +113,12 @@
     <servlet-name>UpdateProfile</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/UpdateProfile</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>GetMyCourses</servlet-name>
+    <servlet-class>courseFunctions.GetMyCourses</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetMyCourses</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/GetMyCourses</url-pattern>
+  </servlet-mapping>
 </web-app>

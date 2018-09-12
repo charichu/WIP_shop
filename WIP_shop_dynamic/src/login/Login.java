@@ -53,7 +53,7 @@ public class Login extends HttpServlet {
 			url=url.substring(0,url.lastIndexOf('/')+1)+"home.jsp";
 		}
 		String urlShort = url.substring(url.lastIndexOf('/')+1);
-		if (urlShort.equals("Logout")) {
+		if (urlShort.equals("Logout")||urlShort.equals("")) {
 			urlShort="home.jsp";
 		}
 		Integer userId;
