@@ -19,23 +19,26 @@ import functions.HashedString;
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//used to check if all preconditions are ok
     	Boolean isOk = true;
     	
     	//get parameters
-    	String email = request.getParameter("txtEmail");
     	String username = request.getParameter("txtUsername");
     	String password = request.getParameter("txtPassword");
-    	Boolean teacher = Boolean.parseBoolean(request.getParameter("chkTeacher"));
+    	
+    	String email = request.getParameter("txtEmail");
+    	
+    	String userType = request.getParameter("chkUserTypeTeacher");
+    	userType = userType == "true"? "1" : "2";
+    	
     	String firstName = request.getParameter("txtFirstName");
     	String lastName = request.getParameter("txtLastName");
+    	
     	SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
     	Date birthday = new Date();
+    	
     	try {
     		birthday = dateFormat.parse(request.getParameter("txtBirthday"));
 		} catch (Exception e) {
@@ -45,13 +48,22 @@ public class RegistrationServlet extends HttpServlet {
     	String birthdayString = new SimpleDateFormat("yyyy-MM-dd").format(birthday);
     	
     	String schoolClass = request.getParameter("txtClass");
-    	Boolean student = Boolean.parseBoolean(request.getParameter("chkStudent"));
-    	String address = "1";//request.getParameter("txtEmail");
-    	String qualificationProfile = "";
+    	
+    	String student = request.getParameter("txtStudent");
+    	if(student != "Student" && student != "Schüler"){
+    		student = "undefined";
+    	}
     
+    	String address = null; //is filled afterwards
+    	
+    	String plz = request.getParameter("txtPlz");
+    	String city = request.getParameter("txtCity");
+    	String street = request.getParameter("txtStreet");
+    	String houseNumber = request.getParameter("txtHousenumber");
+    	
     	String encryptedPassword = new HashedString(password).toString();
     	
-    	String[] input = new String[]{email,username,encryptedPassword,teacher.toString(),firstName,lastName,birthdayString,schoolClass,student.toString(), qualificationProfile, address};
+    	String[] input = new String[]{email,username,encryptedPassword,userType,firstName,lastName,birthdayString,schoolClass,student.toString(), address, "false"};
     	
     	// check preconditions
     	isOk &= !isEmailInUse(email);
@@ -69,30 +81,37 @@ public class RegistrationServlet extends HttpServlet {
     	
     	// use parameters
     	if(isOk){
-    		String insertQuery = DBFunctions.CreateInsertQuery("user", DBFunctions.tableUserManipulation, input) + "";
+    		String selectAddress = DBFunctions.CreateSelectQuery("addresses", new String[]{"addressID"}, String.format("plz=%s AND city='%s' AND street='%s' AND housenumber=%s", plz, city, street, houseNumber));
+    		String insertAddress = DBFunctions.CreateInsertQuery("addresses", new String[]{"plz", "city", "street", "housenumber"}, new String[]{plz,"'" + city + "'", "'" + street +"'", houseNumber});
+			try {
+				ResultSet addressToSelect = DBFunctions.Execute(selectAddress);
+				if(!addressToSelect.next())
+				{
+					DBFunctions.Update(insertAddress);
+					addressToSelect = DBFunctions.Execute(selectAddress);
+					addressToSelect.next();
+				}
+				input[input.length - 2] = addressToSelect.getString("addressID");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    		
+    		String insertUser = DBFunctions.CreateInsertQuery("user", DBFunctions.tableUser_AddUser, input);
         	try {
-    			DBFunctions.Update(insertQuery);
+    			DBFunctions.Update(insertUser);
     			String activationCode = "Accounts sind bisher standardmäßig aktiviert.";
     			String emailText = String.format("Hallo %s %s,\r\ndein Account kann mit dem folgenden Link aktiviert werden: %s\r\nUsername:%s\r\nPassword:%s", firstName, lastName, activationCode, username, password);
     			Email confirmationEmail = new Email(email, "Registrierung von Tutor24 Account", emailText, null);
-    			confirmationEmail.Send();
-    		} catch (SQLException e) {
-    			// TODO Auto-generated catch block
+    			confirmationEmail.send();
+    		} catch (Exception e) {
     			e.printStackTrace();
-    			System.out.println(e.getMessage());
-    		} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
     			System.out.println(e.getMessage());
     		}	
     	}
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+        request.getRequestDispatcher("/register.jsp").forward(request, response);	          
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 

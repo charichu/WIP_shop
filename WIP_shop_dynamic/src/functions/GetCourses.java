@@ -33,12 +33,12 @@ public class GetCourses extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		// all shown rows as strings
 		
-		String courseNumber = "";
+		String courseNumber = null;
 		String subject = request.getParameter("ddlSubject");
 		subject = subject == ""? null : subject;
 		String topic = null;
-		String description = "";
-		String studentType = "";
+		String description = null;
+		String studentType = null;
 		String price = request.getParameter("txtPrice");
 		int priceNum = Functions_Std.isStringNullOrEmpty(price)? -1 : Integer.parseInt(price);
 		String capacity = request.getParameter("txtCapacity");
@@ -50,9 +50,9 @@ public class GetCourses extends HttpServlet {
 		String addressID = null;
 		String searchText = request.getParameter("srhCourses");
 		searchText = searchText == ""? null : searchText;
-		String grade = "";
+		String grade = null;
 		Course course;
-		String site = "";
+		String site = null;
 		// create array list, which go into the request
 		ArrayList<Course> courses = new ArrayList<>();
 		ResultSet rs = null;
