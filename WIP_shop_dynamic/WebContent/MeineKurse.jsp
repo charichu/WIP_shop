@@ -14,15 +14,28 @@
 
 <!-- Navigation and Login -->
 <div><jsp:include page="includes/navigation.jsp"/></div>
+<div><jsp:include page="includes/scripts.jsp"/></div>
 	
 <div class="container-fluid padding">
 	<div class="row">
 		<div class="col-8">
 			<%
+			boolean userLoggedIn = (Boolean)session.getAttribute("userLoggedIn");
+			Integer userType     = (Integer)session.getAttribute("userType");
 			ArrayList<Course> list = (ArrayList<Course>) request.getAttribute("myCourses");
 			if(list != null){
 			%>
 			<%-- display the products in the table --%>
+			<% if(request.getAttribute("successMessage")!=null){%>
+				<div id="alert_message" class="alert alert-success" role="alert">
+				  <% out.println(request.getAttribute("successMessage")); %>
+				</div>
+			<%	}%>
+			<% if(request.getAttribute("errorMessage")!=null){%>
+				<div id="alert_message" class="alert alert-error" role="alert">
+				  <% out.println(request.getAttribute("errorMessage")); %>
+				</div>
+			<%	}%>
 			<table>
 				<tr>
 					<th><%out.println(list.get(0).getCourseNumber()); %></th>
@@ -47,13 +60,25 @@
 						<td><%out.println(course.getStudentType()); %></td>
 						<td><%out.println(course.getPricePerHour()); %></td>
 						<td><a class="nav-link" href="DisplayCourseDetails?courseID=<%=course.getCourseNumber()%>">Details</a></td>
+						<%if(userLoggedIn&&userType!=2){  %>
+							<td><a class="nav-link" href="GetEditCourse?courseID=<%=course.getCourseNumber()%>">Bearbeiten</a></td>
+							<td>
+								<form action="DeleteCourse" method="post">
+									<input type="submit" value="löschen">
+									<input type="hidden" name="courseID" value="<%=course.getCourseNumber()%>">
+									<input type="hidden" name="target" value="GetMyCourses">
+								</form>
+							</td>
+						<%} %>
 				</tr>
 				<%  	}
 					}%>
 			</table>
 		</div>
 		<div class="col-4">
-			<a href="KursHinzufuegen.jsp" class="btn btn-secondary">Einen Kurs hinzufügen</a>
+			<%if(userLoggedIn&&userType!=2){  %>
+				<a href="KursHinzufuegen.jsp" class="btn btn-secondary">Einen Kurs hinzufügen</a>
+			<%} %>
 		</div>
 	</div>
 </div>	

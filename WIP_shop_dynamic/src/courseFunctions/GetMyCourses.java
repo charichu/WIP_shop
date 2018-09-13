@@ -1,6 +1,8 @@
 package courseFunctions;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -37,7 +39,7 @@ public class GetMyCourses extends HttpServlet {
 		String sqlStatement;
 		if(userLoggedIn&&userID!=null&&userType!=null){
 			if (userType==1) {
-				sqlStatement=DBFunctions.CreateSelectQuery("courses", new String[]{"courseID"}, "userID = "+userID.toString());
+				sqlStatement=DBFunctions.CreateSelectQuery("courses", new String[]{"courseID"}, "userID = "+userID.toString()+" AND active = true ");
 				
 				try {
 					ResultSet rs = DBFunctions.Execute(sqlStatement);
@@ -53,8 +55,19 @@ public class GetMyCourses extends HttpServlet {
 				request.setAttribute("myCourses", courses);
 				request.getRequestDispatcher("MeineKurse.jsp").forward(request, response);
 			} else if(userType==2){
-				sqlStatement=DBFunctions.CreateSelectQuery("orders o, orderItems oi", new String[]{"oi.courseID"}, "o.orderID = oi.orderID AND userID = "+userID.toString());
-				
+				sqlStatement=DBFunctions.CreateSelectQuery("orders o, order_items oi, courses co", new String[]{"oi.courseID"}, "o.orderID = oi.orderID AND oi.courseID=co.courseID AND co.active=true AND o.userID = "+userID.toString());
+				try {
+			        ResultSet rs = DBFunctions.Execute(sqlStatement);
+			        courses.add(new Course());
+					while (rs.next()) {
+						courses.add(new Course(rs.getInt("courseID")));
+					}
+				} catch (Exception e) {
+					request.setAttribute("errorMessage", e.getMessage());
+					request.getRequestDispatcher("home.jsp").forward(request, response);
+				}
+				request.setAttribute("myCourses", courses);
+				request.getRequestDispatcher("MeineKurse.jsp").forward(request, response);
 			}
 		}
 	}

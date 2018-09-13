@@ -39,7 +39,6 @@
 						<tr><td><h2>Kurs:</h2></td></tr>
 						<tr><td>Kurs Nummer:</td><td><label><%out.println(courseDetails.get("courseID")); %></label></td></tr>
 						<tr><td>Fach:</td><td><label><%out.println(courseDetails.get("subject")); %></label></td></tr>
-						<tr><td>Thema:</td><td><label><%out.println(courseDetails.get("topic")); %></label></td></tr>
 						<tr><td>Beschreibung:</td><td><label><%out.println(courseDetails.get("description"));%></label></td></tr>
 						<tr><td>Für Schüler/ Studenten:</td><td><label><%out.println(courseDetails.get("studentType"));%></label></td></tr>
 						<tr><td>Preis:</td><td><label><%out.println(courseDetails.get("pricePerHour")+" €");%></label></td></tr>

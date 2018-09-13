@@ -18,7 +18,7 @@
 <!-- Admin-home content-->	
 	<div id = "wrapper">
 		<div id = "adminContent">
-		 <% session.setAttribute("Name", "Name"); %>
+			<h2>Hallo Admin <%=session.getAttribute("userName") %></h2>
 		</div>
 	</div>
 

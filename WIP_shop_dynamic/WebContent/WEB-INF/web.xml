@@ -121,12 +121,44 @@
     <servlet-name>GetMyCourses</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/GetMyCourses</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>DisplayCourseDetailsAdmin</servlet-name>
     <servlet-class>adminFunctions.DisplayCourseDetailsAdmin</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DisplayCourseDetailsAdmin</servlet-name>
     <url-pattern>/WIP_shop_dynamic/*/DisplayCourseDetailsAdmin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GetEditCourse</servlet-name>
+    <servlet-class>courseFunctions.GetEditCourse</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEditCourse</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/GetEditCourse</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EditCourse</servlet-name>
+    <servlet-class>courseFunctions.EditCourse</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditCourse</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/EditCourse</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GetEditCourseAdmin</servlet-name>
+    <servlet-class>adminFunctions.GetEditCourseAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEditCourseAdmin</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/GetEditCourseAdmin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EditCourseAdmin</servlet-name>
+    <servlet-class>adminFunctions.EditCourseAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditCourseAdmin</servlet-name>
+    <url-pattern>/WIP_shop_dynamic/*/EditCourseAdmin</url-pattern>
   </servlet-mapping>
 </web-app>

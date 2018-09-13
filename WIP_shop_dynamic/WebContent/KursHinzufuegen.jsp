@@ -25,7 +25,7 @@
 <div><jsp:include page="includes/navigation.jsp"/></div>
 <%  }%>
 <div class="container-fluid padding">
-	<form action="CreateCourse" class="row" method="get">
+	<form action="CreateCourse" class="row" method="post">
 		<div class="col-8">
 			<table>
 			<% if(userType==0){ %>
