@@ -103,17 +103,12 @@ public class RegistrationServlet extends HttpServlet {
     			String emailText = String.format("Hallo %s %s,\r\ndein Account kann mit dem folgenden Link aktiviert werden: %s\r\nUsername:%s\r\nPassword:%s", firstName, lastName, activationCode, username, password);
     			Email confirmationEmail = new Email(email, "Registrierung von Tutor24 Account", emailText, null);
     			confirmationEmail.send();
-<<<<<<< HEAD
     		} catch (Exception e) {
-=======
-    		} catch (SQLException e) {
-    			// TODO Auto-generated catch block
->>>>>>> master
     			e.printStackTrace();
     			System.out.println(e.getMessage());
     		}	
     	}
-        request.getRequestDispatcher("/register.jsp").forward(request, response);	          
+        request.getRequestDispatcher("/home.jsp").forward(request, response);	          
 	}
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
