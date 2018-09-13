@@ -207,9 +207,9 @@
 	<div class="row padding">
 		<!-- first column -->
 		<div class="col-lg-6">
-			<h2>Contact us here</h2>
-			<p>Paragraph 3, apparently. The image can be the placeholder for a contact formular.</p>
-			
+			<h2>Noch Fragen?</h2>
+			<p>Wenn ihr bei den Kursen nicht fündig werdet, Fragen zu eurem Account oder Rechnung habt wendet euch gerne und jederzeit an uns! Am einfachsten schreibst uns direkt eine Mail unter: </p>
+			<p><a href="mailto:noreply.tutor24@gmail.com">noreply.tutor24@gmail.com</a></p>
 		</div>
 		<!-- second column -->
 		<div class="col-lg-6">
