@@ -5,28 +5,28 @@
 			<div class="col-md-4">
 				<img src="img/logo.png">
 				<hr class="light">
-				<p>Phone Number</p>
-				<p>E-Mail</p>
-				<p>Adress</p>
-				<p>Zip Code</p>
+				<p>Telefon:</p>
+				<p>E-Mail:</p>
+				<p>Adress:</p>
+				<p>Stadt:</p>
 			</div>
 			<div class="col-md-4">
 				<hr class="light">
-				<h5>Open Hours</h5>
+				<h5>Kontakt</h5>
 				<hr class="light">
-				<p>Open all</p>
-				<p>the fucking</p>
-				<p>time</p>
-				<p>Bitches</p>
+				<p>01234-789456</p>
+				<p>noreply.tutor24@gmail.com</p>
+				<p>Meisenstraﬂe 92</p>
+				<p>Bielefeld</p>
 			</div>
 			<div class="col-md-4">
 				<hr class="light">
-				<h5>Business</h5>
+				<h5>Andere Services</h5>
 				<hr class="light">
-				<p>Get</p>
-				<p>Money</p>
-				<p>Fuck</p>
-				<p>Bitches</p>
+				<p>Party24</p>
+				<p>AT-Muh</p>
+				<p>Chef24</p>
+				<p>StrandedInHawaii</p>
 			</div>
 			<div class="col-12">
 			<hr class="light-100">
