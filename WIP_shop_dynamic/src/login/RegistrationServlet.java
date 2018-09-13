@@ -109,7 +109,7 @@ public class RegistrationServlet extends HttpServlet {
     			System.out.println(e.getMessage());
     		}	
     	}
-        request.getRequestDispatcher("/home.jsp").forward(request, response);	          
+        response.sendRedirect("/home.jsp");
 	}
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

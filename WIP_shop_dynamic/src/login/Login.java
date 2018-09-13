@@ -49,11 +49,11 @@ public class Login extends HttpServlet {
 		
 
 		String url = request.getHeader("referer");
-		if(url.substring(url.lastIndexOf('/')+1).equalsIgnoreCase("Logout")&&url.substring(url.lastIndexOf('/')+1).equalsIgnoreCase("Login")){
+		if(url.substring(url.lastIndexOf('/')+1).equalsIgnoreCase("Logout")&&url.substring(url.lastIndexOf('/')+1).equalsIgnoreCase("Login")&&url.substring(url.lastIndexOf('/')+1).equalsIgnoreCase("registration")){
 			url=url.substring(0,url.lastIndexOf('/')+1)+"home.jsp";
 		}
 		String urlShort = url.substring(url.lastIndexOf('/')+1);
-		if (urlShort.equals("Logout")||urlShort.equals("")||urlShort.equals("Login")) {
+		if (urlShort.equals("Logout")||urlShort.equals("")||urlShort.equals("Login")||urlShort.equals("registration")) {
 			urlShort="home.jsp";
 		}
 		Integer userId;

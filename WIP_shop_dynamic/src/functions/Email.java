@@ -67,6 +67,7 @@ public class Email {
 			Transport.send(emailMsg);
 			System.out.println("Email verschickt an: " + recipient);
 		} catch (Exception e) {
+			e.printStackTrace();
 			bRV = false;
 		}
 		
