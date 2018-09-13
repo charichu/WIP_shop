@@ -44,13 +44,14 @@
 								<option value="physik"			>Physik</option>
 								<option value="chemie"			>Chemie</option>
 								<option value="biologie"		>Biologie</option>
+								<option value="informatik"		>Informatik</option>
 							</select>
 						</td>
 						<td>
-							<input type="number" name="txtPrice" placeholder="Preis:">
+							<input type="number" name="txtPrice" placeholder="Preis">
 						</td>
 						<td>
-							<input type="number" name="txtCapacity" placeholder="Kursgröße:">
+							<input type="number" name="txtCapacity" placeholder="Kursgröße">
 						</td>
 						<td>
 							<select name="ddlFrequency">
@@ -61,7 +62,7 @@
 						</td>
 						
 						<td>
-							<input type="number" name="txtDuration" placeholder="Dauer:">
+							<input type="number" name="txtDuration" placeholder="Dauer">
 						</td>
 						<td>
 							<input type="submit" name="btnFilter" placeholder="Anwenden">
@@ -70,7 +71,7 @@
 					</tr>
 					<tr>
 						<td colspan="6">
-							<input type8="search" name="srhCourses" placeholder="Suchen">
+							<input type="search" name="srhCourses" placeholder="Suchen">
 						</td>
 					</tr>
 				</table>
