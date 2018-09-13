@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+import functions.Address;
 import functions.DBFunctions;
 /**
  * This is the class for the course.
@@ -28,6 +30,7 @@ public class Course {
 	private String grade;
 	private Double pricePerMeeting;
 	private boolean active;
+	private boolean isEmpty = true;
 	
 	public Course(Integer courseID){
 		try {
@@ -46,6 +49,7 @@ public class Course {
         		this.userID = rs.getInt("userID");
         		this.grade = rs.getString("grade");
         		this.active = rs.getBoolean("active");
+        		this.isEmpty = false;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,7 +71,7 @@ public class Course {
 		this.grade = "Jahrgangsstufe";
 	}
 	public Course(String couseNumber, String subject, String topic, String description, String studentType,
-			String price, String frequency, String grade) {
+			String price, String frequency, String grade, boolean active) {
 		super();
 		this.courseNumber = couseNumber;
 		this.subject = subject;
@@ -77,11 +81,12 @@ public class Course {
 		this.pricePerHour = price;
 		this.frequency = frequency;
 		this.grade = grade;
+		this.active = active;
 	}
 	
 	public Course(String courseNumber, String subject, String topic, String description, String studentType,
 			String pricePerHour, Double capacity, String frequency, Double durationPerMeeting, int addressID,
-			int userID, String grade) {
+			int userID, String grade , boolean active) {
 		super();
 		this.courseNumber = courseNumber;
 		this.subject = subject;
@@ -95,6 +100,7 @@ public class Course {
 		this.addressID = addressID;
 		this.userID = userID;
 		this.grade = grade;
+		this.active = active;
 	}
 
 	public String getCourseNumber() {
@@ -214,6 +220,18 @@ public class Course {
 	public Double getPricePerMeeting(){
 		pricePerMeeting=Integer.parseInt(pricePerHour)*(durationPerMeeting/60);
 		return pricePerMeeting;
+	}
+	public boolean isEmpty() {
+		return isEmpty;
+	}
+	public Address getAddress() {
+		Address tempAddress = new Address(this.addressID);
+		if(!this.isEmpty()&&!tempAddress.isEmpty()){
+			return tempAddress;
+		}
+		else{
+			return null;
+		}
 	}
 	
 }

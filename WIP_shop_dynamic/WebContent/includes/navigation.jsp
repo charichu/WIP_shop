@@ -64,7 +64,7 @@
 				</li>
 				<li class="nav-item">
 					<form  action="GetMyCourses" method="get">
-						<input type="submit" class="nav-link" id = "getCart" value="Meine Kurse">
+						<input type="submit" class="nav-link nav-link-input" id = "getCart" value="Meine Kurse">
 					</form>
 				</li>
 				<li class="nav-item">

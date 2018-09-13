@@ -55,7 +55,7 @@ public class GetCourses extends HttpServlet {
 		String price = request.getParameter("txtPrice");
 		int priceNum = Functions_Std.isStringNullOrEmpty(price)? -1 : Integer.parseInt(price);
 		String capacity = request.getParameter("txtCapacity");
-		int capacityNum = Functions_Std.isStringNullOrEmpty(capacity)? -1 : Integer.parseInt(capacity);
+		int capacityNum = Functions_Std.isStringNullOrEmpty(capacity)? -1 : (int)Double.parseDouble(capacity);
 		String frequency = request.getParameter("ddlFrequency");
 		frequency = frequency == ""? null : frequency;
 		String duration = request.getParameter("txtDuration");
@@ -73,7 +73,7 @@ public class GetCourses extends HttpServlet {
 			if(request.getParameter("filteredSite") == null){
 				site = request.getParameter("targetSite");
 				// execute sql statement
-				rs = DBFunctions.Execute("select * from courses;");
+				rs = DBFunctions.Execute("select * from courses");
 			} else {
 				site = request.getParameter("filteredSite");
 				// execute filter sql statement
@@ -91,7 +91,7 @@ public class GetCourses extends HttpServlet {
         	price = "Preis";
         	frequency = "Frequenz";	
         	grade = "Jahrgangsstufe";	
-        	course = new Course(courseNumber, subject, topic, description, studentType, price, frequency,grade);
+        	course = new Course(courseNumber, subject, topic, description, studentType, price, frequency,grade, false);
         	courses.add(course);
             	
 // fill the arraylist with the return of the sql-statement
@@ -105,7 +105,7 @@ public class GetCourses extends HttpServlet {
             	price = rs.getString("pricePerHour");
             	frequency = rs.getString("frequency");
             	grade = rs.getString("grade");
-            	course = new Course(courseNumber, subject, topic, description, studentType, price, frequency, grade);
+            	course = new Course(courseNumber, subject, topic, description, studentType, price, frequency, grade, rs.getBoolean("active"));
             	
             	courses.add(course);
             }

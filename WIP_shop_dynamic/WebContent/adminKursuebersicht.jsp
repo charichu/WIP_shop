@@ -36,6 +36,7 @@
 				<th><%out.println(list.get(0).getFrequency()); %></th>
 				<th><%out.println(list.get(0).getStudentType()); %></th>
 				<th><%out.println(list.get(0).getPricePerHour()); %></th>
+				<th>gelöscht</th>
 
 			</tr>
 			<% 		list.remove(0);
@@ -49,9 +50,27 @@
 				<td><%out.println(course.getFrequency()); %></td>
 				<td><%out.println(course.getStudentType()); %></td>
 				<td><%out.println(course.getPricePerHour()); %></td>
+				<td>
+					<%if(course.isActive()){
+						out.println("Nein");
+					  }
+					  else{
+						out.println("Ja");
+					  }
+					%>
+				</td>
 				<td><a class="nav-link" href="DisplayCourseDetailsAdmin?courseID=<%=course.getCourseNumber()%>">Details</a></td>
-				<td><a class="nav-link" href="">Bearbeiten</a></td>
-				<td><a class="nav-link" href="">Löschen</a></td>
+
+				<%if(course.isActive()){%>
+					<td><a class="nav-link" href="GetEditCourseAdmin?courseID=<%=course.getCourseNumber()%>">Bearbeiten</a></td>
+					<td>
+						<form action="DeleteCourse" method="post">
+							<input type="submit" value="löschen">
+							<input type="hidden" name="courseID" value="<%=course.getCourseNumber()%>">
+							<input type="hidden" name="target" value="/GetCourses?targetSite=%2FadminKursuebersicht.jsp">
+						</form>
+					</td>
+				<%} %>
 			</tr>
 			<%  	}
 				}%>

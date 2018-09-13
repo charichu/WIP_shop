@@ -112,7 +112,8 @@ public class ConfirmOrderCourses extends HttpServlet {
 			        	}
 			        	else {
 			        		request.setAttribute("errorMessage", "Die E-Mail konnte leider nicht versandt werden");
-							myConn.rollback();
+//							myConn.rollback();
+			        		myConn.commit();
 							myConn.close();
 							request.getRequestDispatcher("home.jsp").forward(request,response);
 						}
