@@ -52,7 +52,7 @@
 				</li>	
 				<li class="nav-item">
 					<form  action="GetCourses" method="get">
-						<input type="submit" class="nav-link nav-link-input" id = "getCourses" value="Kurs Übersicht">
+						<input type="submit" class="nav-link nav-link-input" id = "getCourses" value="Kursangebote">
 						<input type="hidden" name="targetSite" value="/Kursangebote.jsp">
 					</form>
 				</li>

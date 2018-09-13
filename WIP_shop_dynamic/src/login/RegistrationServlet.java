@@ -75,7 +75,7 @@ public class RegistrationServlet extends HttpServlet {
     			String activationCode = "Accounts sind bisher standardmäßig aktiviert.";
     			String emailText = String.format("Hallo %s %s,\r\ndein Account kann mit dem folgenden Link aktiviert werden: %s\r\nUsername:%s\r\nPassword:%s", firstName, lastName, activationCode, username, password);
     			Email confirmationEmail = new Email(email, "Registrierung von Tutor24 Account", emailText, null);
-    			confirmationEmail.Send();
+    			confirmationEmail.send();
     		} catch (SQLException e) {
     			// TODO Auto-generated catch block
     			e.printStackTrace();
