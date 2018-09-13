@@ -9,27 +9,36 @@
 	<title>Kurs Details</title>
 	<!-- Imports -->
 	<div><jsp:include page="includes/imports.jsp"/></div>
+	<div><jsp:include page="includes/scripts.jsp"/></div>
 </head>
 <body>
-<!-- Navigation and Login -->
-<div><jsp:include page="includes/navigation.jsp"/></div>
+
+<div><jsp:include page="includes/adminNavigation.jsp"/></div>
+
 <%-- Get variable from Servlet; with controll if null --%>
 <%		@SuppressWarnings("unchecked")
 		Hashtable<String, String> courseDetails=(request.getAttribute("courseDetails") != null)?
 												(Hashtable<String, String>)request.getAttribute("courseDetails")
 												:null;	
+		@SuppressWarnings("unchecked")
+		HashMap<Integer, Integer> cart = (session.getAttribute("cart")!=null)?
+										 (HashMap<Integer, Integer>)session.getAttribute("cart"):new HashMap<Integer, Integer>();
  %>
 <!-- Course Details -->
 <div class="container-fluid padding">
 	<div class="row">
 		<div class="col-lg-8 col-md-8 col-s-8">
+			<% if(request.getAttribute("errorMessage")!=null){%>
+				<div id="alert_message" class="alert alert-danger" role="alert">
+				  <% out.println(request.getAttribute("errorMessage")); %>
+				</div>
+			<%	}%>
 			<%if(courseDetails!=null){ %>
 				
 					<table>
 						<tr><td><h2>Kurs:</h2></td></tr>
 						<tr><td>Kurs Nummer:</td><td><label><%out.println(courseDetails.get("courseID")); %></label></td></tr>
 						<tr><td>Fach:</td><td><label><%out.println(courseDetails.get("subject")); %></label></td></tr>
-						<tr><td>Thema:</td><td><label><%out.println(courseDetails.get("topic")); %></label></td></tr>
 						<tr><td>Beschreibung:</td><td><label><%out.println(courseDetails.get("description"));%></label></td></tr>
 						<tr><td>Für Schüler/ Studenten:</td><td><label><%out.println(courseDetails.get("studentType"));%></label></td></tr>
 						<tr><td>Preis:</td><td><label><%out.println(courseDetails.get("pricePerHour")+" €");%></label></td></tr>
@@ -50,12 +59,6 @@
 			<%} %>
 		</div>
 		<div class="col-lg-4 col-md-4 col-s-4">
-			<%if(courseDetails!=null){ %>
-				<form action="">
-					<input type="submit" id="subBuyCourse" value="Kurs buchen">
-				</form>
-				<img class="img-fluid" alt="vorschauBild" src="img/nachhilfesv.jpg">
-			<%} %>
 		</div>
 	</div>
 </div>

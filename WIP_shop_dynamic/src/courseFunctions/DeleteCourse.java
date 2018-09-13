@@ -1,24 +1,27 @@
-package login;
+package courseFunctions;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.Session;
-
+import functions.DBFunctions;
 /**
- * Servlet implementation class Logout
+ * Servlet implementation class DeleteCourse
  */
-@WebServlet("/Logout")
-public class Logout extends HttpServlet {
+@WebServlet("/DeleteCourse")
+public class DeleteCourse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Logout() {
+    public DeleteCourse() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,22 +38,18 @@ public class Logout extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-//		delete all session variables to be logged out
-		
-		request.getSession().removeAttribute("userLoggedIn");
-		request.getSession().removeAttribute("userType");
-		request.getSession().removeAttribute("userName");
-		request.getSession().removeAttribute("email");
-		request.getSession().removeAttribute("userId");
-		request.getSession().removeAttribute("cart");
-
-		
-//      go to homepage when logged out
-		
-		request.getRequestDispatcher("home.jsp").forward(request, response);
-		
-		
+		Integer courseID= Integer.parseInt(request.getParameter("courseID"));
+		String target = request.getParameter("target");
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+	        Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/wip", "root", "");
+			String sqlStatement = "UPDATE `courses` SET `active` = '0' WHERE `courses`.`courseID` = "+courseID+";";
+			PreparedStatement ps = myConn.prepareStatement(sqlStatement);
+			ps.executeUpdate();
+			request.getRequestDispatcher(target).forward(request, response);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 }

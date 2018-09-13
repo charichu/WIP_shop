@@ -1,10 +1,14 @@
 package functions;
 
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import courseFunctions.Course;
 
 public class DBFunctions {
 	//our connection to access the database
@@ -101,5 +105,27 @@ public class DBFunctions {
 	
 	public static Boolean ContainsOnlyAllowedChars(String toCheck){
 		return !toCheck.contains(";");
+	}
+	public static ResultSet getCoursesbyCouseID(int[] courseIDs){
+		String sqlStatement = "Select * From courses Where courseID in (";
+		ResultSet rs;
+		if(courseIDs != null){
+			for (Integer integer : courseIDs) {
+				sqlStatement += integer+", ";
+			}
+			sqlStatement=sqlStatement.substring(0, sqlStatement.length()-1)+");";
+			try {
+				rs=dbCon.createStatement().executeQuery(sqlStatement);
+				return rs;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		else {
+			return null;
+		}
+		
+
 	}
 }

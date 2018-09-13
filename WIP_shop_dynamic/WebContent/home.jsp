@@ -11,9 +11,19 @@
 
 <!-- Navigation and Login -->
 <div><jsp:include page="includes/navigation.jsp"/></div>
+<div><jsp:include page="includes/scripts.jsp"/></div>
 
 <!--- Image Slider -->
-
+<% if(request.getAttribute("successMessage")!=null){%>
+	<div id="alert_message" class="alert alert-success" role="alert">
+	  <% out.println(request.getAttribute("successMessage")); %>
+	</div>
+<%	}%>
+<% if(request.getAttribute("errorMessage")!=null){%>
+	<div id="alert_message" class="alert alert-error" role="alert">
+	  <% out.println(request.getAttribute("errorMessage")); %>
+	</div>
+<%	}%>
 <div id="slides" class="carousel slide" data-ride="carousel">
 	<!-- links on the bottom of the slider; can´t be seen without images-->
 	<ul class="carousel-indicators">

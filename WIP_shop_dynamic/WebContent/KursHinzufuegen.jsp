@@ -25,7 +25,7 @@
 <div><jsp:include page="includes/navigation.jsp"/></div>
 <%  }%>
 <div class="container-fluid padding">
-	<form action="CreateCourse" class="row" method="get">
+	<form action="CreateCourse" class="row" method="post">
 		<div class="col-8">
 			<table>
 			<% if(userType==0){ %>
@@ -37,10 +37,6 @@
 				<tr>
 					<td>Fach:*</td>
 					<td><input type="text" name="txtSubject" placeholder="Fach" required="required"></td>
-				</tr>
-				<tr>
-					<td>Thema:*</td>
-					<td><input type="text" name="txtTopic" placeholder="Thema" required="required"></td>
 				</tr>
 				<tr>
 					<td>Jahrgangsstufe:*</td>
@@ -59,7 +55,7 @@
 					<td><input type="text" name="txtPricePerHour" placeholder="Preis" required="required" pattern="[0-9]{1,}" title="Bitte einen richtigen Preis angeben"></td>
 				</tr>
 				<tr>
-					<td>Kapazität eines Kurses:</td>
+					<td>Kapazität eines Kurses:*</td>
 					<td><input type="text" name="txtCapacity" placeholder="Kapazität" required="required"></td>
 				</tr>
 				<tr>
@@ -67,8 +63,8 @@
 					<td><input type="text" name="txtFrequency" placeholder="Frequenz"></td>
 				</tr>
 				<tr>
-					<td>Dauer eine Nachhilfe(in Stunden):</td>
-					<td><input type="text" name="txtDurationPerMeeting" placeholder="Dauer" pattern="[0-9]"></td>
+					<td>Dauer eine Nachhilfe(in Minuten):*</td>
+					<td><input type="text" name="txtDurationPerMeeting" placeholder="Dauer" pattern="[0-9]{1,}" required="required" title="Bitte geben Sie eine Minutenzahl ein."></td>
 				</tr>
 				<tr>
 					<td>Adresse:*</td>

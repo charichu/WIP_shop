@@ -1,5 +1,8 @@
 <!-- Navigation -->
 <!-- md is breakpiont for change from mobile, light means the color theme -->
+<%@page import="com.sun.org.apache.bcel.internal.generic.NEW"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="javax.websocket.Session"%>
 <%@page pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
@@ -7,6 +10,10 @@
 <%!		Boolean userLoggedIn;
 		Integer     userType;%>
 	<% 	
+		if(session.getAttribute("cart") == null){
+			HashMap<Integer, Integer> cart = new HashMap<Integer, Integer>();
+			session.setAttribute("cart", cart);
+		}
 		if(session.getAttribute("userLoggedIn") == null){
 			userLoggedIn = false;
 		}
@@ -45,7 +52,7 @@
 				</li>	
 				<li class="nav-item">
 					<form  action="GetCourses" method="get">
-						<input type="submit" class="nav-link" id = "getCourses" value="Kurs Übersicht">
+						<input type="submit" class="nav-link nav-link-input" id = "getCourses" value="Kursangebote">
 						<input type="hidden" name="targetSite" value="/Kursangebote.jsp">
 					</form>
 				</li>
@@ -56,14 +63,20 @@
 					<a class="nav-link" href="Kalender.jsp">Kalender</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="MeineKurse.jsp">Meine Kurse</a>
+					<form  action="GetMyCourses" method="get">
+						<input type="submit" class="nav-link nav-link-input" id = "getCart" value="Meine Kurse">
+					</form>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="Profil.jsp">Profil</a>
+					<form  action="GetProfile" method="get">
+						<input type="submit" class="nav-link nav-link-input" id = "getCart" value="Profil">
+					</form>
 				</li>
 				<%} %>
 				<li class="nav-item">
-					<a class="nav-link" href="Warenkorb.jsp">Warenkorb</a>
+					<form  action="GetCart" method="get">
+						<input type="submit" class="nav-link nav-link-input" id = "getCart" value="Warenkorb">
+					</form>
 				</li>
 				
 				<%-- if the user is logged in it show the logout button --%>
@@ -75,7 +88,7 @@
 					else{%>
 				<li class="nav-item">
 					<form action="Logout" method="post">
-						<input type="submit" class="nav-link" id="subLogout" value="Abmelden">
+						<input type="submit" class="nav-link nav-link-input" id="subLogout" value="Abmelden">
 					</form>
 				</li>
 				<%	}%>
@@ -101,6 +114,7 @@
 				<input type="text" name="user" placeholder="E-Mail">
 				<input type="password" name="pass" placeholder="Password">
 				<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+				<input type="hidden" name="returnTo" value="<%=request.getRequestURI()%>">
 			</form>
 					
 				 <div class="login-help">
