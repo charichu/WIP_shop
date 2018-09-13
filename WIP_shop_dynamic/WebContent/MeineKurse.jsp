@@ -16,9 +16,9 @@
 <div><jsp:include page="includes/navigation.jsp"/></div>
 <div><jsp:include page="includes/scripts.jsp"/></div>
 	
-<div class="container-fluid padding">
-	<div class="row">
-		<div class="col-8">
+<div class="container-fluid padding centered">
+	<div class="row centered">
+		<div class="col-12">
 			<%
 			boolean userLoggedIn = (Boolean)session.getAttribute("userLoggedIn");
 			Integer userType     = (Integer)session.getAttribute("userType");
@@ -36,7 +36,7 @@
 				  <% out.println(request.getAttribute("errorMessage")); %>
 				</div>
 			<%	}%>
-			<table>
+			<table class="table table-striped">
 				<tr>
 					<th><%out.println(list.get(0).getCourseNumber()); %></th>
 					<th><%out.println(list.get(0).getSubject()); %></th>
@@ -82,61 +82,24 @@
 		</div>
 	</div>
 </div>	
-	
-<!--- Meet the team -->
 
+<!-- Location assumption -->
+<!-- Include for FHDW Location not possible due to different title here-->	
+<!-- Embbeded with https://www.embedgooglemap.net/ , set widht to 100% for "responsiveness"-->
 <div class="container-fluid padding">
-	<div class="row welcome text-center padding">
+	<div class="row text-center padding">
 		<div class="col-12">
-			<h1 class="display-4">Meet the Team</h1>
+			<h2>Hier finden aktuell die meisten Kurse statt.</h2>
+			<div class="mapouter">
+				<div class="gmap_canvas">
+					<iframe width="75%" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=fhdw%20bielefeld&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+					</iframe>
+				</div>
+			<style>.mapouter{text-align:center;height:300px;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:100%;}
+			</style>
+			</div>
 		</div>
 	</div>
-</div>	
-
-<!--- Cards (for the single teammembers for example) -->
-
-<div class="container-fluid padding">
-	<div class="row padding">
-		<div class="col-md-3">
-			<div class="card">
-				<img class="card-img-top" src="img/team1.png">
-				<div class="card-body">
-					<h4 class="card-title">Thomas</h4>
-					<p class="card-text">Product Owner</p>
-					<a href="#" class="btn btn-outline-secondary">Check Profile</a>
-				</div>
-			</div>			
-		</div>
-		<div class="col-md-3">
-			<div class="card">
-				<img class="card-img-top" src="img/team2.png">
-				<div class="card-body">
-					<h4 class="card-title">David</h4>
-					<p class="card-text">SCRUM-Master</p>
-					<a href="#" class="btn btn-outline-secondary">Check Profile</a>
-				</div>
-			</div>			
-		</div>
-		<div class="col-md-3">
-			<div class="card">
-				<img class="card-img-top" src="img/team3.png">
-				<div class="card-body">
-					<h4 class="card-title">Marcel</h4>
-					<p class="card-text">Developer</p>
-					<a href="#" class="btn btn-outline-secondary">Check Profile</a>
-				</div>
-			</div>			
-		</div>
-		<div class="col-md-3">
-			<div class="card">
-				<img class="card-img-top" src="img/team1.png">
-				<div class="card-body">
-					<h4 class="card-title">Jan</h4>
-					<p class="card-text">Developer</p>
-					<a href="#" class="btn btn-outline-secondary">Check Profile</a>
-				</div>
-			</div>			
-		</div>
 </div>
 
 <!--- Footer -->

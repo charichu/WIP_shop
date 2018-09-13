@@ -35,7 +35,7 @@
 					</tr>
 					<tr>
 						<td>
-							<select name="ddlSubject">
+							<select name="ddlSubject" class="option">
 								<option></option>
 								<option value="englisch"		>Englisch</option>
 								<option value="deutsch"			>Deutsch</option>
@@ -53,7 +53,7 @@
 							<input type="number" name="txtCapacity" placeholder="Kursgröße:">
 						</td>
 						<td>
-							<select name="ddlFrequency">
+							<select name="ddlFrequency" class="option">
 								<option></option>
 							<option value="wöchentlich"			>wöchentlich</option>
 							<option value="monatlich"			>monatlich</option>
@@ -113,7 +113,7 @@
 								</div>
 							<!-- Jump to Detailed View -->
 								<div class="col-xs-12 col-md-6">
-									<a class="btn btn-success" href="DisplayCourseDetails?courseID=<%=course.getCourseNumber()%>">Details</a>	
+									<a class="btn btn-primary" href="DisplayCourseDetails?courseID=<%=course.getCourseNumber()%>">Details</a>	
 								</div>
 								</div>
 							</div>
