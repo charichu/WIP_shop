@@ -61,7 +61,7 @@ public class Email {
 	}
 	
 	public Boolean send() throws IOException {
-		Boolean bRV = false; //bRV stands for bool return value - only used to check if it was successful
+		Boolean bRV = true; //bRV stands for bool return value - only used to check if it was successful
 		
 		try {
 			Transport.send(emailMsg);

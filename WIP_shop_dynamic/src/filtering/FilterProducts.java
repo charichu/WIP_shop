@@ -42,7 +42,7 @@ public class FilterProducts {
 			if (hasAtLeastOneConditionBefore) {
 				sBuilder.append(" AND ");						
 			}
-			sBuilder.append("pricePerHour = " + pricePerHour);	
+			sBuilder.append("pricePerHour <= " + pricePerHour);	
 			hasAtLeastOneConditionBefore = true;
 		}
 		
@@ -50,7 +50,7 @@ public class FilterProducts {
 			if (hasAtLeastOneConditionBefore) {
 				sBuilder.append(" AND ");						
 			}
-			sBuilder.append("capacity = " + capacity);	
+			sBuilder.append("capacity <= " + capacity);	
 			hasAtLeastOneConditionBefore = true;
 		}
 		
@@ -66,7 +66,7 @@ public class FilterProducts {
 			if (hasAtLeastOneConditionBefore) {
 				sBuilder.append(" AND ");						
 			}
-			sBuilder.append("durationPerMeeting = " + durationPerMeeting);	
+			sBuilder.append("durationPerMeeting <= " + durationPerMeeting);	
 			hasAtLeastOneConditionBefore = true;
 		}
 		

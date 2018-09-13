@@ -24,23 +24,17 @@
 				<!-- checked out due to placeholder text <p class="help-block">Alle Zeichen außer " und ;.</p> -->
 			<!-- User Info -->
 			<p2 class="help-block">User-Daten: </p2>
-<<<<<<< HEAD
-				<input type="text" name="txtEmail" placeholder="E-Mailadresse">
-				<input type="text" name="txtLastName" placeholder="Nachname">
-				<input type="text" name="txtFirstName" placeholder="Vorname">
-				<input type="text" name="txtStudentType" placeholder="Schüler oder Student">
-				<input type="text" name="txtClass" placeholder="Schulklasse,bitte leer lassen wenn Student">
-				<!-- Type Date does not allow placeholder text -->
-				<input type="text" name="numDateOfBirth" placeholder="Geburtstag, Format tt.mm.jjjj">
-=======
 				<input type="text" name="txtEmail" placeholder="E-Mailadresse" required="required">
 				<input type="text" name="txtLastName" placeholder="Nachname" required="required">
 				<input type="text" name="txtFirstName" placeholder="Vorname" required="required">
-				<input type="text" name="chkStudentType" placeholder="Schüler oder Student" required="required">
+				<select name="ddlStudentType">
+					<option></option>
+					<option value="schüler">Schüler</option>
+					<option value="student">Student</option>					
+				</select>
 				<input type="text" name="txtClass" placeholder="Schulklasse,bitte leer lassen wenn Student">
 				<!-- Type Date does not allow placeholder text -->
 				<input type="text" name="numDateOfBirth" pattern="[0-9]{1-2}.[0-9]{1-2}.[0-9]{4}" placeholder="Geburtstag, Format tt.mm.jjjj" required="required">
->>>>>>> master
 					<!-- checked out due to the type number work around <p class="help-block">Geben Sie hier ihr Geburtsdatum ein.</p>  -->
 			<!-- Address Block -->
 			<p2 class="help-block">Adresse: </p2>
@@ -50,7 +44,7 @@
 				<input type="number" name="txtHousenumber" placeholder="Hausnummer" required="required">			
 			<!-- UserType selection -->
 			<br>	
-			<input type="checkbox" id="chkUserTypeTeacher" name="userType" value="teacher">
+			<input type="checkbox" name="chkUserTypeTeacher" value="teacher">
 			<label for="userTypeTeacher">Bitte ankreuzen, wenn Sie sich als Lehrer anmelden wollen.</label>
 			<!-- Register button -->
 				<input type="submit" name="register" class="login registermodal-submit" value="Registrieren">

@@ -17,7 +17,7 @@ public class DBFunctions {
 	//columns of tables - saved as string array
 	//TODO add other tables(when you use the tables)
 	public static String[] tableUser = {"userID","username","password","email","userType","firstName","lastName","class","dateOfBirth","studentType","qualificationProfile","addressID","enabled"}; 	
-	public static String[] tableUser_AddUser= {"email","username","password","userType","firstName","lastName","dateOfBirth","class","studentType", "addressID","enabled"}; 	
+	public static String[] tableUser_AddUser= {"email","username","password","userType","firstName","lastName","dateOfBirth","class","studentType", "addressID"}; 	
 	
 	public static void initConnection() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException{
 		//create database connection only once
