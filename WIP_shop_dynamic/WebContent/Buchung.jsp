@@ -20,7 +20,7 @@
 
 <div class="container-fluid padding">
 	<div class="row">
-		<div class="col-8">
+		<div class="col-12">
 			<% if(request.getAttribute("successMessage")!=null){%>
 				<div id="alert_message" class="alert alert-success" role="alert">
 				  <% out.println(request.getAttribute("successMessage")); %>
@@ -31,7 +31,7 @@
 				  <% out.println(request.getAttribute("errorMessage")); %>
 				</div>
 			<%	}%>
-			<h2 class="display-4">Bestellungsübersicht</h1>
+			<h2 class="display-4 centered">Bestellungsübersicht</h1>
 			<% ArrayList<Course> bookingList = (request.getAttribute("bookingList")!=null)
 											   ?(ArrayList<Course>) request.getAttribute("bookingList"):new ArrayList<Course>();
 			   if(!bookingList.isEmpty()){
@@ -40,7 +40,7 @@
 						   					  new HashMap<Integer,Integer>();
 			   Integer number;%>
 			<%-- display the products in the table --%>
-			<table>
+			<table class="table">
 				<tr>
 					<th><%out.println(bookingList.get(0).getSubject()); %></th>
 					<th><%out.println(bookingList.get(0).getDescription()); %></th>
@@ -92,18 +92,21 @@
 			<%
 			}%>
 		</div>
-		<div class="col-4">
-			<br>
-			<div id="orderDescription">
-				Nachdem Sie die Bestellung bestätigt haben, erhalten Sie eine E-Mail mit einer Rechnung als Anhang.
-			</div>
-			<br>
-			<form id="ConfirmOrderCourses" action="ConfirmOrderCourses" method="post">
-				<input type="submit" value="Bestellung bestätigen" class="nav-link">
-			</form>
+</div>
+	<div class="row centered">
+		<br>
+		<div id="orderDescription" class="centered">
+			Nachdem Sie die Bestellung bestätigt haben, erhalten Sie eine E-Mail mit einer Rechnung als Anhang.
+		</div>
+		<br>
+		<div class="centered">
+		<form id="ConfirmOrderCourses" action="ConfirmOrderCourses" method="post">
+			<input type="submit" value="Bestellung bestätigen" class="nav-link ">
+		</form>
 		</div>
 	</div>
-</div>	
+</div>
+	
 <!--- Footer -->
 <div><jsp:include page="includes/footer.jsp"/></div>
 

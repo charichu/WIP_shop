@@ -35,7 +35,7 @@
 					</tr>
 					<tr>
 						<td>
-							<select name="ddlSubject">
+							<select name="ddlSubject" class="option">
 								<option></option>
 								<option value="englisch"		>Englisch</option>
 								<option value="deutsch"			>Deutsch</option>
@@ -44,17 +44,16 @@
 								<option value="physik"			>Physik</option>
 								<option value="chemie"			>Chemie</option>
 								<option value="biologie"		>Biologie</option>
-								<option value="informatik"		>Informatik</option>
 							</select>
 						</td>
 						<td>
-							<input type="number" name="txtPrice" placeholder="Preis">
+							<input type="number" name="txtPrice" placeholder="Preis:">
 						</td>
 						<td>
-							<input type="number" name="txtCapacity" placeholder="Kursgröße">
+							<input type="number" name="txtCapacity" placeholder="Kursgröße:">
 						</td>
 						<td>
-							<select name="ddlFrequency">
+							<select name="ddlFrequency" class="option">
 								<option></option>
 							<option value="wöchentlich"			>wöchentlich</option>
 							<option value="monatlich"			>monatlich</option>
@@ -62,7 +61,7 @@
 						</td>
 						
 						<td>
-							<input type="number" name="txtDuration" placeholder="Dauer">
+							<input type="number" name="txtDuration" placeholder="Dauer:">
 						</td>
 						<td>
 							<input type="submit" name="btnFilter" placeholder="Anwenden">
@@ -71,7 +70,7 @@
 					</tr>
 					<tr>
 						<td colspan="6">
-							<input type="search" name="srhCourses" placeholder="Suchen">
+							<input type8="search" name="srhCourses" placeholder="Suchen">
 						</td>
 					</tr>
 				</table>
@@ -114,7 +113,7 @@
 								</div>
 							<!-- Jump to Detailed View -->
 								<div class="col-xs-12 col-md-6">
-									<a class="btn btn-success" href="DisplayCourseDetails?courseID=<%=course.getCourseNumber()%>">Details</a>	
+									<a class="btn btn-primary" href="DisplayCourseDetails?courseID=<%=course.getCourseNumber()%>">Details</a>	
 								</div>
 								</div>
 							</div>
@@ -132,4 +131,5 @@
 <div><jsp:include page="includes/footer.jsp"/></div>
 
 </body>
+
 </html>

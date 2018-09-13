@@ -160,7 +160,7 @@
 <div class="container-fluid padding">
 	<div class="row welcome text-center padding">
 		<div class="col-12">
-			<h1 class="display-4">Meet the Team</h1>
+			<h2>Meet the Team</h2>
 		</div>
 	</div>
 </div>	
@@ -171,7 +171,7 @@
 	<div class="row padding">
 		<div class="col-md-3">
 			<div class="card">
-				<img class="card-img-top" src="img/team1.png">
+				<img class="card-img-top" src="img/thomas.png">
 				<div class="card-body">
 					<h4 class="card-title">Thomas</h4>
 					<p class="card-text">Product Owner</p>
@@ -181,7 +181,7 @@
 		</div>
 		<div class="col-md-3">
 			<div class="card">
-				<img class="card-img-top" src="img/team2.png">
+				<img class="card-img-top" src="img/david.png">
 				<div class="card-body">
 					<h4 class="card-title">David</h4>
 					<p class="card-text">SCRUM-Master</p>
@@ -191,7 +191,7 @@
 		</div>
 		<div class="col-md-3">
 			<div class="card">
-				<img class="card-img-top" src="img/team3.png">
+				<img class="card-img-top" src="img/marcel.png">
 				<div class="card-body">
 					<h4 class="card-title">Marcel</h4>
 					<p class="card-text">Developer</p>
@@ -201,7 +201,7 @@
 		</div>
 		<div class="col-md-3">
 			<div class="card">
-				<img class="card-img-top" src="img/team1.png">
+				<img class="card-img-top" src="img/janp.png">
 				<div class="card-body">
 					<h4 class="card-title">Jan</h4>
 					<p class="card-text">Developer</p>

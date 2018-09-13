@@ -38,7 +38,7 @@ public class UpdateProfile extends HttpServlet {
 			String username, email, firstName, lastName, qualificationProfile, street, city, plz, grade, dateOfbirth, sqlStatement, houseNumber, addressID;
 			email    = request.getParameter("txtEmail");
 			lastName= request.getParameter("txtLastName");
-			qualificationProfile= request.getParameter("txtQualificationProfile");
+			qualificationProfile= request.getParameter("txtQualificationProfile") !=null?request.getParameter("txtQualificationsProfile"):"";
 			street  = request.getParameter("txtStreetHousenumber").substring(0,request.getParameter("txtStreetHousenumber").lastIndexOf(" "));
 			houseNumber = request.getParameter("txtStreetHousenumber").substring(request.getParameter("txtStreetHousenumber").lastIndexOf(" ")+1);
 			city  = request.getParameter("txtCity");

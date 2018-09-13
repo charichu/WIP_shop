@@ -46,9 +46,9 @@ $(document).ready(function () {
 			  <% out.println(request.getAttribute("errorMessage")); %>
 			</div>
 		<%	}%>
-					<h1>Profil</h1><input type="submit" id="edit" value="bearbeiten">
+					<h1>Profil</h1>
 					<form id="target" action="UpdateProfile" method="get">
-						<input type="submit" id="submit" value="bestätigen" hidden="hidden">
+						
 					
 			<% User currentUser = (request.getAttribute("currentUser")!=null)?(User)request.getAttribute("currentUser"):null;
 			   if(currentUser!=null){%>
@@ -83,15 +83,25 @@ $(document).ready(function () {
 							<tr>
 							<td>Stadt:</td><td><input id="txtCity" name="txtCity" type="text" value="<%=address.get("city")%>" disabled="disabled"></td>
 						<%} %>
-						<%if((Integer)session.getAttribute("userType")==2){ %>
+						<%if((Integer)session.getAttribute("userType")==2){ 
+						HashMap<String,String> address = currentUser.getAddress(); %>
 							<td>Jahrgangsstufe</td><td><input id="txtGrade" name="txtGrade" type="number" disabled="disabled" value="<%=currentUser.getGrade().intValue()%>"></td>
+							<tr>
+							<td>Straße/ Nr:</td><td><input id="txtStreetHousenumber" name="txtStreetHousenumber" type="text" value="<%=address.get("street")+" "+address.get("houseNumber")%>" disabled="disabled"></td>
+							</tr>
+							<tr>
+							<td>PLZ:</td><td><input id="txtPlz" name="txtPlz" type="number" value="<%=address.get("plz")%>" disabled="disabled"></td>
+							</tr>
+							<tr>
+							<td>Stadt:</td><td><input id="txtCity" name="txtCity" type="text" value="<%=address.get("city")%>" disabled="disabled"></td>
 						<%} %>
 						
 					</tr>
 				</table>
-				
+				<input type="submit" id="submit" value="bestätigen" hidden="hidden">
 			<% } %>
 			</form>
+			<input type="submit" id="edit" value="bearbeiten">
 		</div>
 		<!-- second column -->
 		<div class="col-lg-6">
