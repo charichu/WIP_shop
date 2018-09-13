@@ -34,11 +34,11 @@
 						<input type="hidden" name="targetSite" value="/adminKursuebersicht.jsp">
 					</form>
 				</li>
-				<li class="nav-item">
+<%--			<li class="nav-item">
 					<form  action="GetUser" method="get">
 						<input type="submit" class="nav-link" id = "getUser" value="Accounts Übersicht">
 					</form>
-					
+--%>					
 				</li>
 				<li class="nav-item">
 					<li class="nav-item">
