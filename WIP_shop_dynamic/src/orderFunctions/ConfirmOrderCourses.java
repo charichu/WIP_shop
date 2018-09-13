@@ -95,10 +95,10 @@ public class ConfirmOrderCourses extends HttpServlet {
 			        	ps.executeUpdate();
 			        }
 			       
-			        String mailText = "Sehr geehrte/r" +currentUser.getFirstName()+" "+currentUser.getLastName()+"\n"+
-			        				  "wir vom Tutor24 Shop bedanken uns f�r Ihre Bestellung �ber unser Portal.\n"+
+			        String mailText = "Sehr geehrte/r " +currentUser.getFirstName()+" "+currentUser.getLastName()+"\n"+
+			        				  "wir vom Tutor24 Shop bedanken uns f�r Ihre Bestellung �ber unser Portal.\r\n"+
 			        				  "an dieser E-Mail finden Sie die Rechnung, die Sie innerhalb von 14 Tagen überweisen müssen."+
-			        				  "alles weitere zu unseren Zahlungsbedingungen finden Sie in unseren AGB's"+
+			        				  "alles weitere zu unseren Zahlungsbedingungen finden Sie in unseren AGB's \r\n"+
 			        				  "Ihr Team von Tutor24";			        
 			        if(Email.IsValid(currentUser.getEmail())){
 			        	Email orderMail = new Email(currentUser.getEmail(), "Tutor24: Rechnung für Bestellung "+orderID.toString(), mailText, null);

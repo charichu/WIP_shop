@@ -26,7 +26,7 @@
 			if(!(list == null)){
 		 %>
 		 <%-- display the products in the table --%>
-			<table>
+			<table class="table table-striped">
 			<tr>
 				<th><%out.println(list.get(0).getCourseNumber()); %></th>
 				<th><%out.println(list.get(0).getSubject()); %></th>

@@ -38,30 +38,20 @@
 			<!--Content on the slider -->
 			<div class="carousel-caption">
 				<h1 class="display-2">Tutor24</h1>
-				<h3>Dummy Website</h3>
-				<button type="button" class="btn-outline-light btn-lg">Demo</button>
-				<button type="button" class="btn-primary btn-lg">Demo2</button>
+				<h3>Hier werden Sie schlauer!</h3>
+				<a class="btn btn-primary"role="button" href="GetCourses?targetSite=%2FKursangebote.jsp">Hier zu den Kursangebote</a>
 			</div>
 		</div>
 		<div class="carousel-item">
 			<img src="img/background2.png">
+			<!--Content on the slider -->
+			<div class="carousel-caption">
+				<h3>Lege direkt los und logge dich ein!</h3>
+				<a data-toggle="modal" class="btn btn-primary" href="#" data-target="#login-modal">Login</a>
+			</div>
 		</div>
 		<div class="carousel-item">
 			<img src="img/background3.png">
-		</div>
-	</div>
-</div>
-
-<!--- Jumbotron -->
-<!-- images not centered? -->
-
-<div class="container-fluid">
-	<div class=" row jumbotron">
-		<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-			<p class="lead"> Bla bla bla bla </p>
-		</div>
-		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-		<a href="#"><button type="button" class="btn btn-outline-secondary btn-lg">Demo3</a>
 		</div>
 	</div>
 </div>
@@ -70,11 +60,11 @@
 <div class="container-fluid padding">
 	<div class="row welcome text-center">
 		<div class="col-12">
-			<h1 class="dsplay-4">Schnell bootstrap Lernen mit Tutor24.</h1>
+			<h1 class="dsplay-4">Beste Nachhilfe für jedes Budget.</h1>
 		</div>
 		<hr>
 			<div class="col-12">
-				<p class="lead">Random Text</p>
+				<p class="lead">Wir verhelfen Ihnen zu einer guten Work-Life Balance bei optimalen Lernfortschritt!</p>
 			</div>
 	</div>
 </div>
@@ -90,19 +80,16 @@
 			
 			<i class="fas fa-graduation-cap"></i>
 			<h3>Study</h3>
-			<p>Buuhuu</p>
 		</div>
 		<!-- second columns -->
 		<div class="col-xs-12 col-sm-6 col-md-4">
 			<i class="fab fa-empire"></i>
 			<h3>Sleep</h3>
-			<p>Zzzzzzz</p>
 		</div>
 		<!-- third columns -->
 		<div class="col-sm-12 col-md-4">
 			<i class="fas fa-chart-line"></i>
 			<h3>Repeat</h3>
-			<p>Circles</p>
 		</div>
 		
 	</div>
@@ -116,11 +103,14 @@
 	<div class="row padding">
 		<!-- first column -->
 		<div class="col-lg-6">
-			<h2>Just LolZ</h2>
-			<p>Paragraph 1</p>
-			<p>Paragraph 2</p>
+			<h2>Motiviert in drei schnellen Schritten</h2>
+			<h3>So aktivierst Du in kurzer Zeit Deine Motivation zum Lernen:</h3>
+			<p>1. Erkenne, was Dich persönlich motiviert und nutze diese Erkenntnis: Jeder hat bestimmte Dinge, die ihn motivieren. Bei dem einen ist es Lob durch andere, beim anderen Geld, beim dritten eine schwierige Herausforderung, die er meistern möchte. Wenn Du weißt, was Dich motiviert, kannst Du Dein Lernen entsprechend gestalten. Motiviert Dich beispielsweise die Anwesenheit anderer, solltest Du eine Lerngruppe gründen.</p>
+			<p>2. Motiviere Dich durch Belohnungen: Bei den meisten Menschen wird die Motivation zu lernen durch Belohnungen gesteigert. Ist dies bei Dir auch der Fall, belohne Dich selbst nach Erreichen von Zwischenzielen, z. B. mit einem Kinobesuch oder einem Fußballspiel. Überlege Dir Belohnungen, die Dich wirklich zum Lernen motivieren und halte diese schriftlich fest. Betrüge Dich dabei jedoch nicht selbst. Was Du versprichst, musst Du auch halten!</p>
+			<p>3. Setze Dich unter künstlichen Zeitdruck: Deine Motivation fürs Lernen kann auch durch das Schaffen von Deadlines gesteigert werden. Wird der Termindruck größer, arbeiten viele effektiver. Dies kannst Du nutzen, indem Du Dir in Deinen Kalender Deadlines für alle zu erreichenden Zwischenziele einträgst. Auch hier gilt: Betrüge Dich niemals selbst, sondern halte Dich an Deine eigenen Vorgaben!</p>
 			<br>
-			<a href="#" class="btn btn-primary">Testbutton3</a>
+			<h3>Bist du überzeugt? Registriere dich jetzt!</h3>
+			<a class="btn btn-primary" href="register.jsp" >Registrieren</a>
 		</div>
 		<!-- second column -->
 		<div class="col-lg-6">
@@ -160,7 +150,7 @@
 <div class="container-fluid padding">
 	<div class="row welcome text-center padding">
 		<div class="col-12">
-			<h1 class="display-4">Meet the Team</h1>
+			<h2>Meet the Team</h2>
 		</div>
 	</div>
 </div>	
@@ -171,7 +161,7 @@
 	<div class="row padding">
 		<div class="col-md-3">
 			<div class="card">
-				<img class="card-img-top" src="img/team1.png">
+				<img class="card-img-top" src="img/thomas.png">
 				<div class="card-body">
 					<h4 class="card-title">Thomas</h4>
 					<p class="card-text">Product Owner</p>
@@ -181,7 +171,7 @@
 		</div>
 		<div class="col-md-3">
 			<div class="card">
-				<img class="card-img-top" src="img/team2.png">
+				<img class="card-img-top" src="img/david.png">
 				<div class="card-body">
 					<h4 class="card-title">David</h4>
 					<p class="card-text">SCRUM-Master</p>
@@ -191,7 +181,7 @@
 		</div>
 		<div class="col-md-3">
 			<div class="card">
-				<img class="card-img-top" src="img/team3.png">
+				<img class="card-img-top" src="img/marcel.png">
 				<div class="card-body">
 					<h4 class="card-title">Marcel</h4>
 					<p class="card-text">Developer</p>
@@ -201,7 +191,7 @@
 		</div>
 		<div class="col-md-3">
 			<div class="card">
-				<img class="card-img-top" src="img/team1.png">
+				<img class="card-img-top" src="img/janp.png">
 				<div class="card-body">
 					<h4 class="card-title">Jan</h4>
 					<p class="card-text">Developer</p>
@@ -217,9 +207,9 @@
 	<div class="row padding">
 		<!-- first column -->
 		<div class="col-lg-6">
-			<h2>Contact us here</h2>
-			<p>Paragraph 3, apparently. The image can be the placeholder for a contact formular.</p>
-			
+			<h2>Noch Fragen?</h2>
+			<p>Wenn ihr bei den Kursen nicht fündig werdet, Fragen zu eurem Account oder Rechnung habt wendet euch gerne und jederzeit an uns! Am einfachsten schreibst uns direkt eine Mail unter: </p>
+			<p><a href="mailto:noreply.tutor24@gmail.com">noreply.tutor24@gmail.com</a></p>
 		</div>
 		<!-- second column -->
 		<div class="col-lg-6">
