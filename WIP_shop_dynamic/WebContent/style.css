@@ -460,6 +460,23 @@ figure {
 {
     margin: 0 0 11px;
 }
+/****** Course Overview ******/
+.centered{
+	display: grid;
+	align-content: center;
+	justify-content: center;
+}
+.borderless td, .borderless th {
+    border: none;
+}
+.option{
+	height:44px;
+	border-left: none;
+	border-right: none;
+}
+.table{
+	max-width: none;
+}
 
 /* Screenbreaks
 Extra small (xs) devices (portrait phones, less than 576px)

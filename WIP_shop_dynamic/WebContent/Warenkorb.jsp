@@ -20,7 +20,7 @@
 
 <div class="container-fluid padding">
 	<div class="row">
-		<div class="col-8">
+		<div class="col-12">
 			<% if(request.getAttribute("successMessage")!=null){%>
 				<div id="alert_message" class="alert alert-success" role="alert">
 				  <% out.println(request.getAttribute("successMessage")); %>
@@ -31,7 +31,7 @@
 				  <% out.println(request.getAttribute("errorMessage")); %>
 				</div>
 			<%	}%>
-			<h1 class="display-4">Warenkorb</h1>
+			<h1 class="display-4 centered">Warenkorb</h1>
 			<%
 			ArrayList<Course> cartList = (ArrayList<Course>) request.getAttribute("cart");
 			if(!(cartList == null)){
@@ -42,7 +42,7 @@
 				Integer number;
 			%>
 			<%-- display the products in the table --%>
-			<table>
+			<table class="table table-striped">
 				<tr>
 					<th><%out.println(cartList.get(0).getSubject()); %></th>
 					<th><%out.println(cartList.get(0).getDescription()); %></th>
@@ -86,13 +86,14 @@
 			<%
 			}%>
 			</table>
+	</div>
 		</div>
-		<div class="col-4">
+		<div class="row centered">
 			<form id="BookCourses" action="BookCourses" method="post">
-				<input type="submit" value="Bestellen" class="nav-link">
+				<input type="submit" value="Bestellen" class="nav-link centered">
 			</form>
 		</div>
-	</div>
+	
 </div>	
 <!--- Footer -->
 <div><jsp:include page="includes/footer.jsp"/></div>
