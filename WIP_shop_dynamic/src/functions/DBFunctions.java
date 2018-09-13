@@ -16,8 +16,8 @@ public class DBFunctions {
 	
 	//columns of tables - saved as string array
 	//TODO add other tables(when you use the tables)
-	public static String[] tableUser = {"userID","username","password","email","userType","firstName","lastName","class","dateOfBirth","studentType","qualificationProfile","addressID"}; 	
-	public static String[] tableUserManipulation = {"email","username","password","userType","firstName","lastName","dateOfBirth","class","studentType","qualificationProfile", "addressID"}; 	
+	public static String[] tableUser = {"userID","username","password","email","userType","firstName","lastName","class","dateOfBirth","studentType","qualificationProfile","addressID","enabled"}; 	
+	public static String[] tableUser_AddUser= {"email","username","password","userType","firstName","lastName","dateOfBirth","class","studentType", "addressID","enabled"}; 	
 	
 	public static void initConnection() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException{
 		//create database connection only once
@@ -62,6 +62,24 @@ public class DBFunctions {
 		}
 		
 		return rvString;
+	}
+	
+	public static String CreateUpdateQuery(String tableName, String[] columnNames, String[] columnValues, String whereCondition){
+		StringBuilder rvString = new StringBuilder(); // rvString stands for return value string
+		//only allow insert to be created when the amount of values/columns is the same
+		if (columnNames.length == columnValues.length) {
+			//build the actual string
+			rvString.append("UPDATE " + tableName + " SET ");
+			for(int i = 0; i < columnValues.length ; i++) {
+				if(i != 0){
+					rvString.append(", ");
+				}
+				rvString.append(columnNames[i] + " = " + columnValues[i]);
+			}
+			rvString.append(" WHERE " + whereCondition);
+		}
+		
+		return rvString.toString();
 	}
 
 	public static String CreateSelectQuery(String tableName, String[] columnNames, String whereCondition){

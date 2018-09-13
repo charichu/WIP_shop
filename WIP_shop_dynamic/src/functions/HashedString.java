@@ -31,61 +31,17 @@ public class HashedString{
         try {
          	hashed = generatePasswordHash(hashChars, iterations);
 		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-//	public HashedString(String stringToHash, byte[] salt){
-//		setSalt(salt);
-//		hashed = hashString(stringToHash);
-//	}
-	
-//	public String hashString(String stringToHash){
-//		String rvString = null;
-//		try{
-//			stringToHash = pepper + stringToHash;
-//			
-//			MessageDigest md = MessageDigest.getInstance("MD5");
-//			md.update(salt);
-//			byte[] stringBytes = md.digest(stringToHash.getBytes());
-//			StringBuilder sb = new StringBuilder();
-//			for(int i = 0; i < stringBytes.length; i++){
-//				sb.append(Integer.toString((stringBytes[i] & 0xff) + 0x100, 16).substring(1));
-//			}
-//			rvString = sb.toString();
-//		}
-//		catch (NoSuchAlgorithmException e){
-//			e.printStackTrace();
-//		}
-//		return rvString;
-//	}
-//	
-//	private byte[] createSalt(){
-//		byte[] curSalt =  new byte[16];		
-//		try {
-//			SecureRandom sr = SecureRandom.getInstance("SHA1PRNG", "SUN");
-//			sr.nextBytes(curSalt);
-//			
-//			setSaltString(curSalt);
-//			salt = saltString.getBytes(StandardCharsets.UTF_8);
-//		} catch (NoSuchAlgorithmException e) {
-//			// SHA1PRNG exists no handling necessary
-//			e.printStackTrace();
-//		} catch (NoSuchProviderException e) {
-//			// SUN exists no handling necessary
-//			e.printStackTrace();
-//		}
-//		
-//		return salt;		
-//	}
-//	
 	public String toString(){
 		return hashed;
 	}
 	
 	public String getHashedStringOnly(){
-		return hashed.substring(hashed.indexOf(":",hashed.indexOf(":") + 1));
+		String withoutIteration = hashed.substring(hashed.indexOf(":") + 1);
+		return withoutIteration.substring(withoutIteration.indexOf(":") + 1);
 	}
 	
 	public byte[] getSaltByte(){
@@ -95,8 +51,11 @@ public class HashedString{
 	public static String getSaltFromHashedString(String hashedString){
 		String extractedSalt = "";
 		int saltStartIndex = hashedString.indexOf(":") + 1;
-		if(saltStartIndex >= 0 && saltStartIndex < hashedString.length()){
-			extractedSalt = hashedString.substring(saltStartIndex, hashedString.indexOf(":", saltStartIndex));	
+		if(saltStartIndex > 0 && saltStartIndex < hashedString.length()){
+			int saltEndIndex = hashedString.indexOf(":", saltStartIndex);
+			if(saltEndIndex >= 0){
+				extractedSalt = hashedString.substring(saltStartIndex, saltEndIndex);					
+			}
 		}
 		return extractedSalt;
 	}
