@@ -91,7 +91,7 @@
 							for(Course course:list){
 							if(course.isActive()){%>
 									
-					<div class="item col-xs-6 col-lg-6 col-xl-4">
+					<div class="item col-xs-12 col-lg-6 col-xl-4">
 					<!-- Product picture -->
 						<div class="thumbnail">
 							<img class="group grid-group-image" src="img/thumbnail.png" alt="" />

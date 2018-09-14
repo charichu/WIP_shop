@@ -18,7 +18,7 @@
 	
 <div class="container-fluid padding centered">
 	<div class="row centered">
-		<div class="col-12">
+		<div class="col-12" style="overflow:auto">
 			<%
 			boolean userLoggedIn = (Boolean)session.getAttribute("userLoggedIn");
 			Integer userType     = (Integer)session.getAttribute("userType");
@@ -36,44 +36,47 @@
 				  <% out.println(request.getAttribute("errorMessage")); %>
 				</div>
 			<%	}%>
-			<table class="table table-striped">
-				<tr>
-					<th><%out.println(list.get(0).getCourseNumber()); %></th>
-					<th><%out.println(list.get(0).getSubject()); %></th>
-					<th><%out.println(list.get(0).getGrade()); %></th>
-					<th><%out.println(list.get(0).getDescription()); %></th>
-					<th><%out.println(list.get(0).getFrequency()); %></th>
-					<th><%out.println(list.get(0).getStudentType()); %></th>
-					<th><%out.println(list.get(0).getPricePerHour()); %></th>
-	
-				</tr>
-				<% 		list.remove(0);
-						for(Course course:list){%>
-				
-				<tr>
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<tr>
+						<th><%out.println(list.get(0).getCourseNumber()); %></th>
+						<th><%out.println(list.get(0).getSubject()); %></th>
+						<th><%out.println(list.get(0).getGrade()); %></th>
+						<th><%out.println(list.get(0).getDescription()); %></th>
+						<th><%out.println(list.get(0).getFrequency()); %></th>
+						<th><%out.println(list.get(0).getStudentType()); %></th>
+						<th><%out.println(list.get(0).getPricePerHour()); %></th>
+		
+					</tr>
+					<% 		list.remove(0);
+							for(Course course:list){%>
 					
-						<td><%out.println(course.getCourseNumber()); %></td>
-						<td><%out.println(course.getSubject()); %></td>
-						<td><%out.println(course.getGrade()); %></td>
-						<td><%out.println(course.getDescription()); %></td>
-						<td><%out.println(course.getFrequency()); %></td>
-						<td><%out.println(course.getStudentType()); %></td>
-						<td><%out.println(course.getPricePerHour()); %></td>
-						<td><a class="nav-link" href="DisplayCourseDetails?courseID=<%=course.getCourseNumber()%>">Details</a></td>
-						<%if(userLoggedIn&&userType!=2){  %>
-							<td><a class="nav-link" href="GetEditCourse?courseID=<%=course.getCourseNumber()%>">Bearbeiten</a></td>
-							<td>
-								<form action="DeleteCourse" method="post">
-									<input type="submit" value="löschen">
-									<input type="hidden" name="courseID" value="<%=course.getCourseNumber()%>">
-									<input type="hidden" name="target" value="GetMyCourses">
-								</form>
-							</td>
-						<%} %>
-				</tr>
-				<%  	}
-					}%>
-			</table>
+					<tr>
+						
+							<td><%out.println(course.getCourseNumber()); %></td>
+							<td><%out.println(course.getSubject()); %></td>
+							<td><%out.println(course.getGrade()); %></td>
+							<td><%out.println(course.getDescription()); %></td>
+							<td><%out.println(course.getFrequency()); %></td>
+							<td><%out.println(course.getStudentType()); %></td>
+							<td><%out.println(course.getPricePerHour()); %></td>
+							<td><a class="nav-link" href="DisplayCourseDetails?courseID=<%=course.getCourseNumber()%>">Details</a></td>
+							<%if(userLoggedIn&&userType!=2){  %>
+								<td><a class="nav-link" href="GetEditCourse?courseID=<%=course.getCourseNumber()%>">Bearbeiten</a></td>
+								<td>
+									<form action="DeleteCourse" method="post">
+										<input type="submit" value="löschen">
+										<input type="hidden" name="courseID" value="<%=course.getCourseNumber()%>">
+										<input type="hidden" name="target" value="GetMyCourses">
+									</form>
+								</td>
+							<%} %>
+					</tr>
+					<%  	}
+						}%>
+				</table>
+			</div>
+			
 		</div>
 		<div class="col-4">
 			<%if(userLoggedIn&&userType!=2){  %>

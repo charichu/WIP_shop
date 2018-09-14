@@ -52,7 +52,7 @@ $(document).ready(function () {
 					
 			<% User currentUser = (request.getAttribute("currentUser")!=null)?(User)request.getAttribute("currentUser"):null;
 			   if(currentUser!=null){%>
-				<table id="profileTable">
+				<table id="profileTable" class="table-responsive">
 					<tr>
 						<td>Username: </td><td><input name="txtUsername" type="text" disabled="disabled" value="<%=currentUser.getUsername()%>" ></td>
 					</tr>
@@ -111,30 +111,6 @@ $(document).ready(function () {
 	<!-- horizontal rule -->
 	<hr class="my-4">
 </div>	
-
-<!--- Hidden (Gif) Section -->
-
-<button class="hiddensection" data-toggle="collapse" data-target="#secrets">Don´t Dead open inside</button>
-
-<div id="secrets" class="collapse">
-	<div class="container-fluid padding">
-		<div class="row text-center">
-			<!-- four columns to a single column -->
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/panda.gif">
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/poo.gif">
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/unicorn.gif">
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/chicken.gif">
-			</div>
-		</div>
-	</div>		
-</div>
 
 <!--- Footer -->
 <div><jsp:include page="includes/footer.jsp"/></div>

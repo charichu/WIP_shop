@@ -40,7 +40,7 @@
 						   					  new HashMap<Integer,Integer>();
 			   Integer number;%>
 			<%-- display the products in the table --%>
-			<table class="table">
+			<table class="table table-responsive">
 				<tr>
 					<th><%out.println(bookingList.get(0).getSubject()); %></th>
 					<th><%out.println(bookingList.get(0).getDescription()); %></th>

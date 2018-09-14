@@ -42,7 +42,7 @@
 				Integer number;
 			%>
 			<%-- display the products in the table --%>
-			<table class="table table-striped">
+			<table class="table table-striped table-responsive">
 				<tr>
 					<th><%out.println(cartList.get(0).getSubject()); %></th>
 					<th><%out.println(cartList.get(0).getDescription()); %></th>

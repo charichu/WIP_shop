@@ -121,30 +121,6 @@
 	<hr class="my-4">
 </div>	
 
-<!--- Hidden (Gif) Section -->
-
-<button class="hiddensection" data-toggle="collapse" data-target="#secrets">Don´t Dead open inside</button>
-
-<div id="secrets" class="collapse">
-	<div class="container-fluid padding">
-		<div class="row text-center">
-			<!-- four columns to a single column -->
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/panda.gif">
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/poo.gif">
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/unicorn.gif">
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/chicken.gif">
-			</div>
-		</div>
-	</div>		
-</div>
-
 <!--- Meet the team -->
 
 <div class="container-fluid padding">
