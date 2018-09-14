@@ -175,7 +175,7 @@ public class PdfInvoice {
 			PdfPTable table2 = new PdfPTable(9);
 			table2.setWidthPercentage(100);
 			table2.setWidths(new int[] { 2, 2, 2, 2, 2, 2, 2, 2, 2});
-			table2.setSpacingBefore(10f);
+			table2.setSpacingBefore(50f);
 			table2.setSpacingAfter(10f);
 			
 			
@@ -184,7 +184,7 @@ public class PdfInvoice {
 			table2.addCell(getCell("Thema"));
 			table2.addCell(getCell("Schüler/ Student"));
 			table2.addCell(getCell("Frequenz"));			
-			table2.addCell(getCell("Dauer eines Treffens(in min)"));
+			table2.addCell(getCell("Dauer des Treffens"));
 			table2.addCell(getCell("Stundenpreis"));
 			table2.addCell(getCell("Preis pro Treffen"));
 			table2.addCell(getCell("Anzahl"));

@@ -27,12 +27,12 @@
 				<input type="text" name="txtEmail" placeholder="E-Mailadresse" required="required">
 				<input type="text" name="txtLastName" placeholder="Nachname" required="required">
 				<input type="text" name="txtFirstName" placeholder="Vorname" required="required">
-				<select name="ddlStudentType">
+				<select class="option" style="width:100%" name="ddlStudentType">
 					<option></option>
 					<option value="schüler">Schüler</option>
 					<option value="student">Student</option>					
 				</select>
-				<input type="text" name="txtClass" placeholder="Schulklasse,bitte leer lassen wenn Student">
+				<input type="text" style="margin-top:10px" name="txtClass" placeholder="Schulklasse,bitte leer lassen wenn Student">
 				<!-- Type Date does not allow placeholder text -->
 				<input type="text" name="numDateOfBirth" pattern="[0-9]{1-2}.[0-9]{1-2}.[0-9]{4}" placeholder="Geburtstag, Format tt.mm.jjjj" required="required">
 					<!-- checked out due to the type number work around <p class="help-block">Geben Sie hier ihr Geburtsdatum ein.</p>  -->
