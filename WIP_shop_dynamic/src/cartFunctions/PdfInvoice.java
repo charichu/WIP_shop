@@ -42,10 +42,10 @@ public class PdfInvoice {
     private static com.itextpdf.text.Font font2 = FontFactory.getFont("Arial", BaseFont.IDENTITY_H, 14, Font.BOLD);
     
     //Literals
-    private static final String tutor24Address = "Tutor24 GmbH\nAndreas Tutorius\nMeisenstraße 92\nD 33607 Bielefeld\n";
+    private static final String tutor24Address = "Tutor24 GmbH\nAndreas Tutorius\nMeisenstraï¿½e 92\nD 33607 Bielefeld\n";
     private static final String invoiceTitle = "Rechnung";
-    private static final String bankAccount = "	Spaßkasse\n	IBAN: DEXX XXXX XXXX XXXX XXXX XX\n	BIC: SPASSDEXXXX";
-    private static final String invoiceText = "Vielen Dank für ihre Bestellung.\nBitte überweisen sie den ausstehenden Betrag innerhalb von zwei Wochen an die unten aufgeführte Bankverbindung.\nMit freundlichen Grüßen\n\nIhr tutor24-Team";
+    private static final String bankAccount = "	Spaï¿½kasse\n	IBAN: DEXX XXXX XXXX XXXX XXXX XX\n	BIC: SPASSDEXXXX";
+    private static final String invoiceText = "Vielen Dank fï¿½r ihre Bestellung.\nBitte ï¿½berweisen sie den ausstehenden Betrag innerhalb von zwei Wochen an die unten aufgefï¿½hrte Bankverbindung.\nMit freundlichen Grï¿½ï¿½en\n\nIhr tutor24-Team";
 
     public static void print(ArrayList<Course> bookingList, HashMap<Integer, Integer> cart, double sum, int orderID, HttpServletRequest request){
         
@@ -73,7 +73,7 @@ public class PdfInvoice {
         Paragraph paragraph1 = new Paragraph("\n");
         document.add(paragraph1);
         
-          Image img = Image.getInstance("C:/Users/vennemei/git/WIP_shop3/WIP_shop_dynamic/WebContent/img/logo.png");
+          Image img = Image.getInstance("C:/xampp/img/logo.png");
           img.setAlignment(Element.ALIGN_RIGHT);
         
         //Vendor Information
@@ -180,21 +180,20 @@ public class PdfInvoice {
 			
 			
 			// header of order table
-			table2.addCell(getCell(bookingList.get(0).getSubject()));
-			table2.addCell(getCell(bookingList.get(0).getTopic()));
-			table2.addCell(getCell(bookingList.get(0).getStudentType()));
-			table2.addCell(getCell(bookingList.get(0).getFrequency()));			
-			table2.addCell(getCell(bookingList.get(0).getDurationPerMeetingDescription()));
-			table2.addCell(getCell(bookingList.get(0).getPricePerHour()));
+			table2.addCell(getCell("Fach"));
+			table2.addCell(getCell("Thema"));
+			table2.addCell(getCell("SchÃ¼ler/ Student"));
+			table2.addCell(getCell("Frequenz"));			
+			table2.addCell(getCell("Dauer eines Treffens(in min)"));
+			table2.addCell(getCell("Stundenpreis"));
 			table2.addCell(getCell("Preis pro Treffen"));
 			table2.addCell(getCell("Anzahl"));
 			table2.addCell(getCell("Summe"));                                   
             // Loop to create the table for the single ordered items
-			bookingList.remove(0);
 			for(Course course:bookingList){
 				
 				//Calculation for Subtotal
-				Double subTotal = cart.get(course.getCourseNumber())*course.getPricePerMeeting();
+				Double subTotal = cart.get(Integer.parseInt(course.getCourseNumber()))*course.getPricePerMeeting();
 				table2.addCell(getCell(course.getSubject()));
 				table2.addCell(getCell(course.getTopic()));
 				table2.addCell(getCell(course.getStudentType()));
@@ -202,7 +201,7 @@ public class PdfInvoice {
 				table2.addCell(getCell(course.getDurationPerMeetingDescription()));
 				table2.addCell(getCell(course.getPricePerHour()));
 				table2.addCell(getCell(String.valueOf(course.getPricePerMeeting())));
-				table2.addCell(getCell(String.valueOf(cart.get(course.getCourseNumber()))));
+				table2.addCell(getCell(String.valueOf(cart.get(Integer.parseInt(course.getCourseNumber())))));
 				table2.addCell(getCell(String.valueOf(subTotal)));
 			}
            			
