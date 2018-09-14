@@ -102,9 +102,13 @@ public class ConfirmOrderCourses extends HttpServlet {
 			        				  "alles weitere zu unseren Zahlungsbedingungen finden Sie in unseren AGB's \r\n"+
 			        				  "Ihr Team von Tutor24";			        
 			        if(Email.IsValid(currentUser.getEmail())){
-			        	PdfInvoice.print(bookingList, cart, sum, orderID, request);
-			        	String absolutePath = new String ("C://xampp//Invoice_" + orderID + ".pdf");
-			        	Email orderMail = new Email(currentUser.getEmail(), "Tutor24: Rechnung für Bestellung "+orderID.toString(), mailText, absolutePath);
+			        	
+//			        	Checked out due to bug as soon as two articles are in the order, works for almost one article path=equals name
+//			        	PdfInvoice.print(bookingList, cart, sum, orderID, request);
+//			        	String absolutePath = new String ("C://xampp//Invoice_" + orderID + ".pdf");
+			        	
+			        	//Add absolute Path
+			        	Email orderMail = new Email(currentUser.getEmail(), "Tutor24: Rechnung für Bestellung "+orderID.toString(), mailText, null);
 			        	if(orderMail.send()){
 			        		request.setAttribute("successMessage", "Die Bestellung wurde erfolgreich abgeschlossen.");
 							request.getSession().removeAttribute("cart");

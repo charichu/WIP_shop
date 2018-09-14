@@ -45,7 +45,7 @@ public class PdfInvoice {
     private static final String tutor24Address = "Tutor24 GmbH\nAndreas Tutorius\nMeisenstraße 92\nD 33607 Bielefeld\n";
     private static final String invoiceTitle = "Rechnung";
     private static final String bankAccount = "	Spaßkasse\n	IBAN: DEXX XXXX XXXX XXXX XXXX XX\n	BIC: SPASSDEXXXX";
-    private static final String invoiceText = "Vielen Dank für ihre Bestellung.\nBitte überweisen sie den ausstehenden Betrag innerhalb von zwei Wochen an die unten aufgeführte Bankverbindung.";
+    private static final String invoiceText = "Vielen Dank für ihre Bestellung.\nBitte überweisen sie den ausstehenden Betrag innerhalb von zwei Wochen an die unten aufgeführte Bankverbindung.\nMit freundlichen Grüßen\n\nIhr tutor24-Team";
 
     public static void print(ArrayList<Course> bookingList, HashMap<Integer, Integer> cart, double sum, int orderID, HttpServletRequest request){
         
@@ -123,7 +123,7 @@ public class PdfInvoice {
         StringBuilder dateBuilder = new StringBuilder(dateFormat.format(now));
         StringBuilder deadline = new StringBuilder(dateFormat.format(future));
         Paragraph leftDate = new Paragraph();
-            leftDate.setAlignment(Element.ALIGN_LEFT);
+            leftDate.setAlignment(Element.ALIGN_RIGHT);
             leftDate.setFont(font1);
             leftDate.add("" + dateBuilder);
         
@@ -139,9 +139,9 @@ public class PdfInvoice {
 			rs = DBFunctions.Execute("SELECT addresses.plz, addresses.city, addresses.street, addresses.housenumber, user.firstName, user.lastName FROM addresses, user WHERE user.userID = "+userID+" AND addresses.addressID = user.addressID;");
 			if(rs.next()){
 				String recipient = rs.getString("user.firstName") + " " + rs.getString("user.lastName");
-				String street = rs.getString("addresses.street");
+				String street = rs.getString("addresses.street") + " " + rs.getString("addresses.housenumber");
 				String city = rs.getString("addresses.plz") + " " + rs.getString("addresses.city");;
-				String customer ="user.userid";
+				String customer = String.valueOf(userID);
 			
 			
 			// Address on the left side
@@ -165,9 +165,7 @@ public class PdfInvoice {
 			
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 		}
         
 		//Variables for the address		
@@ -175,40 +173,41 @@ public class PdfInvoice {
 
 			// Table header for the actual order items
 			PdfPTable table2 = new PdfPTable(9);
+			table2.setWidthPercentage(100);
 			table2.setWidths(new int[] { 2, 2, 2, 2, 2, 2, 2, 2, 2});
-			table2.setSpacingBefore(50f);
+			table2.setSpacingBefore(10f);
+			table2.setSpacingAfter(10f);
+			
+			
 			// header of order table
-			table2.addCell(bookingList.get(0).getSubject());
-			table2.addCell(bookingList.get(0).getDescription());
-			table2.addCell(bookingList.get(0).getStudentType());
-			table2.addCell(bookingList.get(0).getFrequency());
-			table2.addCell(bookingList.get(0).getDurationPerMeetingDescription());
-			table2.addCell(bookingList.get(0).getPricePerHour());
-			table2.addCell("Preis pro Treffen");
-			table2.addCell("Anzahl");
-			table2.addCell("Summe");
-			                                   
+			table2.addCell(getCell(bookingList.get(0).getSubject()));
+			table2.addCell(getCell(bookingList.get(0).getTopic()));
+			table2.addCell(getCell(bookingList.get(0).getStudentType()));
+			table2.addCell(getCell(bookingList.get(0).getFrequency()));			
+			table2.addCell(getCell(bookingList.get(0).getDurationPerMeetingDescription()));
+			table2.addCell(getCell(bookingList.get(0).getPricePerHour()));
+			table2.addCell(getCell("Preis pro Treffen"));
+			table2.addCell(getCell("Anzahl"));
+			table2.addCell(getCell("Summe"));                                   
             // Loop to create the table for the single ordered items
 			bookingList.remove(0);
-			request.getSession().setAttribute("bookingList", bookingList);
 			for(Course course:bookingList){
-			
-			//Calculation for Subtotal
-			Double subTotal = cart.get(course.getCourseNumber())*course.getPricePerMeeting();
 				
-			table2.addCell(course.getSubject());
-			table2.addCell(course.getDescription());
-			table2.addCell(course.getStudentType());
-			table2.addCell(course.getFrequency());
-			table2.addCell(course.getDurationPerMeetingDescription());
-			table2.addCell(course.getPricePerHour());
-			table2.addCell(String.valueOf(course.getPricePerMeeting()));
-			table2.addCell(String.valueOf(cart.get(course.getCourseNumber())));
-			table2.addCell(String.valueOf(subTotal));
-			
+				//Calculation for Subtotal
+				Double subTotal = cart.get(course.getCourseNumber())*course.getPricePerMeeting();
+				table2.addCell(getCell(course.getSubject()));
+				table2.addCell(getCell(course.getTopic()));
+				table2.addCell(getCell(course.getStudentType()));
+				table2.addCell(getCell(course.getFrequency()));
+				table2.addCell(getCell(course.getDurationPerMeetingDescription()));
+				table2.addCell(getCell(course.getPricePerHour()));
+				table2.addCell(getCell(String.valueOf(course.getPricePerMeeting())));
+				table2.addCell(getCell(String.valueOf(cart.get(course.getCourseNumber()))));
+				table2.addCell(getCell(String.valueOf(subTotal)));
 			}
            			
 			document.add(table2);
+			
 		           
         //Small text for the invoice
         Paragraph paragraph2 = new Paragraph(invoiceText);
@@ -224,6 +223,16 @@ public class PdfInvoice {
         
         document.close();
     }
+    
+    public static PdfPCell getCell(String value) {
+        PdfPCell cell = new PdfPCell();
+        cell.setUseAscender(true);
+        cell.setUseDescender(true);
+        Paragraph p = new Paragraph(value);
+        cell.addElement(p);
+        return cell;
+    }
+    
     
 //    public static void main(String[] args) {
 //        PdfInvoice invoice = new PdfInvoice();
