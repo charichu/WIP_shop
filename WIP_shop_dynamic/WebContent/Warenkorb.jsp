@@ -54,7 +54,7 @@
 					<th><%out.println(cartList.get(0).getPricePerHour()); %></th>
 					<th><%out.println("Preis pro Treffen"); %></th>
 					<th><%out.println("Anzahl"); %></th>
-					<th rowspan="2"></th>
+					<th colspan="2"></th>
 	
 				</tr>
 				<% 		cartList.remove(0);

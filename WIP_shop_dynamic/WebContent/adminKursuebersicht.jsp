@@ -18,7 +18,7 @@
 	<div id = "wrapper" class="row">
 		
 		<!-- admin content -->
-		<div id = "adminContent" class="col-10">
+		<div id = "adminContent" class="col-12">
 		
 		<%--get attribute from request, which is set in the servlet --%>
 		<%
@@ -37,7 +37,7 @@
 				<th><%out.println(list.get(0).getStudentType()); %></th>
 				<th><%out.println(list.get(0).getPricePerHour()); %></th>
 				<th>gelöscht</th>
-
+				<th colspan="3"><a href="KursHinzufuegen.jsp">Neuen Kurs erstellen</a></th>
 			</tr>
 			<% 		list.remove(0);
 					for(Course course:list){%>
@@ -76,17 +76,6 @@
 				}%>
 			</table>
 			
-		</div>
-		
-		<!-- admin functions -->
-		<div id="adminFunctions" class="col-2">
-			<table>
-				<tr>
-					<td>
-						<a href="KursHinzufuegen.jsp">Neuen Kurs erstellen</a>
-					</td>
-				</tr>
-			</table>
 		</div>
 	</div>
 	
