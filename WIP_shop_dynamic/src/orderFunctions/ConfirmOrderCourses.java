@@ -104,11 +104,11 @@ public class ConfirmOrderCourses extends HttpServlet {
 			        if(Email.IsValid(currentUser.getEmail())){
 			        	
 //			        	Checked out due to bug as soon as two articles are in the order, works for almost one article path=equals name
-//			        	PdfInvoice.print(bookingList, cart, sum, orderID, request);
-//			        	String absolutePath = new String ("C://xampp//Invoice_" + orderID + ".pdf");
+			        	PdfInvoice.print(bookingList, cart, sum, orderID, request);
+			        	String absolutePath = new String ("C://xampp//Invoice_" + orderID + ".pdf");
 			        	
 			        	//Add absolute Path
-			        	Email orderMail = new Email(currentUser.getEmail(), "Tutor24: Rechnung für Bestellung "+orderID.toString(), mailText, null);
+			        	Email orderMail = new Email(currentUser.getEmail(), "Tutor24: Rechnung für Bestellung "+orderID.toString(), mailText, absolutePath);
 			        	if(orderMail.send()){
 			        		request.setAttribute("successMessage", "Die Bestellung wurde erfolgreich abgeschlossen.");
 							request.getSession().removeAttribute("cart");
@@ -119,9 +119,7 @@ public class ConfirmOrderCourses extends HttpServlet {
 			        	}
 			        	else {
 			        		request.setAttribute("errorMessage", "Die E-Mail konnte leider nicht versandt werden");
-//							myConn.rollback();
-			        		myConn.commit();
-							myConn.close();
+							myConn.rollback();
 							request.getRequestDispatcher("home.jsp").forward(request,response);
 						}
 			        	

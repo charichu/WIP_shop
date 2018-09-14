@@ -38,6 +38,7 @@ public class Email {
 		
 		try{
 			MimeMessage mailMsg = new MimeMessage(sess);
+			mailMsg.setHeader("Content-Type", "text/plain; charset=UTF-8");
 			MimeBodyPart mailBody = new MimeBodyPart();
 			MimeMultipart mailMulti = new MimeMultipart();
 			mailMsg.setFrom(new InternetAddress(username));
