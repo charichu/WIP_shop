@@ -5,6 +5,7 @@ import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
+import javax.mail.Address;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -67,8 +68,8 @@ public class Email {
 			Transport.send(emailMsg);
 			System.out.println("Email verschickt an: " + recipient);
 		} catch (Exception e) {
-			e.printStackTrace();
 			bRV = false;
+			e.printStackTrace();
 		}
 		
 		return bRV;

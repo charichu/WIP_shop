@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cartFunctions.PdfInvoice;
 import courseFunctions.Course;
 import functions.DBFunctions;
 import functions.Email;
@@ -101,7 +102,9 @@ public class ConfirmOrderCourses extends HttpServlet {
 			        				  "alles weitere zu unseren Zahlungsbedingungen finden Sie in unseren AGB's \r\n"+
 			        				  "Ihr Team von Tutor24";			        
 			        if(Email.IsValid(currentUser.getEmail())){
-			        	Email orderMail = new Email(currentUser.getEmail(), "Tutor24: Rechnung für Bestellung "+orderID.toString(), mailText, null);
+			        	PdfInvoice.print(bookingList, cart, sum, orderID, request);
+			        	String absolutePath = new String ("C://xampp//Invoice_" + orderID + ".pdf");
+			        	Email orderMail = new Email(currentUser.getEmail(), "Tutor24: Rechnung für Bestellung "+orderID.toString(), mailText, absolutePath);
 			        	if(orderMail.send()){
 			        		request.setAttribute("successMessage", "Die Bestellung wurde erfolgreich abgeschlossen.");
 							request.getSession().removeAttribute("cart");

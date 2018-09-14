@@ -107,6 +107,7 @@ public class PdfInvoice {
         
         //Date via calendar instance
         Date now = new Date();
+        Date future = new Date();
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(now);
 
@@ -114,7 +115,7 @@ public class PdfInvoice {
         calendar.add(Calendar.DAY_OF_MONTH, 14);
 
         // get the date instance
-        Date future = calendar.getTime();
+        future = calendar.getTime();
         
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");     
         
@@ -134,12 +135,13 @@ public class PdfInvoice {
         //make sql statement
         ResultSet rs = null;
 		try {
-			rs = DBFunctions.Execute("select * from addresses where addressID = (SELECT addressID FROM user WHERE userID = (SELECT userID FROM orders WHERE orderID = "+orderID+"))");
+			Integer userID = (Integer)request.getSession().getAttribute("userId");
+			rs = DBFunctions.Execute("SELECT addresses.plz, addresses.city, addresses.street, addresses.housenumber, user.firstName, user.lastName FROM addresses, user WHERE user.userID = "+userID+" AND addresses.addressID = user.addressID;");
 			if(rs.next()){
 				String recipient = rs.getString("user.firstName") + " " + rs.getString("user.lastName");
 				String street = rs.getString("addresses.street");
 				String city = rs.getString("addresses.plz") + " " + rs.getString("addresses.city");;
-				String userID ="user.userid";
+				String customer ="user.userid";
 			
 			
 			// Address on the left side
@@ -152,7 +154,7 @@ public class PdfInvoice {
 
 			// Details on the right side
 			adressTable.addCell(cell);
-			Chunk chunk = new Chunk("Rechnungsnummer: " + orderID + "\nKundennummer: " + userID + "\nRechnungsdatum: "
+			Chunk chunk = new Chunk("Rechnungsnummer: " + orderID + "\nKundennummer: " + customer + "\nRechnungsdatum: "
 					+ dateBuilder + "\nZahlungsfrist: " + deadline);
 			cell = new PdfPCell(new Phrase(chunk));
 			cell.setHorizontalAlignment(PdfPCell.ALIGN_RIGHT);
