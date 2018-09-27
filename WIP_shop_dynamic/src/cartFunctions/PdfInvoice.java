@@ -35,6 +35,14 @@ import functions.DBFunctions;
 
 import javax.servlet.http.*;
 
+/**
+*
+* This class creates an invoice in pdf format.
+*<br> It uses the bookingList and current session for this.
+*
+*@version 1.0
+*/
+
 public class PdfInvoice {
     
     //Fonts for future reference
@@ -47,6 +55,17 @@ public class PdfInvoice {
     private static final String bankAccount = "	Spa�kasse\n	IBAN: DEXX XXXX XXXX XXXX XXXX XX\n	BIC: SPASSDEXXXX";
     private static final String invoiceText = "Vielen Dank f�r ihre Bestellung.\nBitte �berweisen sie den ausstehenden Betrag innerhalb von zwei Wochen an die unten aufgef�hrte Bankverbindung.\nMit freundlichen Gr��en\n\nIhr tutor24-Team";
 
+/**
+*
+* This method creates a filename and then calls the method createPDF.
+*<br> The filename is the saving destination of the pdf.
+*
+*@param bookingList ArrayList from the order 
+*@param cart Hashmap including the amounts of items
+*@param sum double containg the total of the order
+*@param orderID Number of the order
+*@param request HttpServletRequest to get the userID
+*/
     public static void print(ArrayList<Course> bookingList, HashMap<Integer, Integer> cart, double sum, int orderID, HttpServletRequest request){
         
         try {
@@ -63,6 +82,19 @@ public class PdfInvoice {
         }
     }
     
+/**
+*
+* This method creates the actual invoice.
+*<br> Seperate fixed tables, logos, texts and footer is added.
+*<br> Loops over the bookingList to create an order overview.
+*
+*@param filename String containg the absolute path
+*@param bookingList ArrayList from the order 
+*@param cart Hashmap including the amounts of items
+*@param sum double containg the total of the order
+*@param orderID Number of the order
+*@param request HttpServletRequest to get the userID
+*/
     private static void createPDF(String filename, ArrayList<Course> bookingList, HashMap<Integer, Integer> cart, double sum, int orderID, HttpServletRequest request) throws DocumentException, MalformedURLException, IOException{
     	  	
     	Document document = new Document(PageSize.A4, 40, 20, 0, 0);
@@ -222,7 +254,15 @@ public class PdfInvoice {
         
         document.close();
     }
-    
+ 
+/**
+*
+* This method is a bug fix.
+*<br> It adjusts the position of the text in the overview table.
+*
+*@param value String that contains the content of the cell
+*@return Returns the given cell
+*/
     public static PdfPCell getCell(String value) {
         PdfPCell cell = new PdfPCell();
         cell.setUseAscender(true);
