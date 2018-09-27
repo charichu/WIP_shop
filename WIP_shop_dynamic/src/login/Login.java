@@ -49,7 +49,7 @@ public class Login extends HttpServlet {
 		
 
 		String url = request.getHeader("referer");
-		if(url.substring(url.lastIndexOf('/')+1).equalsIgnoreCase("Logout")&&url.substring(url.lastIndexOf('/')+1).equalsIgnoreCase("Login")&&url.substring(url.lastIndexOf('/')+1).equalsIgnoreCase("registration")){
+		if(url.substring(url.lastIndexOf('/')+1).equalsIgnoreCase("Logout")||url.substring(url.lastIndexOf('/')+1).equalsIgnoreCase("Login")||url.substring(url.lastIndexOf('/')+1).equalsIgnoreCase("registration")){
 			url=url.substring(0,url.lastIndexOf('/')+1)+"home.jsp";
 		}
 		String urlShort = url.substring(url.lastIndexOf('/')+1);
@@ -136,7 +136,6 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher(urlShort).forward(request, response);
             
         }
- 		doGet(request, response);
 	}
 
 }
