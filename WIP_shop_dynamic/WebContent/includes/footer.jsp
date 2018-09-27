@@ -1,6 +1,6 @@
 <!--- Footer -->
 <footer>
-	<div class="container-fluid padding">
+	<div class="container-fluid padding footer">
 		<div class="row text-center padding">
 			<div class="col-md-4">
 				<img src="img/logo.png">

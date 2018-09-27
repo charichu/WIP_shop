@@ -116,6 +116,13 @@ public class RegistrationServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+    /**
+	*
+	* Checks if Email is already in use
+	*
+	* @param emailName checks for this specific email
+	* @return true if email is in use
+	*/
     private Boolean isEmailInUse(String emailName){
     	Boolean bRV = false;
     	

@@ -5,7 +5,7 @@
 	<div class="container-fluid">
 	
 		<!--Logo at the top -->
-		<a class="navbar-brand" href="index.html"><img src="img/logo.png"></a>
+		<a class="navbar-brand" href="home.jsp"><img src="img/logo.png"></a>
 		
 		<!-- navigation toggle button -->
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">

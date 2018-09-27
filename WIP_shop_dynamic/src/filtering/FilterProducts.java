@@ -9,6 +9,20 @@ public class FilterProducts {
 	private ResultSet rs = null;
 	private String sqlQuery = "select * from courses";
 	
+	
+	/**
+	*
+	* Objects of this type can be used to create a filtered version of a ResultSet
+	*
+	*@param subject the subject of the course
+	*@param topic the topic of the course
+	*@param pricePerHour the price of the course per hour
+	*@param capacity the maximum amount of people that can be in the course
+	*@param frequency defines how frequent the course is scheduled
+	*@param durationPerMeeting how long a course lasts for in minutes
+	*@param addressID defines the used address
+	*@param seachText the string that is searched for in topic and teacher username
+	*/
 	public FilterProducts(String subject, String topic, int pricePerHour, int capacity, String frequency, int durationPerMeeting, String addressID, String searchText){
 		StringBuilder sBuilder = new StringBuilder();
 		Boolean hasAtLeastOneConditionBefore = false;
@@ -83,12 +97,24 @@ public class FilterProducts {
 		} 
 	}
 	
+	/**
+	*
+	* Objects of this type can be used to create a filtered version of a ResultSet
+	*
+	*@param sqlQuery The sql query that will be used to get the filtered courses
+	*/
 	public FilterProducts(String sqlQuery){
 		if(!Functions_Std.isStringNullOrEmpty(sqlQuery)){
 			this.sqlQuery = sqlQuery;
 		}
 	}
-	
+
+	/**
+	*
+	* Gets the filtered courses configured in the constructor
+	*
+	*@return resultset containing the filtered courses
+	*/
 	public ResultSet GetFilteredProducts (){
 		try {
 			if(rs == null){
@@ -99,7 +125,13 @@ public class FilterProducts {
 		}
 		return rs;
 	}
-	
+
+	/**
+	*
+	* Gives the used sql query
+	*
+	*@return sql query that is used for the filtering
+	*/
 	public String getSqlQuery(){
 		return sqlQuery;
 	}

@@ -29,7 +29,7 @@
 	<div class="container-fluid">
 	
 		<!--Logo at the top -->
-		<a class="navbar-brand" href="index.html"><img src="img/logo.png"></a>
+		<a class="navbar-brand" href="home.jsp"><img src="img/logo.png"></a>
 		<%
 			if(session.getAttribute("userName") != null){
 				out.println("Willkommen "+session.getAttribute("userName"));

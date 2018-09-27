@@ -477,6 +477,10 @@ figure {
 .table{
 	max-width: none;
 }
+.footer{
+	margin-top: auto;	
+}
+
 
 /* Screenbreaks
 Extra small (xs) devices (portrait phones, less than 576px)

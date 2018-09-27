@@ -17,11 +17,20 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class Email {
-	private final String username = "noreply.tutor24@gmail.com";
-	private final String password = "WIP_shop";
+	private static final String username = "noreply.tutor24@gmail.com";
+	private static final String password = "WIP_shop";
 	private MimeMessage emailMsg = null;
 	private String recipient = null;
-	
+
+	/**
+	*
+	* Email that can be send
+	*
+	* @param to recipient of the email
+	* @param subject subject of the email
+	* @param text text body of the email
+	* @param attachmentLocation path to the attachment
+	*/
 	public Email(String to, String subject, String text, String attachmentLocation) {
 		
 		Properties prop = new Properties();
@@ -62,6 +71,12 @@ public class Email {
 		}
 	}
 	
+	/**
+	*
+	* Sends the email
+	*
+	* @return true if the email could be send
+	*/
 	public Boolean send() throws IOException {
 		Boolean bRV = true; //bRV stands for bool return value - only used to check if it was successful
 		
@@ -76,10 +91,17 @@ public class Email {
 		return bRV;
     }
 	
-	public static Boolean IsValid(String EmailName){
+	/**
+	*
+	* Checks if the email is valid
+	*
+	* @param emailName
+	* @return whether the email is valid
+	*/
+	public static Boolean IsValid(String emailName){
 		Boolean bRV = true;
 		try {
-			InternetAddress EmailAddress = new InternetAddress(EmailName);
+			InternetAddress EmailAddress = new InternetAddress(emailName);
 			EmailAddress.validate();
 		} catch (AddressException e) {
 			bRV = false;
