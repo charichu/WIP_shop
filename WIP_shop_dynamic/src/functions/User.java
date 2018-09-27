@@ -7,6 +7,11 @@ import java.util.HashMap;
 
 import functions.DBFunctions;
 
+/**
+ * the user of the wip_shop Tutor24; it use the {@link Address}
+ * @author werner
+ *
+ */
 public class User {
 	private Integer userID;
 	private String  username;
@@ -22,6 +27,10 @@ public class User {
 	private Double  grade;
 	private boolean active;
 	
+	/**
+	 * get the user out of the database with the userID
+	 * @param userID
+	 */
 	public User(Integer userID) {
 		String sqlStatement;
 		if(userID != null){
@@ -126,6 +135,11 @@ public class User {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+	/**
+	 * get the address out of the database<br>
+	 * TODO replace the return parameter with the address class
+	 * @return {@link HashMap} filled with the address fields
+	 */
 	public HashMap<String, String> getAddress() {
 		String sqlStatement = DBFunctions.CreateSelectQuery("addresses", new String[]{"*"}, "addressID = "+addressID.toString());
 		HashMap<String, String> address = new HashMap<String,String>();

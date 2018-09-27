@@ -2,6 +2,10 @@ package functions;
 
 import java.sql.ResultSet;
 
+/**
+ * the address of the wip_shop used in course and user
+ * @author werner
+ */
 public class Address {
 	private Integer addressID;
 	private Integer plz;
@@ -10,9 +14,16 @@ public class Address {
 	private Integer houseNumber;
 	private boolean isEmpty = true;
 	
+	/**
+	 * placeholder constructor
+	 */
 	public Address(){
 		
 	}
+	/**
+	 * get the addess out of the database with the addressID as parameter
+	 * @param addressID
+	 */
 	public Address(Integer addressID){
 		String sqlStatement;
 		sqlStatement=DBFunctions.CreateSelectQuery("addresses", new String[]{"*"}, "addressID ="+addressID);

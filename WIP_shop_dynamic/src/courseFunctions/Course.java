@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import com.sun.xml.internal.bind.v2.TODO;
+
 import functions.Address;
 import functions.DBFunctions;
 /**
@@ -32,6 +34,10 @@ public class Course {
 	private boolean active;
 	private boolean isEmpty = true;
 	
+	/**
+	 * Read a user out of the database with the courseID
+	 * @param courseID
+	 */
 	public Course(Integer courseID){
 		try {
 			String sqlStatement = DBFunctions.CreateSelectQuery("courses", new String[]{"*"}, "courseID="+courseID.toString());
@@ -56,7 +62,8 @@ public class Course {
 		}
 	}
 	/**
-	 * Constuctor to set the description
+	 * Constuctor to set the description <br>
+	 * TODO replace this with an extra class filled with literals
 	 */
 	public Course(){
 		this.courseNumber = "Kurs Nummer";
@@ -83,7 +90,23 @@ public class Course {
 		this.grade = grade;
 		this.active = active;
 	}
-	
+	/**
+	 * Old constructor <br>
+	 * TODO replace this with the new constructor with the courseID
+	 * @param courseNumber
+	 * @param subject
+	 * @param topic
+	 * @param description
+	 * @param studentType
+	 * @param pricePerHour
+	 * @param capacity
+	 * @param frequency
+	 * @param durationPerMeeting
+	 * @param addressID
+	 * @param userID
+	 * @param grade
+	 * @param active
+	 */
 	public Course(String courseNumber, String subject, String topic, String description, String studentType,
 			String pricePerHour, Double capacity, String frequency, Double durationPerMeeting, int addressID,
 			int userID, String grade , boolean active) {
@@ -217,13 +240,26 @@ public class Course {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+	/**
+	 * returns the Price per Meeting
+	 * @return
+	 */
 	public Double getPricePerMeeting(){
 		pricePerMeeting=Integer.parseInt(pricePerHour)*(durationPerMeeting/60);
 		return pricePerMeeting;
 	}
+	/**
+	 * controls if the course is empty<br>
+	 * so no course exists to the given courseID
+	 * @return return a {@link Boolean}
+	 */
 	public boolean isEmpty() {
 		return isEmpty;
 	}
+	/**
+	 * give the address of the course
+	 * @return return the {@link Address} of this course, if the course or the address is empty this function returns null
+	 */
 	public Address getAddress() {
 		Address tempAddress = new Address(this.addressID);
 		if(!this.isEmpty()&&!tempAddress.isEmpty()){
